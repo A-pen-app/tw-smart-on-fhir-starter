@@ -1,0 +1,661 @@
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="Tooplate">
+
+    <title>FHIR Sample Code</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link href="/Content/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/Content/css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="/Content/css/apexcharts.css" rel="stylesheet">
+
+    <link href="/Content/css/tooplate-mini-finance.css" rel="stylesheet">
+    <!--
+
+    Tooplate 2135 Mini Finance
+
+    https://www.tooplate.com/view/2135-mini-finance
+
+    Bootstrap 5 Dashboard Admin Template
+
+    -->
+    
+    <style>
+        .multiline-ellipsis {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+            /*white-space: pre-line;*/
+        }
+    </style>
+
+    
+    <style>
+        @media (max-width: 576px) {
+            #sidebarMenu {
+                margin-top: 30px !important; /* 请尝试添加 !important 规则 */
+            }
+        }
+
+        /* @media (max-width: 576px) {
+            #collapseB_KeycloakHAPI_TeachingManual {
+                width: 100%;
+                height: 300px;
+                -webkit-overflow-scrolling: touch;
+                overflow: scroll;
+
+            }
+        }*/
+        .code_print {
+            padding: 10px 15px 10px;
+            width: auto;
+            overflow: auto;
+            background-color: rgb(239, 240, 241);
+        }
+
+            .code_print .keyword {
+                color: #0074D9; /* Python 关键字的颜色 */
+            }
+
+            .code_print .string {
+                color: #FF4136; /* 字符串的颜色 */
+            }
+
+            .code_print .comment {
+                color: #888888; /* 注释的颜色 */
+            }
+
+        .h6Code {
+            text-align: center;
+        }
+
+        #myTab_Bundle h6 {
+            color: #e63946;
+        }
+
+        .collapseB {
+            color: #000000;
+        }
+
+        .nothing {
+            height: 50px;
+        }
+        /*.iframe_PDF {
+            user-select: none;
+        }*/
+        iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border: 2px solid #000;
+        }
+
+        .white_title {
+            text-align: center;
+        }
+
+        .index_button ul li a {
+            font-size: 18px;
+        }
+
+        .table-responsive td{
+            padding: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="navbar sticky-top flex-md-nowrap">
+        <div class="col-md-4 col-lg-4 me-0 px-4 fs-6">
+            
+            <a class="navbar-brand" href="/twsample/">
+                <i class="bi-box"></i>
+                FHIR Sample Code
+            </a>
+        </div>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="col-md-4 col-lg-4 me-0 px-4 fs-6 justify-content-end mb-6">
+            <ul class="nav flex-column flex-sm-row h-100 container-fluid justify-content-end" style="list-style-type: none;">
+                <li class="nav-item">
+                    <a class="page-link" id="PageClient" aria-current="page" href="/Home/ClientIndex">
+                        FHIR Client
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="page-link" id="PageServer" aria-current="page" href="/Server">
+                        FHIR Server
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="page-link" id="PageQandA" aria-current="page" href="/QandA">
+                        問答專區
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="page-link" id="PageUser" aria-current="page" href="/User">
+                        <i class="bi bi-person"></i>
+                        <span class="" id="UserLoginOrNot"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+
+    </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="sidebarMenu" class="col-md-2 col-lg-2 d-md-block sidebar collapse">
+                    <div class="position-sticky py-4 px-3 sidebar-sticky">
+                        <ul class="nav flex-column h-100">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/QandA">
+                                    新增問題
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/QandA/AllMessage">
+                                    所有問題
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </nav>
+
+                <main class="main-wrapper col-md-10 ms-sm-auto py-4 col-lg-10 px-md-4 border-start">
+                    
+
+
+
+
+<div class="title-group mb-3">
+    <h1 class="h2 mb-0">所有問題</h1>
+</div>
+
+
+    <ul class="nav flex-column">
+                <li class="nav-item">
+                    <div class="custom-block bg-white">
+                        <div class="d-flex flex-wrap align-items-center mb-4">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <i class="bi bi-person-circle"></i>
+                                    <small class="text-muted">許鐘元</small>
+
+                                    <h6>
+                                        <a href="/QandA/TurnToOneMessage/9">Keycloak及HAPI FHIR 的LINUX版本及Windows版本有無限制</a>
+                                        
+                                    </h6>
+                                    <span class="multiline-ellipsis">
+                                        Keycloak及HAPI FHIR 的LINUX版本及Windows版本有無限制,類似Windows2025 &amp; Redhat Linux任何版本都能嗎?
+                                    </span>
+
+
+                                </div>
+
+                            </div>
+                            <div class="ms-auto">
+                                <a href="/QandA/TurnToOneMessage/9" class="col-auto d-flex align-items-center">
+                                    <i class="bi bi-chat-square-text ms-auto" style="margin-right: 5px;"></i>
+                                    <small>0</small>
+                                </a>
+
+
+                                <div class="col-auto">
+                                    <small>2026/2/5 下午 05:19:16</small>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="custom-block bg-white">
+                        <div class="d-flex flex-wrap align-items-center mb-4">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <i class="bi bi-person-circle"></i>
+                                    <small class="text-muted">Kim Huang</small>
+
+                                    <h6>
+                                        <a href="/QandA/TurnToOneMessage/8">範例問題</a>
+                                        
+                                    </h6>
+                                    <span class="multiline-ellipsis">
+                                        應修正為：
+import requests
+import json
+server_url = &#39;https://hapi.fhir.org/baseR4/&#39; 
+
+SearchCode = &quot;&quot; #可填入想要搜尋的參數，若為空則搜尋整個Condition
+access_token = requests.get(server_url+&quot;Condition&quot; + SearchCode, verify=False)
+RequestResult = json.loads(str(access_token.text))
+print(RequestResult)
+否則網址是錯的
+                                    </span>
+
+
+                                </div>
+
+                            </div>
+                            <div class="ms-auto">
+                                <a href="/QandA/TurnToOneMessage/8" class="col-auto d-flex align-items-center">
+                                    <i class="bi bi-chat-square-text ms-auto" style="margin-right: 5px;"></i>
+                                    <small>0</small>
+                                </a>
+
+
+                                <div class="col-auto">
+                                    <small>2025/7/4 上午 11:05:32</small>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="custom-block bg-white">
+                        <div class="d-flex flex-wrap align-items-center mb-4">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <i class="bi bi-person-circle"></i>
+                                    <small class="text-muted">Jessie</small>
+
+                                    <h6>
+                                        <a href="/QandA/TurnToOneMessage/7">twCore IG 0.3.2版本的範例測試 FHIR 臺灣公開測試伺服器(https://twcore.hapi.fhir.tw/) 錯誤訊息</a>
+                                        
+                                    </h6>
+                                    <span class="multiline-ellipsis">
+                                        twCore IG 0.3.2版本下example資料夾內的所有json 使用POST 送到FHIR 臺灣公開測試伺服器，有幾筆回傳httpStatusCode 422想請教~
+
+這筆Procedure-pro-example.json 回傳error等級的錯誤訊息如下
+	1. &quot;Unable to validate code https://twcore.mohw.gov.tw/ig/twcore/CodeSystem/icd-10-pcs-2021-tw#BU46ZZZ - Code is not found in CodeSystem: https://twcore.mohw.gov.tw/ig/twcore/CodeSystem/icd-10-pcs-2021-tw for &#39;https://twcore.mohw.gov.tw/ig/twcore/CodeSystem/icd-10-pcs-2021-tw#BU46ZZZ&#39;&quot;, 
+	2. &quot;Unable to validate code http://snomed.info/sct#9258009 - Code is not found in CodeSystem: http://snomed.info/sct for &#39;http://snomed.info/sct#9258009&#39;&quot;
+
+想請問這樣打到公開測試伺服器不過是正常的嗎?
+                                    </span>
+
+
+                                </div>
+
+                            </div>
+                            <div class="ms-auto">
+                                <a href="/QandA/TurnToOneMessage/7" class="col-auto d-flex align-items-center">
+                                    <i class="bi bi-chat-square-text ms-auto" style="margin-right: 5px;"></i>
+                                    <small>0</small>
+                                </a>
+
+
+                                <div class="col-auto">
+                                    <small>2025/6/5 下午 04:54:44</small>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="custom-block bg-white">
+                        <div class="d-flex flex-wrap align-items-center mb-4">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <i class="bi bi-person-circle"></i>
+                                    <small class="text-muted">黃聖哲</small>
+
+                                    <h6>
+                                        <a href="/QandA/TurnToOneMessage/6">windows hapi fhir 安裝問題</a>
+                                        
+                                    </h6>
+                                    <span class="multiline-ellipsis">
+                                        你好
+我目前是使用windows環境安裝hapi fhir
+到遇到幾點問題
+1.JDK 目線可以下載倒的版本是21但文件是寫17，請問版本會影響嗎？
+2.我使用 JDK 21 照步驟繼續安裝，到mvn -Pjetty jetty:run執行完之後出現以下錯誤
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  15.578 s
+[INFO] Finished at: 2025-01-22T07:35:54+08:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] No plugin found for prefix &#39;jetty&#39; in the current project and in the plugin groups [org.apache.maven.plugins, org.codehaus.mojo] available from the repositories [local (C:\Users\Administrator\.m2\repository), central (https://repo.maven.apache.org/maven2)] -&gt; [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/NoPluginFoundForPrefixException
+不知道我有少做什麼步驟，或是哪個環節出錯嗎，謝謝！
+                                    </span>
+
+
+                                </div>
+
+                            </div>
+                            <div class="ms-auto">
+                                <a href="/QandA/TurnToOneMessage/6" class="col-auto d-flex align-items-center">
+                                    <i class="bi bi-chat-square-text ms-auto" style="margin-right: 5px;"></i>
+                                    <small>1</small>
+                                </a>
+
+
+                                <div class="col-auto">
+                                    <small>2025/1/22 上午 07:37:10</small>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="custom-block bg-white">
+                        <div class="d-flex flex-wrap align-items-center mb-4">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <i class="bi bi-person-circle"></i>
+                                    <small class="text-muted">eric</small>
+
+                                    <h6>
+                                        <a href="/QandA/TurnToOneMessage/5">keycloak沒有生效</a>
+                                        
+                                    </h6>
+                                    <span class="multiline-ellipsis">
+                                        您好!
+依伺服器安裝說明以Linux docker安裝HAPI FHIR Server，也在pom.xml及application.yaml調整了搭配keycloak要做的設定。但HAPI FHIR Server執行後，用Postman測試新增一個Patient，在Authorization設定No Auth即可上傳成功。
+似乎keycloak沒有發揮作用。想請教可能是哪裡的問題? 謝謝。
+                                    </span>
+
+
+                                </div>
+
+                            </div>
+                            <div class="ms-auto">
+                                <a href="/QandA/TurnToOneMessage/5" class="col-auto d-flex align-items-center">
+                                    <i class="bi bi-chat-square-text ms-auto" style="margin-right: 5px;"></i>
+                                    <small>1</small>
+                                </a>
+
+
+                                <div class="col-auto">
+                                    <small>2024/12/17 下午 10:13:22</small>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="custom-block bg-white">
+                        <div class="d-flex flex-wrap align-items-center mb-4">
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <i class="bi bi-person-circle"></i>
+                                    <small class="text-muted">小河</small>
+
+                                    <h6>
+                                        <a href="/QandA/TurnToOneMessage/2">FHIR版本</a>
+                                        
+                                    </h6>
+                                    <span class="multiline-ellipsis">
+                                        FHIR是甚麼版本
+                                    </span>
+
+
+                                </div>
+
+                            </div>
+                            <div class="ms-auto">
+                                <a href="/QandA/TurnToOneMessage/2" class="col-auto d-flex align-items-center">
+                                    <i class="bi bi-chat-square-text ms-auto" style="margin-right: 5px;"></i>
+                                    <small>2</small>
+                                </a>
+
+
+                                <div class="col-auto">
+                                    <small>2024/4/8 下午 04:46:31</small>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+
+
+        
+
+    </ul>
+
+
+
+
+
+
+
+
+                    <footer class="site-footer">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-12 col-12">
+                                    <p class="copyright-text">
+
+
+
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </footer>
+                </main>
+
+            </div>
+        </div>
+    <!-- JAVASCRIPT FILES -->
+    
+    <script src="/Scripts/jquery-3.6.4.min.js"></script>
+
+    <script src="/Scripts/js/jquery.min.js"></script>
+    <script src="/Scripts/js/bootstrap.bundle.min.js"></script>
+    <script src="/Scripts/js/apexcharts.min.js"></script>
+    <script src="/Scripts/js/custom.js"></script>
+
+
+    
+    <script type="text/javascript">
+        var options = {
+            series: [13, 43, 22],
+            chart: {
+                width: 380,
+                type: 'pie',
+            },
+            labels: ['Balance', 'Expense', 'Credit Loan',],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#pie-chart"), options);
+        chart.render();
+    </script>
+
+    <script type="text/javascript">
+        var options = {
+            series: [{
+                name: 'Income',
+                data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+            }, {
+                name: 'Expense',
+                data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+            }, {
+                name: 'Transfer',
+                data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            },
+            yaxis: {
+                title: {
+                    text: '$ (thousands)'
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return "$ " + val + " thousands"
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+
+</body>
+</html>
+
+<script>
+    if ('QandA' == "Home") {
+        $("#PageClient").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageClient").css("color", "var(--white-color)");
+        //background - color: var(--custom - btn - bg - color);
+    }
+    else if ('QandA' == "Server"){
+        $("#PageServer").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageServer").css("color", "var(--white-color)");
+    }
+    else if ('QandA' == "QandA"){
+        $("#PageQandA").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageQandA").css("color", "var(--white-color)");
+    }
+    else if ('QandA' == "User"){
+        $("#PageUser").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageUser").css("color", "var(--white-color)");
+}
+    var currentPath = window.location.pathname;
+
+    var navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(function (link) {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active'); // 如果匹配，则添加 'active' 类
+        }
+    });
+
+
+    // 看看有沒有登入: UserLoginOrNot
+
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+    var btn_UserLoginOrNot = document.getElementById('UserLoginOrNot');
+    if (getCookie("Account") != null) {
+
+        btn_UserLoginOrNot.innerText = "登出";
+        //alert(getCookie("Account"));
+    }
+    else {
+        btn_UserLoginOrNot.innerText = "登入";
+    }
+
+</script>
+
+<script type="text/javascript">
+    //window.onload = function () {
+    //    document.getElementById('iframe_PDF').contentDocument.oncontextmenu = function () {
+    //        alert('111');
+    //        return false;
+    //    }
+    //}
+
+    //window.onload = function () {
+    //    alert('111');
+
+    //    document.getElementById('iframe_PDF_windows').contentDocument.oncontextmenu = function () {
+    //        alert('111');
+    //        return false;
+    //    }
+    //}
+
+    //document.addEventListener("DOMContentLoaded", function () {
+    //    // Your code here
+    //    console.log('555');
+    //    document.getElementById('iframe_PDF_windows').contentDocument.oncontextmenu = function () {
+    //        console.log('123');
+    //        return false;
+    //    };
+    //});
+
+
+</script>

@@ -1,0 +1,1812 @@
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="Tooplate">
+
+    <title>FHIR Sample Code</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link href="/Content/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/Content/css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="/Content/css/apexcharts.css" rel="stylesheet">
+
+    <link href="/Content/css/tooplate-mini-finance.css" rel="stylesheet">
+    <!--
+
+    Tooplate 2135 Mini Finance
+
+    https://www.tooplate.com/view/2135-mini-finance
+
+    Bootstrap 5 Dashboard Admin Template
+
+    -->
+    
+    <style>
+        @media (max-width: 576px) {
+            #sidebarMenu {
+                margin-top: 30px !important; /* 请尝试添加 !important 规则 */
+            }
+        }
+
+        /* @media (max-width: 576px) {
+            #collapseB_KeycloakHAPI_TeachingManual {
+                width: 100%;
+                height: 300px;
+                -webkit-overflow-scrolling: touch;
+                overflow: scroll;
+
+            }
+        }*/
+        .code_print {
+            padding: 10px 15px 10px;
+            width: auto;
+            overflow: auto;
+            background-color: rgb(239, 240, 241);
+        }
+
+            .code_print .keyword {
+                color: #0074D9; /* Python 关键字的颜色 */
+            }
+
+            .code_print .string {
+                color: #FF4136; /* 字符串的颜色 */
+            }
+
+            .code_print .comment {
+                color: #888888; /* 注释的颜色 */
+            }
+
+        .h6Code {
+            text-align: center;
+        }
+
+        #myTab_Bundle h6 {
+            color: #e63946;
+        }
+
+        .collapseB {
+            color: #000000;
+        }
+
+        .nothing {
+            height: 50px;
+        }
+        /*.iframe_PDF {
+            user-select: none;
+        }*/
+        iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border: 2px solid #000;
+        }
+
+        .white_title {
+            text-align: center;
+        }
+
+        .index_button ul li a {
+            font-size: 18px;
+        }
+
+        .table-responsive td{
+            padding: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="navbar sticky-top flex-md-nowrap">
+        <div class="col-md-4 col-lg-4 me-0 px-4 fs-6">
+            
+            <a class="navbar-brand" href="/twsample/">
+                <i class="bi-box"></i>
+                FHIR Sample Code
+            </a>
+        </div>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="col-md-4 col-lg-4 me-0 px-4 fs-6 justify-content-end mb-6">
+            <ul class="nav flex-column flex-sm-row h-100 container-fluid justify-content-end" style="list-style-type: none;">
+                <li class="nav-item">
+                    <a class="page-link" id="PageClient" aria-current="page" href="/Home/ClientIndex">
+                        FHIR Client
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="page-link" id="PageServer" aria-current="page" href="/Server">
+                        FHIR Server
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="page-link" id="PageQandA" aria-current="page" href="/QandA">
+                        問答專區
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="page-link" id="PageUser" aria-current="page" href="/User">
+                        <i class="bi bi-person"></i>
+                        <span class="" id="UserLoginOrNot"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+
+    </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="sidebarMenu" class="col-md-2 col-lg-2 d-md-block sidebar collapse">
+                    <div class="position-sticky py-4 px-3 pt-md-4 sidebar-sticky">
+                        <ul class="nav flex-column h-100">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/Condition">
+                                    Condition
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/DiagnosticReport">
+                                    DiagnosticReport
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/Encounter">
+                                    Encounter
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/Medication">
+                                    Medication
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/MedicationRequest">
+                                    MedicationRequest
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/Observation">
+                                    Observation
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/Organization">
+                                    Organization
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/Patient">
+                                    Patient
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/Practitioner">
+                                    Practitioner
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/Procedure">
+                                    Procedure
+                                </a>
+                            </li>
+
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/PractitionerRole">
+                                    PractitionerRole
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/AllergyIntolerance">
+                                    AllergyIntolerance
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/MedicationStatement">
+                                    MedicationStatement
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/MedicationDispense">
+                                    MedicationDispense
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/Specimen">
+                                    Specimen
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/Location">
+                                    Location
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/ImagingStudy">
+                                    ImagingStudy
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/Media">
+                                    Media
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/Home/Composition">
+                                    Composition
+                                </a>
+                            </li>
+                            <li class="nav-item" style="padding-bottom:30px;">
+                                <a class="nav-link" aria-current="page" href="/Home/Bundle">
+                                    Bundle
+                                </a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </div>
+                </nav>
+
+                <main class="main-wrapper col-md-10 ms-sm-auto py-4 col-lg-10 px-md-4 border-start">
+                    
+
+
+
+<style>
+    .code_print {
+        padding: 10px 15px 10px;
+        width: auto;
+        overflow: auto;
+        background-color: rgb(239, 240, 241);
+    }
+
+        .code_print .keyword {
+            color: #0074D9; /* Python 关键字的颜色 */
+        }
+
+        .code_print .string {
+            color: #FF4136; /* 字符串的颜色 */
+        }
+
+        .code_print .comment {
+            color: #888888; /* 注释的颜色 */
+        }
+
+    .h6Code {
+        text-align: center;
+    }
+
+    .ShowBtn {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column; /* 将主轴方向设置为垂直 */
+        text-align: left;
+    }
+
+    #collapseExample_Search table tbody tr:hover {
+        background-color: #EEEEEE;
+    }
+</style>
+
+<div class="title-group mb-3">
+    <h1 class="h2 mb-0">MedicationStatement</h1>
+</div>
+
+
+
+<style>
+    .collapseA {
+        width: 100%;
+        margin-top: 10px;
+    }
+</style>
+
+<script src="/Scripts/jquery-2.1.4.min.js"></script>
+<div class="custom-block bg-white">
+    <a class="collapseA" data-bs-toggle="collapse" href="#collapseExample_AllValue" role="button" aria-expanded="false" aria-controls="collapseExample_AllValue">
+        共用參數
+    </a>
+    <hr />
+    <div class="collapse show" id="collapseExample_AllValue">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">名稱</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">伺服器網址</td>
+                    <td id="ServerURL">https://hapi.fhir.org/baseR4/ (此為範例網址，可替代為自己的 FHIR 伺服器網址)</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="custom-block bg-white">
+    <a class="collapseA" data-bs-toggle="collapse" href="#collapseExample_Methods" role="button" aria-expanded="false" aria-controls="collapseExample_Methods">
+        請求方式
+    </a>
+    <hr />
+    <div class="collapse show" id="collapseExample_Methods">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">方法</th>
+                    <th scope="col">用途</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">PUT</td>
+                    <td>用於新增及更新FHIR資源</td>
+                </tr>
+                <tr>
+                    <td scope="row">POST</td>
+                    <td>用於新增FHIR資源</td>
+                </tr>
+                <tr>
+                    <td scope="row">GET</td>
+                    <td>用於取得及查詢FHIR資源</td>
+                </tr>
+                <tr>
+                    <td scope="row">DELETE</td>
+                    <td>用於刪除FHIR資源</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <!--<a class="collapseA" data-bs-toggle="collapse" href="#collapseExample_JsonExample" role="button" aria-expanded="false" aria-controls="collapseExample_JsonExample">
+        Json範例
+    </a>
+    <hr />
+    <div class="collapse" id="collapseExample_JsonExample">
+        <pre class="code_print">
+    <span id="myspan"></span>
+    </pre>-->
+    
+    <!--</div>-->
+
+</div>
+
+
+
+<div class="custom-block bg-white">
+    <a class="collapseA" data-bs-toggle="collapse" href="#collapseExample_Search" role="button" aria-expanded="false" aria-controls="collapseExample_Search">
+        <span class="Resource"></span> 查詢參數
+    </a>
+    <hr />
+    <div class="collapse show" id="collapseExample_Search">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Sample</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">_id</td>
+                    <td>token</td>
+                    <td>
+                        Standard Parameters
+                    </td>
+                    <td>
+
+                        <button class="ShowBtn" onclick="ShowSearch('?_id=123')">
+                            [伺服器網址]/MedicationStatement?_id=[id]
+                        </button>
+
+                        <button class="ShowBtn" onclick="ShowSearch('/123')">
+                            [伺服器網址]/MedicationStatement/[id]
+                        </button>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row">category</td>
+                    <td>token</td>
+                    <td>
+                        Returns statements of this category of medicationstatement
+                    </td>
+                    <td>
+                        <button class="ShowBtn" onclick="ShowSearch('?category=inpatient')">
+                            [伺服器網址]/MedicationStatement?category=[code]
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row">code</td>
+                    <td>token</td>
+                    <td>
+                        Return statements of this medication code
+                    </td>
+                    <td>
+                        <button class="ShowBtn" onclick="ShowSearch('?code=261000')">
+                            [伺服器網址]/MedicationStatement?code=[code]
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row">context</td>
+                    <td>reference</td>
+                    <td>
+                        Returns statements for a specific context (episode or episode of Care).
+                    </td>
+                    <td>
+                        <button class="ShowBtn" onclick="ShowSearch('?context=Encounter/Enc-example')">
+                            [伺服器網址]/MedicationStatement?context={Type/}[id]
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row">effective</td>
+                    <td>date</td>
+                    <td>
+                        Date when patient was taking (or not taking) the medication
+                    </td>
+                    <td>
+                        <button class="ShowBtn" onclick="ShowSearch('?effective=gt2023-01-01')">
+                            [伺服器網址]/MedicationStatement?effective={gt|lt|ge|le}[date]
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row">identifier</td>
+                    <td>token</td>
+                    <td>
+                        Return statements with this external identifier
+                    </td>
+                    <td>
+                        <button class="ShowBtn" onclick="ShowSearch('?identifier=MedSta')">
+                            [伺服器網址]/MedicationStatement?identifier=[code]
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row">medication</td>
+                    <td>reference</td>
+                    <td>
+                        Return statements of this medication reference
+                    </td>
+                    <td>
+                        <button class="ShowBtn" onclick="ShowSearch('?medication=Medication/Med-example')">
+                            [伺服器網址]/MedicationStatement?medication={Type/}[id]
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row">part-of</td>
+                    <td>reference</td>
+                    <td>
+                        Returns statements that are part of another event.
+                    </td>
+                    <td>
+                        <button class="ShowBtn" onclick="ShowSearch('?part-of=Observation/Obs-example')">
+                            [伺服器網址]/MedicationStatement?part-of={Type/}[id]
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row">patient</td>
+                    <td>reference</td>
+                    <td>
+                        Returns statements for a specific patient.
+                    </td>
+                    <td>
+                        <button class="ShowBtn" onclick="ShowSearch('?patient=Patient/Pat-example')">
+                            [伺服器網址]/MedicationStatement?patient={Type/}[id]
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row">source</td>
+                    <td>reference</td>
+                    <td>
+                        Who or where the information in the statement came from
+                    </td>
+                    <td>
+                        <button class="ShowBtn" onclick="ShowSearch('?source=Practitioner/Pra-example')">
+                            [伺服器網址]/MedicationStatement?source={Type/}[id]
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row">status</td>
+                    <td>token</td>
+                    <td>
+                        Return statements that match the given status
+                    </td>
+                    <td>
+                        <button class="ShowBtn" onclick="ShowSearch('?status=active')">
+                            [伺服器網址]/MedicationStatement?status=[code]
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row">subject</td>
+                    <td>reference</td>
+                    <td>
+                        The identity of a patient, animal or group to list statements for
+                    </td>
+                    <td>
+                        <button class="ShowBtn" onclick="ShowSearch('?subject=Patient/Pat-example')">
+                            [伺服器網址]/MedicationStatement?subject={Type/}[id]
+                        </button>
+                    </td>
+                </tr>
+
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="custom-block bg-white">
+    <div class="collapse show" id="collapseExample_SampleCode">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="PUT-tab" data-bs-toggle="tab" data-bs-target="#PUT-tab-pane" type="button" role="tab" aria-controls="PUT-tab-pane" aria-selected="true" tabindex="-1">
+                    PUT
+                </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="POST-tab" data-bs-toggle="tab" data-bs-target="#POST-tab-pane" type="button" role="tab" aria-controls="POST-tab-pane" aria-selected="false">
+                    POST
+                </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="GET-tab" data-bs-toggle="tab" data-bs-target="#GET-tab-pane" type="button" role="tab" aria-controls="GET-tab-pane" aria-selected="false">
+                    GET
+                </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="DELETE-tab" data-bs-toggle="tab" data-bs-target="#DELETE-tab-pane" type="button" role="tab" aria-controls="DELETE-tab-pane" aria-selected="false">
+                    DELETE
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade active show" id="PUT-tab-pane" role="tabpanel" aria-labelledby="PUT-tab" tabindex="0">
+                
+
+<style>
+    .collapseB {
+        color: #000000;
+    }
+    .result_print {
+        background-color: #222222;
+        color: #FFFFFF;
+    }
+</style>
+
+<a class="collapseB" data-bs-toggle="collapse" href="#collapseB_Prepare_Put" role="button" aria-expanded="false" aria-controls="collapseB_Prepare_Put">
+    1. 前置準備作業
+</a>
+<hr />
+<div class="collapse" id="collapseB_Prepare_Put">
+    1-1. 準備一個<span class="Resource"></span>.json的檔案，並儲存<span class="Resource"></span>格式的FHIR資料(使用PUT的方式必須要填寫id欄位)，範例如下顯示： <br />
+    
+    <pre class="code_print">
+<span class="JsonExample"></span>
+</pre>
+</div>
+
+
+<a class="collapseB" data-bs-toggle="collapse" href="#collapseB_Code_Put" role="button" aria-expanded="false" aria-controls="collapseB_Code_Put">
+    2. 範例程式
+</a>
+<hr />
+<div class="collapse" id="collapseB_Code_Put">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="PYTHONPut-tab" data-bs-toggle="tab" data-bs-target="#PYTHONPut-tab-pane" type="button" role="tab" aria-controls="PYTHONPut-tab-pane" aria-selected="true" tabindex="-1">
+                PYTHON
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="JAVAPut-tab" data-bs-toggle="tab" data-bs-target="#JAVAPut-tab-pane" type="button" role="tab" aria-controls="JAVAPut-tab-pane" aria-selected="false">
+                JAVA
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="CPut-tab" data-bs-toggle="tab" data-bs-target="#CPut-tab-pane" type="button" role="tab" aria-controls="CPut-tab-pane" aria-selected="false">
+                C#
+            </button>
+        </li>
+
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade active show" id="PYTHONPut-tab-pane" role="tabpanel" aria-labelledby="PYTHONPut-tab" tabindex="0">
+            <h6 class="h6Code">PYTHON</h6>
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PutImport" role="button" aria-expanded="false" aria-controls="collapseB_PutImport">
+                2-1. 宣告
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PutImport">
+                <pre class="code_print">
+import requests
+from bs4 import BeautifulSoup
+import json
+server_url = 'https://hapi.fhir.org/baseR4/' <span class="comment">#可替代為自己的FHIR伺服器網址</span>
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PutFile" role="button" aria-expanded="false" aria-controls="collapseB_PutFile">
+                2-2. FHIR資源讀檔
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PutFile">
+                <pre class="code_print">
+FileName = 'Json/<span class="Resource"></span>.json' <span class="comment">#可替代為自己的檔案位置及檔名</span>
+with open(FileName, "r", encoding="utf-8") as json_file:
+    <span class="Resource"></span>Data = json.load(json_file)
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PutData" role="button" aria-expanded="false" aria-controls="collapseB_PutData">
+                2-3. 上傳資料
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PutData">
+                <pre class="code_print">
+access_token = requests.put(server_url+"/<span class="Resource"></span>/"+<span class="Resource"></span>Data['id'], json = <span class="Resource"></span>Data, verify=False) <span class="comment">#使用PUT方式必須在網址中加上id</span>
+RequestResult = json.loads(str(access_token.text))
+print(RequestResult) <span class="comment">#印出回傳資訊</span>
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PutReturnData" role="button" aria-expanded="false" aria-controls="collapseB_PutReturnData">
+                2-4. 回傳資訊
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PutReturnData">
+                上傳成功則回傳資訊包含使用者所設定的id，並顯示versionId
+                <pre class="result_print">
+<span class="PutJsonSuccess"></span>
+</pre>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="JAVAPut-tab-pane" role="tabpanel" aria-labelledby="JAVAPut-tab" tabindex="0">
+            <h6 class="h6Code">JAVA</h6>
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PutJAVAImport" role="button" aria-expanded="false" aria-controls="collapseB_PutJAVAImport">
+                2-1. 宣告
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PutJAVAImport">
+                <pre class="code_print">
+package com.example.FHIR; <span class="comment">//需替換成自己設置的專案名稱</span>
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PutJAVAData" role="button" aria-expanded="false" aria-controls="collapseB_PutJAVAData">
+                2-2. 上傳資料
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PutJAVAData">
+                <pre class="code_print">
+String server_url = "https://hapi.fhir.org/baseR4/"; <span class="comment">//可替代為自己的FHIR伺服器網址</span>
+Object ReadData = new JSONParser().parse(new FileReader("<span class="Resource"></span>.json")); <span class="comment">//可替代為自己的檔案位置及檔名</span>
+JSONObject <span class="Resource"></span>Data = (JSONObject) ReadData;
+		
+URL url = new URL(server_url + "<span class="Resource"></span>/" + (String) <span class="Resource"></span>Data.get("id")); <span class="comment">//使用PUT方式必須在網址中加上id</span>
+HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+httpCon.setRequestMethod("PUT");
+httpCon.setDoOutput(true);
+httpCon.setRequestProperty("Content-Type", "application/json");
+
+OutputStream os = httpCon.getOutputStream();
+os.write(<span class="Resource"></span>Data.toString().getBytes("UTF-8"));
+os.close();
+httpCon.disconnect(); 
+StringBuilder content = new StringBuilder();
+try (BufferedReader in = new BufferedReader(new InputStreamReader(httpCon.getInputStream()))) {
+    String line;
+    while ((line = in.readLine()) != null) {
+        content.append(line);
+    }
+}
+System.out.println(content);
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PutJAVAReturn" role="button" aria-expanded="false" aria-controls="collapseB_PutJAVAReturn">
+                2-3. 回傳資訊
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PutJAVAReturn">
+                上傳成功則回傳資訊包含使用者所設定的id，並顯示versionId
+                <pre class="result_print">
+<span class="PutJsonSuccess"></span>
+</pre>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="CPut-tab-pane" role="tabpanel" aria-labelledby="CPut-tab" tabindex="0">
+            <h6 class="h6Code">C#</h6>
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PutCImport" role="button" aria-expanded="false" aria-controls="collapseB_PutCImport">
+                2-1. 宣告
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PutCImport">
+                <pre class="code_print">
+using FHIR_json.Models;<span class="comment">//需替換成自己設置的專案名稱</span>
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Http;
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PutCData" role="button" aria-expanded="false" aria-controls="collapseB_PutCData">
+                2-2. 上傳資料
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PutCData">
+                <pre class="code_print">
+String server_url = "https://hapi.fhir.org/baseR4/"; <span class="comment">//可替代為自己的FHIR伺服器網址</span>
+StreamReader Json_Example = new StreamReader(&commat;"C:\Users\<span class="Resource"></span>.json"); <span class="comment">//可替代為自己的檔案位置及檔名</span>
+string jsonString = Json_Example.ReadToEnd();
+JObject jsonObject = JObject.Parse(jsonString);
+var data = new StringContent(jsonString, Encoding.UTF8, "application/json");
+HttpClient client = new HttpClient();
+var response = await client.PutAsync(server_url + "<span class="Resource"></span>/" + (string)jsonObject["id"], data); <span class="comment">//使用PUT方式必須在網址中加上id</span>
+var result = JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
+Console.WriteLine(result);
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PutCReturn" role="button" aria-expanded="false" aria-controls="collapseB_PutCReturn">
+                2-3. 回傳資訊
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PutCReturn">
+                上傳成功則回傳資訊包含使用者所設定的id，並顯示versionId
+                <pre class="result_print">
+<span class="PutJsonSuccess"></span>
+</pre>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    //var JsonPath = "/Json/";
+    var JsonPath = "../Json/"; // 發布要改成他
+    var PageName = location.pathname.split('/').pop(); //抓這頁的名字
+    //window.location.href = (JsonPath + PageName + ".json"); //測試跳轉頁面的
+    var span_JsonExample = document.getElementsByClassName('JsonExample');
+    $.getJSON(JsonPath + PageName + ".json", function (data) {
+        for (var i = 0; i < span_JsonExample.length; i++) {
+            span_JsonExample[i].innerText = JSON.stringify(data, null, '\t');
+        }
+    })
+
+    var span_PutJsonSuccess = document.getElementsByClassName('PutJsonSuccess');
+    $.getJSON(JsonPath + PageName + "PutSuccess.json", function (data) {
+        for (var i = 0; i < span_PutJsonSuccess.length; i++) {
+            span_PutJsonSuccess[i].innerText = JSON.stringify(data, null, '\t');
+        }
+    })
+
+    var ResourceName = document.getElementsByClassName('Resource');
+    for (var i = 0; i < ResourceName.length; i++) {
+        ResourceName[i].innerText = PageName;
+    }
+</script>
+
+            </div>
+
+            <div class="tab-pane fade" id="POST-tab-pane" role="tabpanel" aria-labelledby="POST-tab" tabindex="0">
+                
+
+<style>
+    .collapseB {
+        color: #000000;
+    }
+    .result_print {
+        background-color: #222222;
+        color: #FFFFFF;
+    }
+</style>
+
+<a class="collapseB" data-bs-toggle="collapse" href="#collapseB_Prepare_Post" role="button" aria-expanded="false" aria-controls="collapseB_Prepare_Post">
+    1. 前置準備作業
+</a>
+<hr />
+<div class="collapse" id="collapseB_Prepare_Post">
+    1-1. 準備一個<span class="Resource"></span>.json的檔案，並儲存<span class="Resource"></span>格式的FHIR資料(使用POST的方式id欄位可選填)，範例如下顯示： <br />
+    
+    <pre class="code_print">
+<span class="JsonExample"></span>
+</pre>
+</div>
+
+
+<a class="collapseB" data-bs-toggle="collapse" href="#collapseB_Code_Post" role="button" aria-expanded="false" aria-controls="collapseB_Code_Post">
+    2. 範例程式
+</a>
+<hr />
+<div class="collapse" id="collapseB_Code_Post">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="PYTHONPost-tab" data-bs-toggle="tab" data-bs-target="#PYTHONPost-tab-pane" type="button" role="tab" aria-controls="PYTHONPost-tab-pane" aria-selected="true" tabindex="-1">
+                PYTHON
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="JAVAPost-tab" data-bs-toggle="tab" data-bs-target="#JAVAPost-tab-pane" type="button" role="tab" aria-controls="JAVAPost-tab-pane" aria-selected="false">
+                JAVA
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="CPost-tab" data-bs-toggle="tab" data-bs-target="#CPost-tab-pane" type="button" role="tab" aria-controls="CPost-tab-pane" aria-selected="false">
+                C#
+            </button>
+        </li>
+
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade active show" id="PYTHONPost-tab-pane" role="tabpanel" aria-labelledby="PYTHONPost-tab" tabindex="0">
+            <h6 class="h6Code">PYTHON</h6>
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PostImport" role="button" aria-expanded="false" aria-controls="collapseB_PostImport">
+                2-1. 宣告
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PostImport">
+                <pre class="code_print">
+import requests
+from bs4 import BeautifulSoup
+import json
+server_url = 'https://hapi.fhir.org/baseR4/' <span class="comment">#可替代為自己的 FHIR 伺服器網址</span>
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PostFile" role="button" aria-expanded="false" aria-controls="collapseB_PostFile">
+                2-2. FHIR資源讀檔
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PostFile">
+                <pre class="code_print">
+FileName = 'Json/<span class="Resource"></span>.json' <span class="comment">#可替代為自己的檔案位置及檔名</span>
+with open(FileName, "r", encoding="utf-8") as json_file:
+    <span class="Resource"></span>Data = json.load(json_file)
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PostData" role="button" aria-expanded="false" aria-controls="collapseB_PostData">
+                2-3. 上傳資料
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PostData">
+                <pre class="code_print">
+access_token = requests.post(server_url+"/<span class="Resource"></span>", json = <span class="Resource"></span>Data, verify=False) 
+RequestResult = json.loads(str(access_token.text))
+print(RequestResult) <span class="comment">#印出回傳資訊</span>
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PostReturnData" role="button" aria-expanded="false" aria-controls="collapseB_PostReturnData">
+                2-4. 回傳資訊
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PostReturnData">
+                上傳成功則回傳包含流水號id的資料，並顯示versionId
+                <pre class="result_print">
+<span class="PostJsonSuccess"></span>
+</pre>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="JAVAPost-tab-pane" role="tabpanel" aria-labelledby="JAVAPost-tab" tabindex="0">
+            <h6 class="h6Code">JAVA</h6>
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PostJAVAImport" role="button" aria-expanded="false" aria-controls="collapseB_PostJAVAImport">
+                2-1. 宣告
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PostJAVAImport">
+                <pre class="code_print">
+package com.example.FHIR; <span class="comment">//需替換成自己設置的專案名稱</span>
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PostJAVAData" role="button" aria-expanded="false" aria-controls="collapseB_PostJAVAData">
+                2-2. 上傳資料
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PostJAVAData">
+                <pre class="code_print">
+String server_url = "https://hapi.fhir.org/baseR4/"; <span class="comment">//可替代為自己的FHIR伺服器網址</span>
+Object ReadData = new JSONParser().parse(new FileReader("<span class="Resource"></span>.json")); 
+JSONObject <span class="Resource"></span>Data = (JSONObject) ReadData;
+		
+URL url = new URL(server_url + "<span class="Resource"></span>");
+HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+httpCon.setRequestMethod("POST");
+httpCon.setDoOutpost(true);
+httpCon.setRequestProperty("Content-Type", "application/json");
+
+OutpostStream os = httpCon.getOutpostStream();
+os.write(<span class="Resource"></span>Data.toString().getBytes("UTF-8"));
+os.close();
+httpCon.disconnect(); 
+StringBuilder content = new StringBuilder();
+try (BufferedReader in = new BufferedReader(new InpostStreamReader(httpCon.getInpostStream()))) {
+    String line;
+    while ((line = in.readLine()) != null) {
+        content.append(line);
+    }
+}
+System.out.println(content);
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PostJAVAReturn" role="button" aria-expanded="false" aria-controls="collapseB_PostJAVAReturn">
+                2-3. 回傳資訊
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PostJAVAReturn">
+                上傳成功則回傳包含流水號id的資料，並顯示versionId
+                <pre class="result_print">
+<span class="PostJsonSuccess"></span>
+</pre>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="CPost-tab-pane" role="tabpanel" aria-labelledby="CPost-tab" tabindex="0">
+            <h6 class="h6Code">C#</h6>
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PostCImport" role="button" aria-expanded="false" aria-controls="collapseB_PostCImport">
+                2-1. 宣告
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PostCImport">
+                <pre class="code_print">
+using FHIR_json.Models;<span class="comment">//需替換成自己設置的專案名稱</span>
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Http;
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PostCData" role="button" aria-expanded="false" aria-controls="collapseB_PostCData">
+                2-2. 上傳資料
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PostCData">
+                <pre class="code_print">
+String server_url = "https://hapi.fhir.org/baseR4/"; <span class="comment">//可替代為自己的FHIR伺服器網址</span>
+StreamReader Json_Example = new StreamReader(&commat;"C:\Users\<span class="Resource"></span>.json"); <span class="comment">//可替代為自己的檔案位置及檔名</span>
+string jsonString = Json_Example.ReadToEnd();
+var data = new StringContent(jsonString, Encoding.UTF8, "application/json");
+HttpClient client = new HttpClient();
+var response = await client.PostAsync(server_url + "<span class="Resource"></span>", data);
+var result = JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
+Console.WriteLine(result);
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_PostCReturn" role="button" aria-expanded="false" aria-controls="collapseB_PostCReturn">
+                2-3. 回傳資訊
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_PostCReturn">
+                上傳成功則回傳包含流水號id的資料，並顯示versionId
+                <pre class="result_print">
+<span class="PostJsonSuccess"></span>
+</pre>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //var JsonPath = "/Json/";
+    var JsonPath = "../Json/"; // 發布要改成他
+    var PageName = location.pathname.split('/').pop(); //抓這頁的名字
+
+    var span_JsonExample = document.getElementsByClassName('JsonExample');
+    $.getJSON(JsonPath + PageName + ".json", function (data) {
+        for (var i = 0; i < span_JsonExample.length; i++) {
+            span_JsonExample[i].innerText = JSON.stringify(data, null, '\t');
+        }
+    })
+
+    var span_PostJsonSuccess = document.getElementsByClassName('PostJsonSuccess');
+    $.getJSON(JsonPath + PageName + "PostSuccess.json", function (data) {
+        for (var i = 0; i < span_PostJsonSuccess.length; i++) {
+            span_PostJsonSuccess[i].innerText = JSON.stringify(data, null, '\t');
+        }
+    })
+
+    var ResourceName = document.getElementsByClassName('Resource');
+    for (var i = 0; i < ResourceName.length; i++) {
+        ResourceName[i].innerText = PageName;
+    }
+</script>
+
+            </div>
+
+            <div class="tab-pane fade" id="GET-tab-pane" role="tabpanel" aria-labelledby="GET-tab" tabindex="0">
+                
+
+<style>
+    .collapseB {
+        color: #000000;
+    }
+    .result_print {
+        background-color: #222222;
+        color: #FFFFFF;
+    }
+</style>
+
+<a class="collapseB" data-bs-toggle="collapse" href="#collapseB_Prepare_Get" role="button" aria-expanded="false" aria-controls="collapseB_Prepare_Get">
+    1. 前置準備作業
+</a>
+<hr />
+<div class="collapse" id="collapseB_Prepare_Get">
+    1-1. 準備好需查詢的資源id，或依照<span class="Resource"></span>的查詢參數選擇查詢項目 <br />
+    
+    <br />
+</div>
+
+
+<a class="collapseB" data-bs-toggle="collapse" href="#collapseB_Code_Get" role="button" aria-expanded="false" aria-controls="collapseB_Code_Get">
+    2. 範例程式
+</a>
+<hr />
+<div class="collapse" id="collapseB_Code_Get">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="PYTHONGet-tab" data-bs-toggle="tab" data-bs-target="#PYTHONGet-tab-pane" type="button" role="tab" aria-controls="PYTHONGet-tab-pane" aria-selected="true" tabindex="-1">
+                PYTHON
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="JAVAGet-tab" data-bs-toggle="tab" data-bs-target="#JAVAGet-tab-pane" type="button" role="tab" aria-controls="JAVAGet-tab-pane" aria-selected="false">
+                JAVA
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="CGet-tab" data-bs-toggle="tab" data-bs-target="#CGet-tab-pane" type="button" role="tab" aria-controls="CGet-tab-pane" aria-selected="false">
+                C#
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade active show" id="PYTHONGet-tab-pane" role="tabpanel" aria-labelledby="PYTHONGet-tab" tabindex="0">
+            <h6 class="h6Code">PYTHON</h6>
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_Import" role="button" aria-expanded="false" aria-controls="collapseB_Import">
+                2-1. 宣告
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_Import">
+                <pre class="code_print">
+import requests
+from bs4 import BeautifulSoup
+import json
+server_url = 'https://hapi.fhir.org/baseR4/' <span class="comment">#可替代為自己的 FHIR 伺服器網址</span>
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_File" role="button" aria-expanded="false" aria-controls="collapseB_File">
+                2-2. 搜尋資料
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_File">
+                <pre class="code_print">
+SearchCode = "<span class="ShowSearch"></span>" <span class="comment">#可填入想要搜尋的參數，若為空則搜尋整個<span class="Resource"></span></span>
+access_token = requests.get(server_url+"/<span class="Resource"></span>" + SearchCode, verify=False)
+RequestResult = json.loads(str(access_token.text))
+print(RequestResult)
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_ReturnData" role="button" aria-expanded="false" aria-controls="collapseB_ReturnData">
+                2-3. 回傳資訊
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_ReturnData">
+                成功則回傳Json格式的FHIR資料
+                <pre class="result_print">
+<span class="GetJsonSuccess"></span>
+</pre>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="JAVAGet-tab-pane" role="tabpanel" aria-labelledby="JAVAGet-tab" tabindex="0">
+            <h6 class="h6Code">JAVA</h6>
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_GetJAVAImport" role="button" aria-expanded="false" aria-controls="collapseB_GetJAVAImport">
+                2-1. 宣告
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_GetJAVAImport">
+                <pre class="code_print">
+package com.example.FHIR; <span class="comment">//需替換成自己設置的專案名稱</span>
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_GetJAVAData" role="button" aria-expanded="false" aria-controls="collapseB_GetJAVAData">
+                2-2. 搜尋資料
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_GetJAVAData">
+                <pre class="code_print">
+String server_url = "https://hapi.fhir.org/baseR4/"; <span class="comment">//可替代為自己的FHIR伺服器網址</span>
+String SearchCode = "<span class="ShowSearch"></span>"; <span class="comment">//可填入想要搜尋的參數，若為空則搜尋整個<span class="Resource"></span></span>
+URL url = new URL(server_url + "<span class="Resource"></span>" + SearchCode);
+	    
+HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+httpCon.setRequestMethod("GET");
+InputStream is = httpCon.getInputStream();
+
+try (BufferedReader in = new BufferedReader(new InputStreamReader(is, "UTF-8"))) {
+    String line;
+    while ((line = in.readLine()) != null) {
+        System.out.println(line);
+    }
+}
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_GetJAVAReturn" role="button" aria-expanded="false" aria-controls="collapseB_GetJAVAReturn">
+                2-3. 回傳資訊
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_GetJAVAReturn">
+                成功則回傳Json格式的FHIR資料
+                <pre class="result_print">
+<span class="GetJsonSuccess"></span>
+</pre>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="CGet-tab-pane" role="tabpanel" aria-labelledby="CGet-tab" tabindex="0">
+            <h6 class="h6Code">C#</h6>
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_GetCImport" role="button" aria-expanded="false" aria-controls="collapseB_GetCImport">
+                2-1. 宣告
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_GetCImport">
+                <pre class="code_print">
+using FHIR_json.Models;<span class="comment">//需替換成自己設置的專案名稱</span>
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Http;
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_GetCData" role="button" aria-expanded="false" aria-controls="collapseB_GetCData">
+                2-2. 搜尋資料
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_GetCData">
+                <pre class="code_print">
+String server_url = "https://hapi.fhir.org/baseR4/"; <span class="comment">//可替代為自己的FHIR伺服器網址</span>
+HttpClient client = new HttpClient();
+String SearchCode = "<span class="ShowSearch"></span>"; <span class="comment">//可填入想要搜尋的參數，若為空則搜尋整個<span class="Resource"></span></span>
+HttpResponseMessage response = await client.GetAsync(server_url + "<span class="Resource"></span>" + SearchCode);
+var result = JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
+Console.WriteLine(result);
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_GetCReturn" role="button" aria-expanded="false" aria-controls="collapseB_GetCReturn">
+                2-3. 回傳資訊
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_GetCReturn">
+                成功則回傳Json格式的FHIR資料
+                <pre class="result_print">
+<span class="GetJsonSuccess"></span>
+</pre>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script>
+    //var JsonPath = "/Json/";
+    var JsonPath = "../Json/"; // 發布要改成他
+    var PageName = location.pathname.split('/').pop(); //抓這頁的名字
+
+    var span_JsonExample = document.getElementsByClassName('JsonExample');
+    $.getJSON(JsonPath + PageName + ".json", function (data) {
+        for (var i = 0; i < span_JsonExample.length; i++) {
+            span_JsonExample[i].innerText = JSON.stringify(data, null, '\t');
+        }
+    })
+
+    var span_GetJsonSuccess = document.getElementsByClassName('GetJsonSuccess');
+    $.getJSON(JsonPath + PageName + "GetSuccess.json", function (data) {
+        for (var i = 0; i < span_GetJsonSuccess.length; i++) {
+            span_GetJsonSuccess[i].innerText = JSON.stringify(data, null, '\t');
+        }
+    })
+
+    var ResourceName = document.getElementsByClassName('Resource');
+    for (var i = 0; i < ResourceName.length; i++) {
+        ResourceName[i].innerText = PageName;
+    }
+
+    function ShowSearch(getValue) {
+        var ShowValue = document.getElementsByClassName("ShowSearch");
+        for (var i = 0; i < ResourceName.length; i++) {
+            ShowValue[i].innerHTML = getValue;
+        }
+    }
+</script>
+
+            </div>
+
+            <div class="tab-pane fade" id="DELETE-tab-pane" role="tabpanel" aria-labelledby="DELETE-tab" tabindex="0">
+                
+
+<style>
+    .collapseB {
+        color: #000000;
+    }
+
+    .result_print {
+        background-color: #222222;
+        color: #FFFFFF;
+    }
+</style>
+
+<a class="collapseB" data-bs-toggle="collapse" href="#collapseB_Prepare_Delete" role="button" aria-expanded="false" aria-controls="collapseB_Prepare_Delete">
+    1. 前置準備作業
+</a>
+<hr />
+<div class="collapse" id="collapseB_Prepare_Delete">
+    1-1. 準備好需刪除的資源id，或依照<span class="Resource"></span>的查詢參數選擇刪除項目 <br />
+    
+    <br />
+</div>
+
+
+<a class="collapseB" data-bs-toggle="collapse" href="#collapseB_Code_Delete" role="button" aria-expanded="false" aria-controls="collapseB_Code_Delete">
+    2. 範例程式
+</a>
+<hr />
+<div class="collapse" id="collapseB_Code_Delete">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="PYTHONDelete-tab" data-bs-toggle="tab" data-bs-target="#PYTHONDelete-tab-pane" type="button" role="tab" aria-controls="PYTHONDelete-tab-pane" aria-selected="true" tabindex="-1">
+                PYTHON
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="JAVADelete-tab" data-bs-toggle="tab" data-bs-target="#JAVADelete-tab-pane" type="button" role="tab" aria-controls="JAVADelete-tab-pane" aria-selected="false">
+                JAVA
+            </button>
+        </li>
+
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="CDelete-tab" data-bs-toggle="tab" data-bs-target="#CDelete-tab-pane" type="button" role="tab" aria-controls="CDelete-tab-pane" aria-selected="false">
+                C#
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade active show" id="PYTHONDelete-tab-pane" role="tabpanel" aria-labelledby="PYTHONDelete-tab" tabindex="0">
+            <h6 class="h6Code">PYTHON</h6>
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_Import" role="button" aria-expanded="false" aria-controls="collapseB_Import">
+                2-1. 宣告
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_Import">
+                <pre class="code_print">
+import requests
+from bs4 import BeautifulSoup
+import json
+server_url = 'https://hapi.fhir.org/baseR4/' <span class="comment">#可替代為自己的 FHIR 伺服器網址</span>
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_File" role="button" aria-expanded="false" aria-controls="collapseB_File">
+                2-2. 刪除資料
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_File">
+                <pre class="code_print">
+SearchCode = "<span class="ShowSearch">/id</span>" <span class="comment">#填入想刪除的id，也可填入搜尋參數一次刪除多個資源</span>
+access_token = requests.delete(server_url+"/<span class="Resource"></span>" + SearchCode, verify=False)
+RequestResult = json.loads(str(access_token.text))
+print(RequestResult)
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_ReturnData" role="button" aria-expanded="false" aria-controls="collapseB_ReturnData">
+                2-3. 回傳資訊
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_ReturnData">
+                成功則會回傳Successfully deleted的資訊
+                <pre class="result_print">
+<span class="DeleteJsonSuccess"></span>
+</pre>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="JAVADelete-tab-pane" role="tabpanel" aria-labelledby="JAVADelete-tab" tabindex="0">
+            <h6 class="h6Code">JAVA</h6>
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_DeleteJAVAImport" role="button" aria-expanded="false" aria-controls="collapseB_DeleteJAVAImport">
+                2-1. 宣告
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_DeleteJAVAImport">
+                <pre class="code_print">
+package com.example.FHIR; <span class="comment">//需替換成自己設置的專案名稱</span>
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_DeleteJAVAData" role="button" aria-expanded="false" aria-controls="collapseB_DeleteJAVAData">
+                2-2. 刪除資料
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_DeleteJAVAData">
+                <pre class="code_print">
+String server_url = "https://hapi.fhir.org/baseR4/"; <span class="comment">//可替代為自己的FHIR伺服器網址</span>
+String SearchCode = "<span class="ShowSearch">/id</span>"; <span class="comment">//填入想刪除的id，也可填入搜尋參數一次刪除多個資源<span class="Resource"></span></span>
+URL url = new URL(server_url + "<span class="Resource"></span>" + SearchCode);
+
+HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
+httpCon.setRequestMethod("DELETE");
+httpCon.disconnect(); 
+
+StringBuilder content = new StringBuilder();
+try (BufferedReader in = new BufferedReader(new InputStreamReader(httpCon.getInputStream()))) {
+    String line;
+    while ((line = in.readLine()) != null) {
+        content.append(line);
+    }
+}
+System.out.println(content);
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_DeleteJAVAReturn" role="button" aria-expanded="false" aria-controls="collapseB_DeleteJAVAReturn">
+                2-3. 回傳資訊
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_DeleteJAVAReturn">
+                上傳成功則回傳包含流水號id的資料，並顯示versionId
+                <pre class="result_print">
+<span class="DeleteJsonSuccess"></span>
+</pre>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="CDelete-tab-pane" role="tabpanel" aria-labelledby="CDelete-tab" tabindex="0">
+            <h6 class="h6Code">C#</h6>
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_DeleteCImport" role="button" aria-expanded="false" aria-controls="collapseB_DeleteCImport">
+                2-1. 宣告
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_DeleteCImport">
+                <pre class="code_print">
+using FHIR_json.Models;<span class="comment">//需替換成自己設置的專案名稱</span>
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Http;
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_DeleteCData" role="button" aria-expanded="false" aria-controls="collapseB_DeleteCData">
+                2-2. 刪除資料
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_DeleteCData">
+                <pre class="code_print">
+String server_url = "https://hapi.fhir.org/baseR4/"; <span class="comment">//可替代為自己的FHIR伺服器網址</span>
+HttpClient client = new HttpClient();
+String SearchCode = "<span class="ShowSearch">/id</span>";
+var response = await client.DeleteAsync(server_url + "<span class="Resource"></span>" + SearchCode);
+var result = JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
+Console.WriteLine(result);
+</pre>
+            </div>
+
+            <a class="collapseB" data-bs-toggle="collapse" href="#collapseB_DeleteCReturn" role="button" aria-expanded="false" aria-controls="collapseB_DeleteCReturn">
+                2-3. 回傳資訊
+            </a>
+            <hr />
+            <div class="collapse show" id="collapseB_DeleteCReturn">
+                上傳成功則回傳包含流水號id的資料，並顯示versionId
+                <pre class="result_print">
+<span class="DeleteJsonSuccess"></span>
+</pre>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script>
+    //var JsonPath = "/Json/";
+    var JsonPath = "../Json/"; // 發布要改成他
+    var PageName = location.pathname.split('/').pop(); //抓這頁的名字
+    //window.location.href = (JsonPath + PageName + ".json");
+    var span_JsonExample = document.getElementsByClassName('JsonExample');
+    $.getJSON(JsonPath + PageName + ".json", function (data) {
+        for (var i = 0; i < span_JsonExample.length; i++) {
+            span_JsonExample[i].innerText = JSON.stringify(data, null, '\t');
+        }
+    })
+
+    var span_DeleteJsonSuccess = document.getElementsByClassName('DeleteJsonSuccess');
+    $.getJSON(JsonPath + "DeleteSuccess.json", function (data) {
+        for (var i = 0; i < span_DeleteJsonSuccess.length; i++) {
+            span_DeleteJsonSuccess[i].innerText = JSON.stringify(data, null, '\t');
+        }
+    })
+
+
+    var ResourceName = document.getElementsByClassName('Resource');
+    for (var i = 0; i < ResourceName.length; i++) {
+        ResourceName[i].innerText = PageName;
+    }
+
+    function ShowSearch(getValue) {
+        var ShowValue = document.getElementsByClassName("ShowSearch");
+        for (var i = 0; i < ResourceName.length; i++) {
+            ShowValue[i].innerHTML = getValue;
+        }
+    }
+</script>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+                    <footer class="site-footer">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-12 col-12">
+                                    <p class="copyright-text">
+                                        本網站所有教學資訊均來自
+                                        <a rel="sponsored" href="https://hl7.org/fhir/R4/" target="_blank">
+                                            FHIR官網
+                                        </a>
+
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </footer>
+                </main>
+
+            </div>
+        </div>
+    <!-- JAVASCRIPT FILES -->
+    
+    <script src="/Scripts/jquery-3.6.4.min.js"></script>
+
+    <script src="/Scripts/js/jquery.min.js"></script>
+    <script src="/Scripts/js/bootstrap.bundle.min.js"></script>
+    <script src="/Scripts/js/apexcharts.min.js"></script>
+    <script src="/Scripts/js/custom.js"></script>
+
+
+    
+    <script type="text/javascript">
+        var options = {
+            series: [13, 43, 22],
+            chart: {
+                width: 380,
+                type: 'pie',
+            },
+            labels: ['Balance', 'Expense', 'Credit Loan',],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#pie-chart"), options);
+        chart.render();
+    </script>
+
+    <script type="text/javascript">
+        var options = {
+            series: [{
+                name: 'Income',
+                data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+            }, {
+                name: 'Expense',
+                data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+            }, {
+                name: 'Transfer',
+                data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            },
+            yaxis: {
+                title: {
+                    text: '$ (thousands)'
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return "$ " + val + " thousands"
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+
+</body>
+</html>
+
+<script>
+    if ('Home' == "Home") {
+        $("#PageClient").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageClient").css("color", "var(--white-color)");
+        //background - color: var(--custom - btn - bg - color);
+    }
+    else if ('Home' == "Server"){
+        $("#PageServer").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageServer").css("color", "var(--white-color)");
+    }
+    else if ('Home' == "QandA"){
+        $("#PageQandA").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageQandA").css("color", "var(--white-color)");
+    }
+    else if ('Home' == "User"){
+        $("#PageUser").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageUser").css("color", "var(--white-color)");
+}
+    var currentPath = window.location.pathname;
+
+    var navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(function (link) {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active'); // 如果匹配，则添加 'active' 类
+        }
+    });
+
+
+    // 看看有沒有登入: UserLoginOrNot
+
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+    var btn_UserLoginOrNot = document.getElementById('UserLoginOrNot');
+    if (getCookie("Account") != null) {
+
+        btn_UserLoginOrNot.innerText = "登出";
+        //alert(getCookie("Account"));
+    }
+    else {
+        btn_UserLoginOrNot.innerText = "登入";
+    }
+
+</script>
+
+<script type="text/javascript">
+    //window.onload = function () {
+    //    document.getElementById('iframe_PDF').contentDocument.oncontextmenu = function () {
+    //        alert('111');
+    //        return false;
+    //    }
+    //}
+
+    //window.onload = function () {
+    //    alert('111');
+
+    //    document.getElementById('iframe_PDF_windows').contentDocument.oncontextmenu = function () {
+    //        alert('111');
+    //        return false;
+    //    }
+    //}
+
+    //document.addEventListener("DOMContentLoaded", function () {
+    //    // Your code here
+    //    console.log('555');
+    //    document.getElementById('iframe_PDF_windows').contentDocument.oncontextmenu = function () {
+    //        console.log('123');
+    //        return false;
+    //    };
+    //});
+
+
+</script>

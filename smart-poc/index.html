@@ -1,0 +1,22 @@
+<!doctype html>
+<meta charset="utf-8"><title>THAS SMART PoC</title>
+<style>body{font:16px system-ui;margin:2rem}pre{background:#f4f4f4;padding:1rem;overflow:auto}</style>
+<h1>THAS SMART PoC</h1>
+<div id="status">authorizing…</div>
+<pre id="out"></pre>
+<script src="https://cdn.jsdelivr.net/npm/fhirclient@2/build/fhir-client.js"></script>
+<script>
+  FHIR.oauth2.ready().then(async client => {
+    document.getElementById("status").textContent = "ready";
+    const patient = await client.patient.read();
+    const obs = await client.patient.request("Observation?_count=5&_sort=-date");
+    const tr = client.state.tokenResponse || {};
+    document.getElementById("out").textContent = JSON.stringify({
+      scope: tr.scope, patientId: client.patient.id, expires_in: tr.expires_in,
+      has_id_token: !!tr.id_token, has_refresh_token: !!tr.refresh_token,
+      patientName: patient.name, birthDate: patient.birthDate,
+      observations: (obs.entry || []).map(e => e.resource.code && e.resource.code.text)
+    }, null, 2);
+    window.__done = true;
+  }).catch(e => { document.getElementById("status").textContent = "ERROR"; document.getElementById("out").textContent = String(e); window.__done = true; });
+</script>

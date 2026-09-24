@@ -1,0 +1,7 @@
+<!doctype html><meta charset="utf-8"><title>launch</title>
+<script src="https://cdn.jsdelivr.net/npm/fhirclient@2.6.3/build/fhir-client.js"></script>
+<script type="module">
+  import { FHIR_BASE, CLIENT_ID, STANDALONE_SCOPE } from "./src/config.js";
+  // Standalone launch. `launch: "e30"` is required by the THAS sandbox (see docs/沙盒驗證結果.md).
+  FHIR.oauth2.authorize({ clientId: CLIENT_ID, scope: STANDALONE_SCOPE, redirectUri: "index.html", iss: FHIR_BASE, launch: "e30" });
+</script>

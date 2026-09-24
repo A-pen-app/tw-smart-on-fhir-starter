@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Client | SMART JS Client Library</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Client" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="JavaScript client for FHIR" />
+<meta property="og:description" content="JavaScript client for FHIR" />
+<link rel="canonical" href="http://docs.smarthealthit.org/client-js/client.html" />
+<meta property="og:url" content="http://docs.smarthealthit.org/client-js/client.html" />
+<meta property="og:site_name" content="SMART JS Client Library" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Client" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"JavaScript client for FHIR","headline":"Client","url":"http://docs.smarthealthit.org/client-js/client.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/client-js/assets/css/style.css?v=ceaee58607f645255c441dcee0aa66e122771cbd">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/client-js/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">Client</h1>
+      <h2 class="project-tagline">JavaScript client for FHIR</h2>
+      
+        <a href="https://github.com/smart-on-fhir/client-js" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="client">Client</h1>
+<p>This is a FHIR client that is returned to you from the <code class="language-plaintext highlighter-rouge">ready()</code> call of the SMART API. You can also create it yourself if needed:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// BROWSER (via script tag; FHIR is global variable)</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">FHIR</span><span class="p">.</span><span class="nx">client</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://r4.smarthealthit.org</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// BROWSER (ES module or TypeScript)</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">createSmartClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">fhirclient/browser</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">createSmartClient</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://r4.smarthealthit.org</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// BROWSER (bundler in CommonJS project)</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">createSmartClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">fhirclient/browser</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">createSmartClient</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://r4.smarthealthit.org</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// SERVER (needs request and response objects)</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">smart</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">).</span><span class="nx">client</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://r4.smarthealthit.org</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+<p>It exposes the following API:</p>
+
+<h3 id="clientrequesturi-string--fhiroptions-object-promiseobjectclientrequesturl-url--fhiroptions-object-promiseobjectclientrequestoptions-object--fhiroptions-object-promiseobject">client.request(uri: String [, fhirOptions: Object]) <code class="language-plaintext highlighter-rouge">Promise&lt;Object&gt;</code><br />client.request(url: URL [, fhirOptions: Object]) <code class="language-plaintext highlighter-rouge">Promise&lt;Object&gt;</code><br />client.request(options: Object [, fhirOptions: Object]) <code class="language-plaintext highlighter-rouge">Promise&lt;Object&gt;</code></h3>
+
+<blockquote>
+  <p>This is the single most important method. Please see the <strong><a href="http://docs.smarthealthit.org/client-js/request.html">live examples</a></strong>.</p>
+</blockquote>
+
+<p>The first argument can be one of:</p>
+<ul>
+  <li><strong>String</strong> - either the full url, or a path that will be rooted at the FHIR baseUrl.</li>
+  <li><strong>URL</strong> - an URL instance.</li>
+  <li><strong>Object</strong> - options that must contain an <code class="language-plaintext highlighter-rouge">url</code> property (<code class="language-plaintext highlighter-rouge">String|URL</code>). Any other properties will be passed to the underlying <code class="language-plaintext highlighter-rouge">fetch()</code> call.</li>
+</ul>
+
+<p>The <strong>fhirOptions</strong> object is optional and can contain the following properties:</p>
+
+<ul>
+  <li><strong>pageLimit</strong> <code class="language-plaintext highlighter-rouge">Number</code> - When you request a Bundle, the result will typically come back in pages and you will only get the first page. You can use <code class="language-plaintext highlighter-rouge">pageLimit</code> greater than <code class="language-plaintext highlighter-rouge">1</code> to request multiple pages. For example <code class="language-plaintext highlighter-rouge">pageLimit: 3</code> will give you the first 3 pages as array. To fetch all the available pages you can set this to <code class="language-plaintext highlighter-rouge">0</code>.
+    <ul>
+      <li>Defaults to <code class="language-plaintext highlighter-rouge">1</code>.</li>
+      <li>Ignored if the response is not a <code class="language-plaintext highlighter-rouge">Bundle</code>.</li>
+    </ul>
+  </li>
+  <li><strong>onPage</strong> <code class="language-plaintext highlighter-rouge">Function</code> - When you fetch multiple pages the resulting array may be very large, requiring a lot of time and memory. It is often better if you specify a page callback instead. The <code class="language-plaintext highlighter-rouge">onPage</code> callback will be called once for each page with the page Bundle as it’s argument. If you use <code class="language-plaintext highlighter-rouge">resolveReferences</code> and <code class="language-plaintext highlighter-rouge">graph: false</code>, the references will be passed to <code class="language-plaintext highlighter-rouge">onPage</code> as second argument.
+    <ul>
+      <li>If <code class="language-plaintext highlighter-rouge">onPage</code> returns a promise it will be awaited for, meaning that no more pages will be fetched until the <code class="language-plaintext highlighter-rouge">onPage</code> promise is resolved.</li>
+      <li>If <code class="language-plaintext highlighter-rouge">onPage</code> returns a rejected promise or throws an error, the client will not continue fetching more pages.</li>
+      <li>If you use <code class="language-plaintext highlighter-rouge">onPage</code> callback, the promise returned by <code class="language-plaintext highlighter-rouge">request()</code> will be resolved with <code class="language-plaintext highlighter-rouge">null</code>. This is to avoid building that huge array in memory. By using the <code class="language-plaintext highlighter-rouge">onPage</code> option you are stating that you will handle the result one page at a time, instead of expecting to receive the big combined result.</li>
+    </ul>
+  </li>
+  <li><strong>flat</strong> <code class="language-plaintext highlighter-rouge">Boolean</code> - When fetching a <code class="language-plaintext highlighter-rouge">Bundle</code>, you are typically only interested in the included resources which are located at <code class="language-plaintext highlighter-rouge">{response}.entry[N].resource</code>. If this option is set to <code class="language-plaintext highlighter-rouge">true</code>, the returned result will be an array of resources instead of the whole bundle. This is especially useful when multiple pages are fetched, because an array of page bundles is not that useful and will often have to be converted to array of resources that is easier to iterate.
+    <ul>
+      <li>This option is ignored if the response is not a bundle.</li>
+      <li>If you use <code class="language-plaintext highlighter-rouge">onPage</code> callback with <code class="language-plaintext highlighter-rouge">flat: true</code>, it will receive that array of resources instead of the page bundle.</li>
+      <li>Resources from multiple pages are flattened into single array (unless you use <code class="language-plaintext highlighter-rouge">onPage</code>, which will be called with one array for each page).</li>
+      <li>Defaults to <code class="language-plaintext highlighter-rouge">false</code>.</li>
+      <li>Finally, <code class="language-plaintext highlighter-rouge">Bundle.entry</code> is optional in FHIR and that leads to bugs in apps that assume that it is always present. With <code class="language-plaintext highlighter-rouge">flat: true</code>, you will always get an array, even if it is empty, and even if no <code class="language-plaintext highlighter-rouge">entry</code> is found in the response bundle.</li>
+    </ul>
+  </li>
+  <li><strong>graph</strong> <code class="language-plaintext highlighter-rouge">Boolean</code> - Only applicable if you use <code class="language-plaintext highlighter-rouge">resolveReferences</code>. If <code class="language-plaintext highlighter-rouge">false</code>, the resolved references will not be “mounted” in the result tree, but will be returned as separate map object instead. <strong>Defaults to <code class="language-plaintext highlighter-rouge">true</code></strong>.</li>
+  <li><strong>resolveReferences</strong> <code class="language-plaintext highlighter-rouge">String|String[]</code> - One or more references to resolve. Single item can be specified as a string or as an array of one string. Multiple items must be specified as array.
+    <ul>
+      <li>The paths are relative to the current resource. For example, use <code class="language-plaintext highlighter-rouge">subject</code> instead of <code class="language-plaintext highlighter-rouge">entry.resource.subject</code>.</li>
+      <li>Path can have arbitrary depth but should not include the last <code class="language-plaintext highlighter-rouge">reference</code> segment. For example the path <code class="language-plaintext highlighter-rouge">a.b.c</code> will fetch <code class="language-plaintext highlighter-rouge">{current resource}.a.b.c.reference</code> but will mount the result at <code class="language-plaintext highlighter-rouge">{current resource}.a.b.c</code>.</li>
+      <li>If the target is an array of references (E.g. <a href="http://hl7.org/fhir/R4/patient-definitions.html#Patient.generalPractitioner">Patient.generalPractitioner</a>), you can request one or more of them by index (E.g. <code class="language-plaintext highlighter-rouge">generalPractitioner.0</code>). If the index is not specified, all the references in the array will be resolved.</li>
+      <li>The order in which the reference paths are specified does not matter. For example, if you use <code class="language-plaintext highlighter-rouge">["subject", "encounter.serviceProvider", "encounter"]</code>, the library should figure out that <code class="language-plaintext highlighter-rouge">encounter.serviceProvider</code> must be fetched after <code class="language-plaintext highlighter-rouge">encounter</code>. In fact, in this case it will first fetch subject and encounter in parallel, and then proceed to encounter.serviceProvider.</li>
+      <li>This option does not work with contained references (they are “already resolved” anyway).</li>
+      <li>You can use <code class="language-plaintext highlighter-rouge">..</code> to loop through arrays. For example <code class="language-plaintext highlighter-rouge">identifier..assigner</code> will match if <code class="language-plaintext highlighter-rouge">identifier</code> is an array of objects having an <code class="language-plaintext highlighter-rouge">assigner</code> reference property. This is not recursive, meaning that <code class="language-plaintext highlighter-rouge">..</code> can only be used once in each path expression and paths like <code class="language-plaintext highlighter-rouge">identifier..assigner..whatever</code> will not work.</li>
+    </ul>
+  </li>
+  <li><strong>useRefreshToken</strong> <code class="language-plaintext highlighter-rouge">Boolean</code> - <strong>Defaults to <code class="language-plaintext highlighter-rouge">true</code></strong>. If the client is authorized, it will possess an access token and pass it with the requests it makes. When that token expires, you should get back a <code class="language-plaintext highlighter-rouge">401 Unauthorized</code> response. To prevent this from happening, the client will check the access token expiration time before making requests. If the token is expired, or if it is about to expire in the next 10 seconds, a refresh call will be made to obtain new access token before making the actual request. By setting <code class="language-plaintext highlighter-rouge">useRefreshToken</code> to <code class="language-plaintext highlighter-rouge">false</code> you can disable this behavior. There are <code class="language-plaintext highlighter-rouge">refresh</code> and <code class="language-plaintext highlighter-rouge">refreshIfNeeded</code> methods on the client (described below) that can be called manually to renew the access token.</li>
+  <li><strong>includeResponse</strong> <code class="language-plaintext highlighter-rouge">Boolean</code> - <strong>Defaults to <code class="language-plaintext highlighter-rouge">false</code></strong>. (since v2.3.11) In rare cases, one might have to access the raw response object and read response headers or do something else with it. If this option is set to true, the request method will resolve with an object having it’s usual result in a <code class="language-plaintext highlighter-rouge">body</code> property and the <code class="language-plaintext highlighter-rouge">Response</code> object in <code class="language-plaintext highlighter-rouge">response</code> property. See the return types below for an example. Note that if this is a complex request resulting in multiple HTTP requests (for example to fetch multiple pages), the <code class="language-plaintext highlighter-rouge">response</code> property will contain the first response object. Any subsequent  recursive request responses cannot be accessed. This option can also be passed to other high-level request methods, including <code class="language-plaintext highlighter-rouge">client.create</code>, <code class="language-plaintext highlighter-rouge">client.update</code>, <code class="language-plaintext highlighter-rouge">client.delete</code>, <code class="language-plaintext highlighter-rouge">client.patient.read</code>, <code class="language-plaintext highlighter-rouge">client.user.read</code>, <code class="language-plaintext highlighter-rouge">client.encounter.read</code> and <code class="language-plaintext highlighter-rouge">client.patient.request</code>.</li>
+</ul>
+
+<h4 id="return-values">Return Values</h4>
+<p>This <code class="language-plaintext highlighter-rouge">client.request</code> method will always return a <code class="language-plaintext highlighter-rouge">Promise</code> but it may be resolved with different values depending on the passed arguments or the server response. Here are some examples:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Return Value</th>
+      <th>Happens if</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">String</code></td>
+      <td>The server replies with <code class="language-plaintext highlighter-rouge">text/plain</code> or other non-json mime type containing the word <code class="language-plaintext highlighter-rouge">text</code></td>
+      <td><code class="language-plaintext highlighter-rouge">client.request("someFile.txt");</code></td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response</a></td>
+      <td>The server replies with anything other than json or text</td>
+      <td><code class="language-plaintext highlighter-rouge">client.request("someFile.pdf");</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FHIR Resource</code></td>
+      <td>If we request a resource and the server replies with json</td>
+      <td><code class="language-plaintext highlighter-rouge">client.request("Patient/id");</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FHIR Bundle</code></td>
+      <td>If we request a bundle and the server replies with json</td>
+      <td><code class="language-plaintext highlighter-rouge">client.request("Patient");</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Array of FHIR bundles</code></td>
+      <td>If we request a bundle and the server replies with json and we use the <code class="language-plaintext highlighter-rouge">pageLimit</code> option</td>
+      <td><code class="language-plaintext highlighter-rouge">client.request("Patient", { pageLimit: 0 });</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Array of FHIR resources</code></td>
+      <td>If we request a bundle and the server replies with json and we use the <code class="language-plaintext highlighter-rouge">flat</code> option</td>
+      <td><code class="language-plaintext highlighter-rouge">client.request("Patient", { pageLimit: 0, flat: true });</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">null</code></td>
+      <td>If we use the <code class="language-plaintext highlighter-rouge">onPage</code> callback to handle results as they arrive. In this case we don’t use the result. We only need to know when the download is complete.</td>
+      <td><code class="language-plaintext highlighter-rouge">client.request("Patient", { pageLimit: 5, onPage(bundle) { ... }});</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">{ response: </code><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response</a><code class="language-plaintext highlighter-rouge">, body: &lt;any of the above&gt;}</code></td>
+      <td>When we use the <code class="language-plaintext highlighter-rouge">includeResponse</code> option (since v2.3.11)</td>
+      <td><code class="language-plaintext highlighter-rouge">client.request("Patient/id", { includeResponse: true });</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong><em>Examples:</em></strong></p>
+
+<p><strong>Fetch single resource</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Resolves with a Patient or rejects with an Error</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="dl">"</span><span class="s2">Patient/id</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Fetch the current patient</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Resolves with a Patient or rejects with an Error</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="s2">`Patient/</span><span class="p">${</span><span class="nx">client</span><span class="p">.</span><span class="nx">patient</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Fetch a bundle</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Resolves with a Bundle or rejects with an Error</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="dl">"</span><span class="s2">Patient</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><strong>Get all pages</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Resolves with array of Bundles or rejects with an Error</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="dl">"</span><span class="s2">Patient</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">pageLimit</span><span class="p">:</span> <span class="mi">0</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<p><strong>Handle pages as they arrive</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Resolves with null or rejects with an Error</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="dl">"</span><span class="s2">Patient</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">pageLimit</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nx">onPage</span><span class="p">(</span><span class="nx">bundle</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// do something with the downloaded page</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><strong>Resolve References</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Resolves with augmented Encounter or rejects with an Error</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="dl">"</span><span class="s2">Encounter/518a522a-4b10-47db-9daf-53b726d32607</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">resolveReferences</span><span class="p">:</span> <span class="p">[</span> <span class="dl">"</span><span class="s2">serviceProvider</span><span class="dl">"</span> <span class="p">]</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><strong>Extracting multiple related resources from single Observation:</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Resolves with Object (augmented Observation) or rejects with an Error</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="dl">"</span><span class="s2">Observation/smart-691-bmi</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">resolveReferences</span><span class="p">:</span> <span class="p">[</span>
+        <span class="dl">"</span><span class="s2">context</span><span class="dl">"</span><span class="p">,</span>                 <span class="c1">// The Encounter</span>
+        <span class="dl">"</span><span class="s2">context.serviceProvider</span><span class="dl">"</span><span class="p">,</span> <span class="c1">// The Organization (hospital)</span>
+        <span class="dl">"</span><span class="s2">performer.0</span><span class="dl">"</span><span class="p">,</span>             <span class="c1">// The Practitioner (or use "performer" to get all practitioners)</span>
+        <span class="dl">"</span><span class="s2">subject</span><span class="dl">"</span><span class="p">,</span>                 <span class="c1">// The Patient</span>
+        <span class="dl">"</span><span class="s2">identifier..assigner</span><span class="dl">"</span>     <span class="c1">// All identifier assigners</span>
+    <span class="p">]</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><strong>Getting the references as separate object</strong></p>
+
+<p>Resolved references are “mounted” on the result tree, replacing
+the value of the original reference property. If you don’t want that behavior,
+you can set the <code class="language-plaintext highlighter-rouge">graph</code> option of the <code class="language-plaintext highlighter-rouge">request</code> method to false. In this case,
+the promise will be resolved with an object having two properties:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">data</code> the original response data</li>
+  <li><code class="language-plaintext highlighter-rouge">references</code> a map of resolved references</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Resolves with Object ({ data, references }) or rejects with an Error</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="dl">"</span><span class="s2">Encounter/518a522a-4b10-47db-9daf-53b726d32607</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">resolveReferences</span><span class="p">:</span> <span class="p">[</span> <span class="dl">"</span><span class="s2">serviceProvider</span><span class="dl">"</span> <span class="p">],</span>
+    <span class="na">graph</span><span class="p">:</span> <span class="kc">false</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h3 id="clientcreateresource-object-requestoptions---promiseobject">client.create(resource: Object, requestOptions = {}) <code class="language-plaintext highlighter-rouge">Promise&lt;Object&gt;</code></h3>
+<p>Wrapper for <code class="language-plaintext highlighter-rouge">client.request</code> implementing the FHIR resource create operation.</p>
+
+<h3 id="clientupdateresource-object-requestoptions---promiseobject">client.update(resource: Object, requestOptions = {}) <code class="language-plaintext highlighter-rouge">Promise&lt;Object&gt;</code></h3>
+<p>Wrapper for <code class="language-plaintext highlighter-rouge">client.request</code> implementing the FHIR resource update operation.</p>
+
+<h3 id="clientdeleteuri-string-requestoptions---promiseobject">client.delete(uri: String, requestOptions = {}) <code class="language-plaintext highlighter-rouge">Promise&lt;Object&gt;</code></h3>
+<p>Wrapper for <code class="language-plaintext highlighter-rouge">client.request</code> implementing the FHIR resource delete operation.</p>
+
+<p><strong><em>Example:</em></strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">client</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">"</span><span class="s2">Patient/id</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="clientrefreshrequestoptions---promiseobject">client.refresh(requestOptions = {}) <code class="language-plaintext highlighter-rouge">Promise&lt;Object&gt;</code></h3>
+<p>Use the refresh token to obtain new access token. If the refresh token is
+expired (or this fails for any other reason) it will be deleted from the
+state, so that we don’t enter into loops trying to re-authorize.</p>
+
+<blockquote>
+  <p>Note that that <code class="language-plaintext highlighter-rouge">client.request()</code> will automatically refresh the access token
+for you!</p>
+</blockquote>
+
+<p>Resolves with the updated state or rejects with an error.</p>
+
+<h3 id="clientrefreshifneededrequestoptions---promiseobject">client.refreshIfNeeded(requestOptions = {}) <code class="language-plaintext highlighter-rouge">Promise&lt;Object&gt;</code></h3>
+<p>Checks if access token and refresh token are present. If they are, and if
+the access token is expired or is about to expire in the next 10 seconds,
+calls <code class="language-plaintext highlighter-rouge">client.refresh()</code> to obtain new access token.</p>
+
+<h3 id="clientpatientid-stringnull">client.patient.id <code class="language-plaintext highlighter-rouge">String|null</code></h3>
+
+<p>The selected patient ID or <code class="language-plaintext highlighter-rouge">null</code> if patient is not available. If no patient is selected, it will generate useful debug messages about the possible reasons. See <a href="/client-js/#debugging">debugging</a>.</p>
+
+<h3 id="clientpatientread-promiseobject">client.patient.read() <code class="language-plaintext highlighter-rouge">Promise&lt;Object&gt;</code></h3>
+<p>Fetches the selected patient resource (if available). Resolves with the patient or rejects with an error.</p>
+
+<h3 id="clientpatientrequestrequestoptions-fhiroptions-promiseobject">client.patient.request(requestOptions, fhirOptions) <code class="language-plaintext highlighter-rouge">Promise&lt;Object&gt;</code></h3>
+<p>Wrapper for <code class="language-plaintext highlighter-rouge">client.request</code> that will automatically add a search parameter to the requested URL to filter the requested resources to those related to the current patient. For example:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">client</span><span class="p">.</span><span class="nx">patient</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="dl">"</span><span class="s2">Observation</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// -&gt; /Observation?patient=patient-id</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">patient</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="dl">"</span><span class="s2">Group</span><span class="dl">"</span><span class="p">);</span>       <span class="c1">// -&gt; /Group?member=patient-id</span>
+</code></pre></div></div>
+
+<h3 id="clientencounterid-stringnull">client.encounter.id <code class="language-plaintext highlighter-rouge">string|null</code></h3>
+
+<p>The selected encounter ID or <code class="language-plaintext highlighter-rouge">null</code> if encounter is not available. If no encounter is selected, it will generate useful debug messages about the possible reasons. See <a href="/client-js/#debugging">debugging</a>.</p>
+
+<h3 id="clientencounterread-promiseobject">client.encounter.read() <code class="language-plaintext highlighter-rouge">Promise&lt;object&gt;</code></h3>
+
+<p>Fetches the selected encounter resource (if available). Resolves with the encounter or rejects with an error.</p>
+
+<h3 id="clientuserid-string">client.user.id <code class="language-plaintext highlighter-rouge">string</code></h3>
+<p>The selected user ID or <code class="language-plaintext highlighter-rouge">null</code> if user is not available. If no user is selected, it will generate useful debug messages about the possible reasons. See <a href="/client-js/#debugging">debugging</a>.</p>
+
+<h3 id="clientuserfhiruser-string">client.user.fhirUser <code class="language-plaintext highlighter-rouge">string</code></h3>
+<p>The selected user identifier that looks like <code class="language-plaintext highlighter-rouge">Practitioner/id</code> or <code class="language-plaintext highlighter-rouge">null</code> if user is not available. If no user is selected, it will generate useful debug messages about the possible reasons. See <a href="/client-js/#debugging">debugging</a>.</p>
+
+<h3 id="clientuserresourcetype-string">client.user.resourceType <code class="language-plaintext highlighter-rouge">string</code></h3>
+
+<p>The selected user resourceType (E.g. <code class="language-plaintext highlighter-rouge">Practitioner</code>, <code class="language-plaintext highlighter-rouge">Patient</code>, <code class="language-plaintext highlighter-rouge">RelatedPerson</code>…) or <code class="language-plaintext highlighter-rouge">null</code> if user is not available. If no user is selected, it will generate useful debug messages about the possible reasons. See <a href="/client-js/#debugging">debugging</a>.</p>
+
+<h3 id="clientuserread-promiseobject">client.user.read() <code class="language-plaintext highlighter-rouge">Promise&lt;object&gt;</code></h3>
+<p>Fetches the selected user resource (if available). Resolves with the user or rejects with an error.</p>
+
+<h3 id="clientgetfhirversion-promisestring">client.getFhirVersion() <code class="language-plaintext highlighter-rouge">Promise&lt;string&gt;</code></h3>
+<p>Returns a promise that will be resolved with the FHIR version as defined in the conformance statement of the server.</p>
+
+<h3 id="clientgetfhirrelease-promisenumber">client.getFhirRelease() <code class="language-plaintext highlighter-rouge">Promise&lt;number&gt;</code></h3>
+<p>Returns a promise that will be resolved with the numeric FHIR version:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">2</code> for <strong>DSTU2</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">3</code> for <strong>STU3</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">4</code> for <strong>R4</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">0</code> if the version is not known</li>
+</ul>
+
+<h3 id="clientgetstatepath-any">client.getState(path=””): <code class="language-plaintext highlighter-rouge">any</code></h3>
+<p>When called without an argument returns a copy of the client state. Accepts a dot-separated path argument (same as for <code class="language-plaintext highlighter-rouge">getPath</code>) to allow for selecting specific state properties. Note that this is the preferred way to read the state because <code class="language-plaintext highlighter-rouge">client.state.tokenResponse.patient</code> will throw an error if <code class="language-plaintext highlighter-rouge">client.state.tokenResponse</code> is undefined, while <code class="language-plaintext highlighter-rouge">client.getState("tokenResponse.patient")</code> will ignore that and just return <code class="language-plaintext highlighter-rouge">undefined</code>.</p>
+
+<p>Examples:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">client</span><span class="p">.</span><span class="nx">getState</span><span class="p">();</span> <span class="c1">// -&gt; the entire state object</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">getState</span><span class="p">(</span><span class="dl">"</span><span class="s2">serverUrl</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// -&gt; the URL we are connected to</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">getState</span><span class="p">(</span><span class="dl">"</span><span class="s2">tokenResponse.patient</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// -&gt; The selected patient ID (if any)</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>Finally, there are some <strong>utility methods</strong>, mostly inherited by older versions of the library:</p>
+<h3 id="clientbycodeobservations-property-object">client.byCode(observations, property) <code class="language-plaintext highlighter-rouge">Object</code></h3>
+<p>Groups the observations by code. Returns a map that will look like:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">map</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">byCodes</span><span class="p">(</span><span class="nx">observations</span><span class="p">,</span> <span class="dl">"</span><span class="s2">code</span><span class="dl">"</span><span class="p">);</span>
+<span class="c1">// map = {</span>
+<span class="c1">//     "55284-4": [ observation1, observation2 ],</span>
+<span class="c1">//     "6082-2": [ observation3 ]</span>
+<span class="c1">// }</span>
+</code></pre></div></div>
+
+<h3 id="clientbycodesobservations-property-function">client.byCodes(observations, property) <code class="language-plaintext highlighter-rouge">Function</code></h3>
+<p>Similar to <code class="language-plaintext highlighter-rouge">byCode</code> but builds the map internally and returns a filter function
+that will produce flat arrays. For example:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">filter</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">byCodes</span><span class="p">(</span><span class="nx">observations</span><span class="p">,</span> <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">filter</span><span class="p">(</span><span class="dl">"</span><span class="s2">laboratory</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// =&gt; [ observation1, observation2 ]</span>
+<span class="nx">filter</span><span class="p">(</span><span class="dl">"</span><span class="s2">vital-signs</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// =&gt; [ observation3 ]</span>
+<span class="nx">filter</span><span class="p">(</span><span class="dl">"</span><span class="s2">laboratory</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">vital-signs</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// =&gt; [ observation1, observation2, observation3 ]</span>
+</code></pre></div></div>
+
+<h3 id="clientunitscm-code-value--number">client.units.cm({ code, value }) <code class="language-plaintext highlighter-rouge">Number</code></h3>
+<p>Converts the <code class="language-plaintext highlighter-rouge">value</code> to <code class="language-plaintext highlighter-rouge">code</code>, where <code class="language-plaintext highlighter-rouge">code</code> can be <code class="language-plaintext highlighter-rouge">cm</code>, <code class="language-plaintext highlighter-rouge">m</code>, <code class="language-plaintext highlighter-rouge">in</code>, <code class="language-plaintext highlighter-rouge">[in_us]</code>, <code class="language-plaintext highlighter-rouge">[in_i]</code>, <code class="language-plaintext highlighter-rouge">ft</code>, <code class="language-plaintext highlighter-rouge">[ft_us]</code></p>
+
+<h3 id="clientunitskg-code-value--number">client.units.kg({ code, value }) <code class="language-plaintext highlighter-rouge">Number</code></h3>
+<p>Converts the <code class="language-plaintext highlighter-rouge">value</code> to <code class="language-plaintext highlighter-rouge">code</code>, where <code class="language-plaintext highlighter-rouge">code</code> can be <code class="language-plaintext highlighter-rouge">kg</code>, <code class="language-plaintext highlighter-rouge">g</code>, string containing <code class="language-plaintext highlighter-rouge">lb</code>, string containing <code class="language-plaintext highlighter-rouge">oz</code>.</p>
+
+<h3 id="clientunitsany-code-value--number">client.units.any({ code, value }) <code class="language-plaintext highlighter-rouge">Number</code></h3>
+<p>Just asserts that <code class="language-plaintext highlighter-rouge">value</code> is a number and then returns that value</p>
+
+<h3 id="clientgetpathobject-path-any">client.getPath(object, path) <code class="language-plaintext highlighter-rouge">any</code></h3>
+<p>Given an object (or array), tries to walk down to the given dot-separated path
+and returns the value. It will return <code class="language-plaintext highlighter-rouge">undefined</code> if the path cannot find any property. It will NOT throw if an intermediate property does not exist.
+The path is dot-separated even for arrays! Examples:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span> <span class="na">a</span><span class="p">:</span> <span class="p">{</span> <span class="na">b</span><span class="p">:</span> <span class="dl">"</span><span class="s2">x</span><span class="dl">"</span> <span class="p">},</span> <span class="na">c</span><span class="p">:</span> <span class="p">[</span> <span class="mi">2</span><span class="p">,</span> <span class="p">{</span> <span class="na">x</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="p">]};</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">getPath</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="dl">""</span><span class="p">)</span> <span class="c1">// =&gt; data</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">getPath</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// =&gt; { b: "x" }</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">getPath</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="dl">"</span><span class="s2">a.b</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// =&gt; "x"</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">getPath</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="dl">"</span><span class="s2">c.1.x</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// =&gt; 5</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">getPath</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="dl">"</span><span class="s2">c.2.1</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// =&gt; 2</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">getPath</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="dl">"</span><span class="s2">a.b.c.d.e</span><span class="dl">"</span><span class="p">)</span> <span class="c1">// =&gt; undefined</span>
+</code></pre></div></div>
+
+<h2 id="aborting-requests">Aborting Requests</h2>
+<p>The implementation is based on the standard <code class="language-plaintext highlighter-rouge">AbortController</code> approach. You need
+to create an instance of <code class="language-plaintext highlighter-rouge">AbortController</code> and pass it’s <code class="language-plaintext highlighter-rouge">AbortSignal</code> as request
+option as shown below.</p>
+
+<p>Note that <code class="language-plaintext highlighter-rouge">client.request</code> is a powerful method that might start other requests
+depending on the passed options (to fetch references or additional pages). If
+a <code class="language-plaintext highlighter-rouge">client.request</code> task is aborted, that will propagate and cancel any sub-requests
+that are being executed at that point.</p>
+
+<p>Example:</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">abortController</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AbortController</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">signal</span> <span class="o">=</span> <span class="nx">abortController</span><span class="p">.</span><span class="nx">signal</span><span class="p">;</span>
+
+<span class="c1">// Any of these should work</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span> <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Patient</span><span class="dl">"</span><span class="p">,</span> <span class="nx">signal</span> <span class="p">});</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">resource</span><span class="p">,</span> <span class="p">{</span> <span class="nx">signal</span> <span class="p">});</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">resource</span><span class="p">,</span> <span class="p">{</span> <span class="nx">signal</span> <span class="p">});</span>
+<span class="nx">client</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="dl">"</span><span class="s2">Patient/123</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="nx">signal</span> <span class="p">});</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">patient</span><span class="p">.</span><span class="nx">read</span><span class="p">({</span> <span class="nx">signal</span> <span class="p">});</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">patient</span><span class="p">.</span><span class="nx">request</span><span class="p">({</span> <span class="nx">signal</span><span class="p">,</span> <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Immunization</span><span class="dl">"</span> <span class="p">});</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">encounter</span><span class="p">.</span><span class="nx">read</span><span class="p">({</span> <span class="nx">signal</span> <span class="p">});</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">read</span><span class="p">({</span> <span class="nx">signal</span> <span class="p">});</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">refresh</span><span class="p">({</span> <span class="nx">signal</span> <span class="p">});</span>
+
+<span class="c1">// Later...</span>
+<span class="nx">abortController</span><span class="p">.</span><span class="nx">abort</span><span class="p">();</span>
+</code></pre></div></div>
+
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/smart-on-fhir/client-js">client-js</a> is maintained by <a href="https://github.com/smart-on-fhir">smart-on-fhir</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+  </body>
+</html>

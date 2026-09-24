@@ -1,0 +1,162 @@
+
+什麼是 FHIR | 臺灣醫療資訊標準大平台
+臺灣醫療資訊標準大平台
+最新消息
+簡介與沿革
+簡介與沿革
+部長的話
+處長的話
+背景說明
+原電子病歷專區
+三大核心
+FHIR
+什麼是FHIR
+FHIR教育專區
+實作指引（IG）
+國家實作指引（IG）專區
+實作指引(IG)提案暨審查作業及說明
+實作指引(IG)草稿及提案
+民間實作指引(IG)分享專區
+TWCDI 
+TWCDI 
+TWCDI +
+TWCDI 提案
+Tool
+全國專門術語平台
+Rule Library
+什麼是 Rule Library
+CQL教育專區
+應用情境說明
+CQL 測試環境
+Library 資源
+SMART on FHIR
+什麼是 SMART
+SMART 教育專區
+APP開發說明
+上架流程範例
+TW APP Gallery
+三大標準
+SNOMED CT
+什麼是 SNOMED CT
+SCT 教育專區
+SCT官方文件與工具
+SCT 資料集
+LOINC
+什麼是LOINC
+LOINC 教育專區
+LOINC 官方文件與工具
+LOINC 資料集
+RxNorm
+什麼是 RxNorm
+RxNorm 教育專區
+RxNorm 官方文件與工具
+線上提問專區
+認證實驗室
+計畫網站
+臺灣醫療資訊標準大平台
+臺灣健康資料空間
+臺灣健康規則空間
+臺灣健康應用空間
+SNOMED CT
+LOINC
+RxNorm
+臺灣智慧醫療學校
+臺灣智慧醫療三大中心
+全國臨床AI應用登錄平台
+全球醫療 AI 聯邦學習媒合平台
+繁體中文
+English
+開啟選單
+最新消息
+簡介與沿革
+簡介與沿革
+部長的話
+處長的話
+背景說明
+原電子病歷專區
+三大核心
+FHIR
+什麼是 FHIR
+FHIR 教育專區
+實作指引 (IG)
+國家實作指引 (IG) 專區
+實作指引 (IG) 提案暨審查作業及說明
+實作指引 (IG) 草稿及提案
+民間實作指引 (IG) 分享專區
+TWCDI
+TWCDI
+TWCDI +
+TWCDI 提案
+Tool
+全國專門術語平台
+Rule Library
+什麼是 Rule Library
+CQL 教育專區
+應用情境說明
+CQL 測試環境
+Library 資源
+SMART on FHIR
+什麼是 SMART
+SMART 教育專區
+APP 開發說明
+上架流程範例
+TW APP Gallery
+三大標準
+SNOMED CT
+什麼是 SNOMED CT
+SCT 教育專區
+SCT 官方文件與工具
+SCT 資料集
+LOINC
+什麼是 LOINC
+LOINC 教育專區
+LOINC 官方文件與工具
+LOINC 資料集
+RxNorm
+什麼是 RxNorm
+RxNorm 教育專區
+RxNorm 官方文件與工具
+線上提問專區
+認證實驗室
+計畫網站
+臺灣醫療資訊標準大平台
+臺灣健康資料空間
+臺灣健康規則空間
+臺灣健康應用空間
+SNOMED CT
+LOINC
+RxNorm
+臺灣智慧醫療學校
+臺灣智慧醫療三大中心
+全國臨床AI應用登錄平台
+全球醫療 AI 聯邦學習媒合平台
+什麼是 FHIR
+首頁
+什麼是 FHIR
+什麼是 FHIR
+隨著網際網路的高度發展及普及，HL7導入HTTP網路通訊協定，應用RESTful API使醫療資料交換應用得以支援跨平台與行動化，並具備處理臨床及非臨床資料之能力，此標準即為FHIR(Fast Healthcare Interoperability Resources，快速健康照護互通操作資源)。
+FHIR 作為醫療資料互通性標準，根據臨床使用情境設計資料結構，用於提供臨床專業人員/組織間進行共享及交換資訊。FHIR 使用可擴展的方式，允許開發者根據需要建立新的資料元素和資源，讓 FHIR能更適應醫療健康領域不斷變化的需求。FHIR 也採用模組化方法進行醫療健康資料交換，這意味著每個資訊都表示為一種Resource(資源物件)，這些資源組合起來就可以建構出患者的醫療記錄，其中Resource即為FHIR中的資料表結構。
+HL7組織將臨床與健康領域中常見的資料項目，歸納出146種Resource(資源物件)；分為五大類：規範及基本框架(Foundation)、術語/實作支援(Terminology、Implementer Support)、臨床與現實世界串接(Administrator)、臨床記錄保存和資料交換(Clinical、Diagnostics、Medications)以及對臨床醫療過程中決策推理能力(Clinical Reasoning)；共涵蓋了臨床工作流程、醫學術語、診斷、用藥、安全性、支付、公衛研究及品質量測等應用。
+由於不同醫療健康生態系統的應用需求和規定差異，FHIR 資源物件(Resources)的配置檔案內容會有所不同。因此HL7原生的FHIR資源物件(Resources)因應應用需求，定義約束、擴充及綁定後即為FHIR Profiles(設定檔)。
+(圖片來源：HL7)
+什麼是FHIR IG (FHIR實作指引)
+FHIR 實作指引 (Implementation Guide, IG) 是 FHIR開發人員和設計人員用來說明如何使用FHIR規範，在特定臨床或非臨床應用中實現資料互通性的機制。使用者根據所使用或修訂的Resource以及相關的擴充欄位(Extension)建立成一個Profile(設定檔)，進一步把Profile納入操作規範書中，建立專屬IG(Implementation Guide，實作指引)，做為互通規格書，提供給所有人統一的格式標準做為參考，進行資料的流通及互操作。
+(圖片來源：衛福部)
+為何需要FHIR IG
+世界各地不斷產生大量醫療資料，但醫療 IT 平台卻缺乏快速交換資料的能力。病患資訊保存在所謂的「資料孤島」中，大部分舊系統仍然使用電子郵件和傳真來發送臨床記錄、文件及治療結果。因此互通性在醫療健康領域變得相當重要，透過FHIR IG定義資料框架及術語值集，如此資料便能在不同的系統和設備中進行通信及使用。
+FHIR IG簡化了醫療健康資訊的交換流程，使得實現互通性變得相對容易。醫生和患者能夠從醫療 IT 系統中獲得所需的資訊。患者也可以在不同醫療機構就診，並交換個人健康記錄，包含所有處方、醫療問題、過敏和諮詢的完整歷史記錄。
+FHIR 教育專區
+國家實作指引(IG)專區
+TWCDI
+Tool
+Converter、FHIR資料標準化工具、Inferno、Terminology Server
+TWCDI +
+TWCDI 提案
+實作指引(IG)提案暨審查作業及說明
+實作指引(IG)草稿及提案
+民間實作指引(IG)分享專區
+地址：115204 台北市南港區忠孝東路6段488號
+總機電話
+：(03) 591-9291
+聯絡信箱
+：medstandard@itri.org.tw

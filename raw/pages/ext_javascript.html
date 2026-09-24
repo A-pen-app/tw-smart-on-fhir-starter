@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+      SMART -- Tutorials -- JavaScript
+    </title>
+
+    <link href="/assets/css/bootstrap4.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+
+    <style>
+      h2, h3 { margin-top: 40px;}
+      li {margin-bottom: 8px;}
+      ul {margin-top: 8px;}
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Docs master nav -->
+    <header style="text-align: center; margin: 40px 0">
+        <a href="https://smarthealthit.org">
+          <img src="/assets/img/smart-logo.svg" alt="SMART on FHIR Logo" style="max-height: 90px;" />
+        </a>
+    </header>
+
+    <!-- Docs page layout -->
+    <div id="master">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-12" role="main">
+            <h1 id="tutorial---building-a-javascript-app">Tutorial - Building a JavaScript App</h1>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>The SMART on FHIR JavaScript client library helps you build browser-based SMART
+apps that interact with a FHIR REST API server. It can help your app get
+authorization tokens, provide information about the user and patient record in
+context, and issue API calls to fetch clinical data.</p>
+
+<p>This tutorial describes how to create a basic client-side JavaScript SMART app with
+no additional libraries and frameworks.</p>
+
+<p>To get started with the SMART on FHIR JavaScript client library, you’ll need to:</p>
+
+<h3 id="step-1-include-a-script-tag">Step 1. Include a <code class="language-plaintext highlighter-rouge">script</code> tag</h3>
+
+<p>Include a <code class="language-plaintext highlighter-rouge">script</code> tag referencing the library. The latest code is always
+available from the NPM CDN at
+<a href="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js">https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js</a>.
+Including this script will create a global <code class="language-plaintext highlighter-rouge">FHIR</code> object for you to work with.
+<strong>Example:</strong></p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h3 id="step-2-test-against-an-open-fhir-server">Step 2. Test against an open FHIR server</h3>
+<p>Now that you have the client library included, it might be a good idea to play
+with it a little bit and see what it is capable of. This is easy to do if we use
+an open FHIR server that does not require authentication.</p>
+
+<p>Here is something basic to start with:</p>
+
+<p><strong>Connect to an open server and browse patients</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">FHIR</span><span class="p">.</span><span class="nx">client</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://r3.smarthealthit.org</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="dl">"</span><span class="s2">Patient</span><span class="dl">"</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Once this is working you can try <a href="http://docs.smarthealthit.org/client-js/request.html">other examples</a>
+and then proceed to the next step.</p>
+
+<h3 id="step-3-smart-authorization">Step 3. SMART Authorization</h3>
+<p>The most common type of SMART app is designed to run within the EHR. Such an app must
+support the <a href="http://www.hl7.org/fhir/smart-app-launch/#ehr-launch-sequence">EHR Launch flow</a>. To do that, we need to separate our logic in two pages:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">launch.html</code> - to be called by the EHR to start the authorization process.</li>
+  <li><code class="language-plaintext highlighter-rouge">index.html</code> - Upon successful authorization the EHR will redirect us there. This is where the actual app is initialized.</li>
+</ol>
+
+<h3 id="step-31-create-the-launchhtml-page">Step 3.1. Create the launch.html page</h3>
+<p>This is very simple blank page with one purpose - to launch the app:</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Launch My APP<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;script&gt;</span>
+            <span class="nx">FHIR</span><span class="p">.</span><span class="nx">oauth2</span><span class="p">.</span><span class="nx">authorize</span><span class="p">({</span>
+
+              <span class="c1">// The client_id that you should have obtained after registering a client at</span>
+              <span class="c1">// the EHR.</span>
+              <span class="na">clientId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my_web_app</span><span class="dl">"</span><span class="p">,</span>
+
+              <span class="c1">// The scopes that you request from the EHR. In this case we want to:</span>
+              <span class="c1">// launch            - Get the launch context</span>
+              <span class="c1">// openid &amp; fhirUser - Get the current user</span>
+              <span class="c1">// patient/*.read    - Read patient data</span>
+              <span class="na">scope</span><span class="p">:</span> <span class="dl">"</span><span class="s2">launch openid fhirUser patient/*.read</span><span class="dl">"</span><span class="p">,</span>
+
+              <span class="c1">// Typically, if your redirectUri points to the root of the current directory</span>
+              <span class="c1">// (where the launchUri is), you can omit this option because the default value is</span>
+              <span class="c1">// ".". However, some servers do not support directory indexes so "." and "./"</span>
+              <span class="c1">// will not automatically map to the "index.html" file in that directory.</span>
+              <span class="na">redirectUri</span><span class="p">:</span> <span class="dl">"</span><span class="s2">index.html</span><span class="dl">"</span>
+            <span class="p">});</span>
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+<p>Note that you cannot just open this in the browser to launch the app. Instead, the EHR will open
+this page and will pass some URL parameters. Without those parameters the launch will not work.
+Alternatively, you can use a launcher like http://launch.smarthealthit.org/ to pretend that you
+are the EHR and launch your app with sample patients data.</p>
+
+<p>At this point you need to make sure your app is hosted on an HTTP server. If you have NodeJS installed,
+the simplest way to host these files would be to <code class="language-plaintext highlighter-rouge">cd</code> into your project folder (where the <code class="language-plaintext highlighter-rouge">launch.html</code>
+is saved) and run <code class="language-plaintext highlighter-rouge">npx http-server</code>.</p>
+
+<h3 id="step-32-create-the-indexhtml-page">Step 3.2. Create the index.html page</h3>
+<p>After the launch sequence is started we will be redirected to the EHR where we may have to authorize
+the launch and select a patient (depending on the requested scopes). Once that is complete, the EHR
+will redirect back to our site using the <code class="language-plaintext highlighter-rouge">redirectUri</code> option provided above. Once we are there,
+we have to complete the authorization flow, which the client library will do for us. Then we can start
+making FHIR request and implement our business logic. Here is an example of simple app that renders as JSON
+the current patient and his/her medications (if any):</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;title&gt;</span>Example SMART App<span class="nt">&lt;/title&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+        <span class="nt">&lt;style&gt;</span>
+            <span class="nf">#patient</span><span class="o">,</span> <span class="nf">#meds</span> <span class="p">{</span>
+                <span class="nl">font-family</span><span class="p">:</span> <span class="n">Monaco</span><span class="p">,</span> <span class="nb">monospace</span><span class="p">;</span>
+                <span class="nl">white-space</span><span class="p">:</span> <span class="n">pre</span><span class="p">;</span>
+                <span class="nl">font-size</span><span class="p">:</span> <span class="m">13px</span><span class="p">;</span>
+                <span class="nl">height</span><span class="p">:</span> <span class="m">30vh</span><span class="p">;</span>
+                <span class="nl">overflow</span><span class="p">:</span> <span class="nb">scroll</span><span class="p">;</span>
+                <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="m">#CCC</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="nt">&lt;/style&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;h4&gt;</span>Current Patient<span class="nt">&lt;/h4&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"patient"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;br/&gt;</span>
+        <span class="nt">&lt;h4&gt;</span>Medications<span class="nt">&lt;/h4&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"meds"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+            <span class="nx">FHIR</span><span class="p">.</span><span class="nx">oauth2</span><span class="p">.</span><span class="nx">ready</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">client</span><span class="p">)</span> <span class="p">{</span>
+                
+                <span class="c1">// Render the current patient (or any error)</span>
+                <span class="nx">client</span><span class="p">.</span><span class="nx">patient</span><span class="p">.</span><span class="nx">read</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span>
+                    <span class="kd">function</span><span class="p">(</span><span class="nx">pt</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">patient</span><span class="dl">"</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">pt</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+                    <span class="p">},</span>
+                    <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">patient</span><span class="dl">"</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">error</span><span class="p">.</span><span class="nx">stack</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">);</span>
+                
+                <span class="c1">// Get MedicationRequests for the selected patient</span>
+                <span class="nx">client</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="dl">"</span><span class="s2">/MedicationRequest?patient=</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">client</span><span class="p">.</span><span class="nx">patient</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="na">resolveReferences</span><span class="p">:</span> <span class="p">[</span> <span class="dl">"</span><span class="s2">medicationReference</span><span class="dl">"</span> <span class="p">],</span>
+                    <span class="na">graph</span><span class="p">:</span> <span class="kc">true</span>
+                <span class="p">})</span>
+                
+                <span class="c1">// Reject if no MedicationRequests are found</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">.</span><span class="nx">entry</span> <span class="o">||</span> <span class="o">!</span><span class="nx">data</span><span class="p">.</span><span class="nx">entry</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">No medications found for the selected patient</span><span class="dl">"</span><span class="p">);</span>
+                    <span class="p">}</span>
+                    <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">entry</span><span class="p">;</span>
+                <span class="p">})</span>
+                
+
+                <span class="c1">// Render the current patient's medications (or any error)</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">(</span>
+                    <span class="kd">function</span><span class="p">(</span><span class="nx">meds</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">meds</span><span class="dl">"</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">meds</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+                    <span class="p">},</span>
+                    <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">meds</span><span class="dl">"</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="nx">error</span><span class="p">.</span><span class="nx">stack</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">);</span>
+
+            <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+        <span class="nt">&lt;/script&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>Now you can launch this against different EHRs or sandboxes. To do so, you will
+have to “register” the app, get it’s client ID and put it in the <code class="language-plaintext highlighter-rouge">clientId</code> field
+in your <code class="language-plaintext highlighter-rouge">launch.html</code>. The easiest way to try this would be to use the SMART sandbox
+at http://launch.smarthealthit.org which does not even require you to register
+the app. Furthermore, if your app is running on http://127.0.0.1:8080/, then you
+can launch it simply by clicking <a href="http://127.0.0.1:8080/launch.html?launch=eyJhIjoiMSJ9&amp;iss=https%3A%2F%2Flaunch.smarthealthit.org%2Fv%2Fr4%2Ffhir">HERE</a>.</p>
+
+<p>For more details, see our <a href="http://docs.smarthealthit.org/client-js/">JS client docs</a></p>
+
+          </div>
+        </div>
+     
+      </div>
+    </div>
+    <script>
+      window.github_branch = "master";
+    </script>
+
+    <footer class="text-center" style="margin: 40px 0;">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <a href="https://smarthealthit.org">SMART Health IT</a>
+            <span class="text-muted mx-2">|</span>
+            <a href="https://github.com/smart-on-fhir/smart-on-fhir.github.io/edit/master/index.md">Add a link</a> 
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <br/>
+            <span class="text-muted">© Copyright 2020 by the Computational Health Informatics Program, Boston Children’s Hospital, Boston, MA</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script>
+       $("a[href='https://web.archive.org/web/*']").attr('href', 'https://web.archive.org/web/*/'+window.location.href);
+    </script>
+  </body>
+</html>

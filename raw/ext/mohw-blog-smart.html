@@ -1,0 +1,1001 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<title>台灣 SMART on FHIR 國家級基建的轉型之路</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//widgets.wp.com' />
+<link rel='dns-prefetch' href='//jetpack.wordpress.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//public-api.wordpress.com' />
+<link rel='dns-prefetch' href='//0.gravatar.com' />
+<link rel='dns-prefetch' href='//1.gravatar.com' />
+<link rel='dns-prefetch' href='//2.gravatar.com' />
+<link rel='preconnect' href='//i0.wp.com' />
+<link rel='preconnect' href='//c0.wp.com' />
+<link rel="alternate" type="application/rss+xml" title="訂閱《衛生福利部部落格》&raquo; 資訊提供" href="https://blog.mohw.gov.tw/feed/" />
+<link rel="alternate" type="application/rss+xml" title="訂閱《衛生福利部部落格》&raquo; 留言的資訊提供" href="https://blog.mohw.gov.tw/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="訂閱《衛生福利部部落格 》&raquo;〈【李建璋觀點】從數位孤島到醫療生態系：台灣 SMART on FHIR 國家級基建的轉型之路〉留言的資訊提供" href="https://blog.mohw.gov.tw/2084/feed/" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://blog.mohw.gov.tw/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.mohw.gov.tw%2F2084%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://blog.mohw.gov.tw/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.mohw.gov.tw%2F2084%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='all-css-a2b0fd7ca6a702697c8f53be4e24140e' href='https://blog.mohw.gov.tw/_static/??wp-content/uploads/blocksy/css/global.css,wp-includes/css/dist/block-library/style.min.css?m=1789058339' type='text/css' media='all' />
+<style id="wp-block-library-inline-css">
+.has-text-align-justify{text-align:justify;}
+/*# sourceURL=wp-block-library-inline-css */
+</style>
+<link rel='stylesheet' id='all-css-ad16a5397e08b5bbdad3e7719587f9e9' href='https://blog.mohw.gov.tw/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/jetpack-podcast/dist/blocks/podcast-episode/style.css?m=1790187559' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack-forms-layout-css' href='https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/src/../dist/contact-form/css/jetpack-forms-layout.css?ver=16.3-a.3' media='all' />
+<link rel='stylesheet' id='all-css-7e731552c4cc551cde36224a45b73b6c' href='https://blog.mohw.gov.tw/_static/??-eJyNjsEKwjAQRH/INfYgtQfxUyTdhBqbZEN3Y+nfGyuhKAieBmZ35s2cACmKjaKSz4OLrO5Wksax6vVho6FJ6SwUtIjDeoGkl6T9S0IpYGUcl5oPE/osQqWVZfF2j8y7eUOGDJU6J6TAtz+oJbQ+K55Q9dl58w5D7wlHLuXGwor75X/PqBu8XigLDJMz295LODdtd2hO7fHYPQFQ1XPT' type='text/css' media='all' />
+<style id="jetpack-search-active-filters-style-inline-css">
+.wp-block-jetpack-search-active-filters{align-items:center;display:flex;flex-wrap:wrap;gap:.5rem}.wp-block-jetpack-search-active-filters[hidden]{display:none}.wp-block-jetpack-search-active-filters .jetpack-search-active-filters__heading{color:inherit;font-size:.8rem;font-weight:600;opacity:.8}.wp-block-jetpack-search-active-filters .jetpack-search-active-filters__pills{display:flex;flex-wrap:wrap;gap:.25rem;list-style:none;margin:0;padding:0}.wp-block-jetpack-search-active-filters .jetpack-search-active-filters__pill{align-items:center;background:#0000;border:1px solid;border-radius:12px;color:inherit;cursor:pointer;display:inline-flex;font:inherit;font-size:.8rem;gap:.25rem;letter-spacing:normal;line-height:1.2;padding:.2rem .6rem;text-transform:none;transition:background-color .2s ease,border-color .2s ease,box-shadow .2s ease}@supports(border-color:color-mix(in sRGB,black 50%,white)){.wp-block-jetpack-search-active-filters .jetpack-search-active-filters__pill{background:color-mix(in sRGB,currentColor 14%,#0000);border-color:color-mix(in sRGB,currentColor 38%,#0000)}}.wp-block-jetpack-search-active-filters :is(.jetpack-search-active-filters__pill:focus-visible,.jetpack-search-active-filters__pill:hover){background:#0000;border-color:currentColor}@supports(background:color-mix(in sRGB,black 50%,white)){.wp-block-jetpack-search-active-filters :is(.jetpack-search-active-filters__pill:focus-visible,.jetpack-search-active-filters__pill:hover){background:color-mix(in sRGB,currentColor 24%,#0000);border-color:color-mix(in sRGB,currentColor 52%,#0000)}}.wp-block-jetpack-search-active-filters .jetpack-search-active-filters__pill:focus-visible{box-shadow:0 0 0 2px currentColor;outline:none}@supports(box-shadow:0 0 0 2px color-mix(in sRGB,black 50%,white)){.wp-block-jetpack-search-active-filters .jetpack-search-active-filters__pill:focus-visible{box-shadow:0 0 0 2px color-mix(in sRGB,currentColor 28%,#0000)}}.wp-block-jetpack-search-active-filters .jetpack-search-active-filters__pill-remove{font-weight:700;line-height:1}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/active-filters.css */
+</style>
+<style id="jetpack-search-ai-answer-style-inline-css">
+.wp-block-jetpack-search-ai-answer{border-inline-start:3px solid color-mix(in sRGB,currentColor 30%,#0000);margin-block:0 var(--wp--preset--spacing--40,1.5rem);padding-block:var(--wp--preset--spacing--30,.75rem);padding-inline-start:var(--wp--preset--spacing--30,1rem)}.wp-block-jetpack-search-ai-answer[hidden]{display:none}.jp-search-answers-panel__heading{font-size:.75em;font-weight:600;letter-spacing:.06em;margin:0 0 .5em;opacity:.7;text-transform:uppercase}.jp-search-answers-panel__loading,.jp-search-answers-panel__loading-hint{align-items:center;color:inherit;display:flex;font-size:.75em;gap:.5em;margin:.5em 0 0;opacity:.7}.jp-search-answers-panel__loading-hint[hidden],.jp-search-answers-panel__loading[hidden]{display:none}.jp-search-answers-panel__loading-hint{font-style:italic}.jp-search-answers-panel__error{margin:0}.jp-search-answers-panel__error-message{margin:0 0 .25em}.jp-search-answers-panel__error-detail{font-size:.875em;margin:0;opacity:.7}.jp-search-answers-panel__content{margin:0}.jp-search-answers-panel__text{font-size:.875em;line-height:1.6}.jp-search-answers-panel__text :is(h2,h3,h4){font-size:1em;font-weight:700;margin:.8em 0 .3em}.jp-search-answers-panel__text p{margin:0 0 .6em}.jp-search-answers-panel__text ul{list-style:disc;margin:0 0 .6em 1.2em;padding:0}.jp-search-answers-panel__text li{margin-bottom:.2em}.jp-search-answers-panel__text strong{font-weight:700}.jp-search-answers-panel__text em{font-style:italic}.jp-search-answers-panel__toggle{align-items:center;background:none;border:0;color:inherit;cursor:pointer;display:inline-flex;font:inherit;font-size:.75em;gap:.4em;margin-top:.5em;padding:0;text-decoration:underline}.jp-search-answers-panel__toggle[hidden]{display:none}.jp-search-answers-panel__toggle:hover{opacity:.7}.jp-search-answers-panel__toggle-icon{border-bottom:1.5px solid;border-right:1.5px solid;display:inline-block;height:.4em;transform:rotate(45deg);width:.4em}.jp-search-answers-panel__citations{display:flex;flex-wrap:wrap;font-size:.75em;gap:.5em 1em;list-style:none;margin:.75em 0 0;padding:0}.jp-search-answers-panel__citations[hidden]{display:none}.jp-search-answers-panel__citations li{margin:0}.jp-search-answers-panel__citations a{align-items:center;display:inline-flex;gap:.25em}.jp-search-answers-panel__citation-icon{flex-shrink:0}@keyframes jp-search-animated-ellipsis-bounce{0%,80%,to{opacity:.2}40%{opacity:1}}.jp-search-animated-ellipsis{display:inline-flex;gap:2px}.jp-search-animated-ellipsis span{animation:jp-search-animated-ellipsis-bounce 1.4s infinite both;background:currentColor;border-radius:50%;display:inline-block;height:3px;width:3px}.jp-search-animated-ellipsis span:nth-child(2){animation-delay:.16s}.jp-search-animated-ellipsis span:nth-child(3){animation-delay:.32s}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/ai-answer.css */
+</style>
+<style id="jetpack-search-clear-filters-style-inline-css">
+.jetpack-search-clear-filters[hidden]{display:none}.jetpack-search-clear-filters__button{cursor:pointer}.jetpack-search-clear-filters.is-style-compact .jetpack-search-clear-filters__button{font-size:.8125rem;line-height:1.5;min-width:0;padding:.25em .75em;width:auto}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/clear-filters.css */
+</style>
+<style id="jetpack-search-filter-checkbox-style-inline-css">
+.wp-block-jetpack-search-filter-checkbox[hidden]{display:none}@keyframes jetpack-search-skeleton-shimmer{0%{background-position:-200% 0}to{background-position:200% 0}}.wp-block-jetpack-search-filter-checkbox .jetpack-search-skeleton{animation:jetpack-search-skeleton-shimmer 1.5s linear infinite;background:color-mix(in sRGB,currentColor 8%,#0000) linear-gradient(90deg,#0000,color-mix(in sRGB,currentColor 6%,#0000) 50%,#0000) repeat;background-size:200% 100%;border-radius:4px;display:block}@media(prefers-reduced-motion:reduce){.wp-block-jetpack-search-filter-checkbox .jetpack-search-skeleton{animation:none}}.wp-block-jetpack-search-filter-checkbox .jetpack-search-skeleton--filter-row{height:1rem;width:80%}.wp-block-jetpack-search-filter-checkbox .jetpack-search-filter__list--skeleton{list-style:none;margin:0;padding:0}.wp-block-jetpack-search-filter-checkbox .jetpack-search-filter__list--skeleton[hidden]{display:none}.wp-block-jetpack-search-filter-checkbox .jetpack-search-filter__item--skeleton{padding:.25rem 0}.wp-block-jetpack-search-filter-checkbox .jetpack-search-filter__title{color:inherit;font-size:.85rem;font-weight:700;letter-spacing:.05em;margin:0 0 .5rem;text-transform:uppercase}.wp-block-jetpack-search-filter-checkbox .jetpack-search-filter__list{list-style:none;margin:0;padding:0}.wp-block-jetpack-search-filter-checkbox .jetpack-search-filter__item{padding:.25rem 0}.wp-block-jetpack-search-filter-checkbox .jetpack-search-filter__item label{align-items:center;cursor:pointer;display:flex;gap:.5rem}.wp-block-jetpack-search-filter-checkbox .jetpack-search-filter__label{flex:1}.wp-block-jetpack-search-filter-checkbox .jetpack-search-filter__count{background:color-mix(in sRGB,currentColor 12%,#0000);border-radius:10px;color:inherit;font-size:.8rem;padding:0 .4rem}.wp-block-jetpack-search-filter-checkbox .jetpack-search-filter__count[hidden]{display:none}.wp-block-jetpack-search-filter-checkbox[data-display-style=chips] .jetpack-search-filter__list{display:flex;flex-wrap:wrap;gap:.5rem}.wp-block-jetpack-search-filter-checkbox[data-display-style=chips] .jetpack-search-filter__item{padding:0}.wp-block-jetpack-search-filter-checkbox[data-display-style=chips] .jetpack-search-filter__item label{align-items:center;border:1px solid;border-radius:9999px;cursor:pointer;display:inline-flex;gap:.35rem;padding:.35rem .7rem;position:relative;transition:background-color .2s ease,border-color .2s ease,box-shadow .2s ease}@supports(border-color:color-mix(in sRGB,black 50%,white)){.wp-block-jetpack-search-filter-checkbox[data-display-style=chips] .jetpack-search-filter__item label{border-color:color-mix(in sRGB,currentColor 24%,#0000)}}.wp-block-jetpack-search-filter-checkbox[data-display-style=chips] .jetpack-search-filter__item label:hover{background:#0000;border-color:currentColor}@supports(background:color-mix(in sRGB,black 50%,white)){.wp-block-jetpack-search-filter-checkbox[data-display-style=chips] .jetpack-search-filter__item label:hover{background:color-mix(in sRGB,currentColor 8%,#0000);border-color:color-mix(in sRGB,currentColor 32%,#0000)}}.wp-block-jetpack-search-filter-checkbox[data-display-style=chips] .jetpack-search-filter__item label:focus-within{box-shadow:0 0 0 2px currentColor}@supports(box-shadow:0 0 0 2px color-mix(in sRGB,black 50%,white)){.wp-block-jetpack-search-filter-checkbox[data-display-style=chips] .jetpack-search-filter__item label:focus-within{box-shadow:0 0 0 2px color-mix(in sRGB,currentColor 28%,#0000)}}.wp-block-jetpack-search-filter-checkbox[data-display-style=chips] .jetpack-search-filter__item label:has(input:checked){background:#0000;border-color:currentColor}@supports(background:color-mix(in sRGB,black 50%,white)){.wp-block-jetpack-search-filter-checkbox[data-display-style=chips] .jetpack-search-filter__item label:has(input:checked){background:color-mix(in sRGB,currentColor 14%,#0000);border-color:color-mix(in sRGB,currentColor 38%,#0000)}}.wp-block-jetpack-search-filter-checkbox[data-display-style=chips] .jetpack-search-filter__item input[type=checkbox]{block-size:1px;border:0;clip-path:inset(50%);inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}.wp-block-jetpack-search-filter-checkbox[data-display-style=chips] .jetpack-search-filter__label{flex:0 1 auto}.wp-block-jetpack-search-filter-checkbox[data-display-style=chips] .jetpack-search-filter__count{font-size:.72rem;line-height:1.2;padding:.1rem .4rem}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/filter-checkbox.css */
+</style>
+<style id="jetpack-search-filter-date-style-inline-css">
+.wp-block-jetpack-search-filter-date[hidden]{display:none}@keyframes jetpack-search-skeleton-shimmer{0%{background-position:-200% 0}to{background-position:200% 0}}.wp-block-jetpack-search-filter-date .jetpack-search-skeleton{animation:jetpack-search-skeleton-shimmer 1.5s linear infinite;background:color-mix(in sRGB,currentColor 8%,#0000) linear-gradient(90deg,#0000,color-mix(in sRGB,currentColor 6%,#0000) 50%,#0000) repeat;background-size:200% 100%;border-radius:4px;display:block}@media(prefers-reduced-motion:reduce){.wp-block-jetpack-search-filter-date .jetpack-search-skeleton{animation:none}}.wp-block-jetpack-search-filter-date .jetpack-search-skeleton--filter-row{height:1rem;width:80%}.wp-block-jetpack-search-filter-date .jetpack-search-filter__list--skeleton{list-style:none;margin:0;padding:0}.wp-block-jetpack-search-filter-date .jetpack-search-filter__list--skeleton[hidden]{display:none}.wp-block-jetpack-search-filter-date .jetpack-search-filter__item--skeleton{padding:.25rem 0}.wp-block-jetpack-search-filter-date .jetpack-search-filter__title{color:inherit;font-size:.85rem;font-weight:700;letter-spacing:.05em;margin:0 0 .5rem;text-transform:uppercase}.wp-block-jetpack-search-filter-date .jetpack-search-filter__list{list-style:none;margin:0;padding:0}.wp-block-jetpack-search-filter-date .jetpack-search-filter__item{padding:.25rem 0}.wp-block-jetpack-search-filter-date .jetpack-search-filter__item label{align-items:center;cursor:pointer;display:flex;gap:.5rem}.wp-block-jetpack-search-filter-date .jetpack-search-filter__label{flex:1}.wp-block-jetpack-search-filter-date .jetpack-search-filter__count{background:color-mix(in sRGB,currentColor 12%,#0000);border-radius:10px;color:inherit;font-size:.8rem;padding:0 .4rem}.wp-block-jetpack-search-filter-date .jetpack-search-filter__count[hidden]{display:none}.wp-block-jetpack-search-filter-date[data-display-style=chips] .jetpack-search-filter__list{display:flex;flex-wrap:wrap;gap:.5rem}.wp-block-jetpack-search-filter-date[data-display-style=chips] .jetpack-search-filter__item{padding:0}.wp-block-jetpack-search-filter-date[data-display-style=chips] .jetpack-search-filter__item label{align-items:center;border:1px solid;border-radius:9999px;cursor:pointer;display:inline-flex;gap:.35rem;padding:.35rem .7rem;position:relative;transition:background-color .2s ease,border-color .2s ease,box-shadow .2s ease}@supports(border-color:color-mix(in sRGB,black 50%,white)){.wp-block-jetpack-search-filter-date[data-display-style=chips] .jetpack-search-filter__item label{border-color:color-mix(in sRGB,currentColor 24%,#0000)}}.wp-block-jetpack-search-filter-date[data-display-style=chips] .jetpack-search-filter__item label:hover{background:#0000;border-color:currentColor}@supports(background:color-mix(in sRGB,black 50%,white)){.wp-block-jetpack-search-filter-date[data-display-style=chips] .jetpack-search-filter__item label:hover{background:color-mix(in sRGB,currentColor 8%,#0000);border-color:color-mix(in sRGB,currentColor 32%,#0000)}}.wp-block-jetpack-search-filter-date[data-display-style=chips] .jetpack-search-filter__item label:focus-within{box-shadow:0 0 0 2px currentColor}@supports(box-shadow:0 0 0 2px color-mix(in sRGB,black 50%,white)){.wp-block-jetpack-search-filter-date[data-display-style=chips] .jetpack-search-filter__item label:focus-within{box-shadow:0 0 0 2px color-mix(in sRGB,currentColor 28%,#0000)}}.wp-block-jetpack-search-filter-date[data-display-style=chips] .jetpack-search-filter__item label:has(input:checked){background:#0000;border-color:currentColor}@supports(background:color-mix(in sRGB,black 50%,white)){.wp-block-jetpack-search-filter-date[data-display-style=chips] .jetpack-search-filter__item label:has(input:checked){background:color-mix(in sRGB,currentColor 14%,#0000);border-color:color-mix(in sRGB,currentColor 38%,#0000)}}.wp-block-jetpack-search-filter-date[data-display-style=chips] .jetpack-search-filter__item input[type=checkbox]{block-size:1px;border:0;clip-path:inset(50%);inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}.wp-block-jetpack-search-filter-date[data-display-style=chips] .jetpack-search-filter__label{flex:0 1 auto}.wp-block-jetpack-search-filter-date[data-display-style=chips] .jetpack-search-filter__count{font-size:.72rem;line-height:1.2;padding:.1rem .4rem}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/filter-date.css */
+</style>
+<style id="jetpack-search-filters-style-inline-css">
+.jetpack-search-filters{display:flex;flex-direction:column;gap:var(--wp--style--block-gap,1rem)}.jetpack-search-filters__editor-canvas{border:1px dashed color-mix(in srgb,currentcolor 40%,#0000);border-radius:2px;padding:.5rem}.jetpack-search-filters__editor-label{display:block;font-size:.6875rem;font-weight:600;letter-spacing:.04em;margin-bottom:.5rem;opacity:.6;text-transform:uppercase}.jetpack-search-filters__empty{font-size:.875rem;line-height:1.5;margin:0;opacity:.6}.jetpack-search-filters__empty[hidden]{display:none}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/filters.css */
+</style>
+<style id="jetpack-search-filters-popover-style-inline-css">
+.jetpack-search-filters-popover{display:inline-block;position:relative}.jetpack-search-filters-popover__trigger{align-items:center;background:#0000;border:1px solid color-mix(in srgb,currentcolor 20%,#0000);border-radius:4px;color:inherit;cursor:pointer;display:inline-flex;gap:4px;height:2rem;justify-content:center;padding:0;position:relative;width:2rem}.jetpack-search-filters-popover__trigger:hover:not(:disabled),.jetpack-search-filters-popover__trigger[aria-expanded=true]{background:color-mix(in sRGB,currentColor 6%,#0000)}.jetpack-search-filters-popover__trigger:disabled{cursor:not-allowed;opacity:.4}.jetpack-search-filters-popover__badge{background:color-mix(in sRGB,currentColor 85%,#0000);border-radius:8px;box-sizing:border-box;font-size:11px;height:16px;inset-block-start:0;inset-inline-end:0;line-height:16px;min-width:16px;padding:0 4px;position:absolute;text-align:center;transform:translate(50%,-50%)}.jetpack-search-filters-popover__badge[hidden]{display:none}:dir(rtl) .jetpack-search-filters-popover__badge{transform:translate(-50%,-50%)}.jetpack-search-filters-popover__badge-count{color:var(--jp-search-page-surface,var(--wp--preset--color--background,#fff))}.jetpack-search-filters-popover .jetpack-search-filters-popover__panel{background-color:var(--jp-search-page-surface,var(--wp--preset--color--base,var(--wp--preset--color--background,#fff)));border:1px solid color-mix(in srgb,currentcolor 15%,#0000);border-radius:4px;box-shadow:0 4px 16px color-mix(in sRGB,currentColor 12%,#0000);color:var(--jp-search-page-ink,var(--wp--preset--color--contrast,var(--wp--preset--color--foreground,inherit)));display:none;flex-direction:column;font-size:1rem;gap:1rem;inset-block-start:calc(100% + 4px);inset-inline-end:0;max-width:min(360px,90vw);min-width:260px;padding:12px;position:absolute;z-index:20}.jetpack-search-filters-popover.is-popover-open .jetpack-search-filters-popover__panel{display:flex}.jetpack-search-filters-popover.is-editor-preview.is-popover-open .jetpack-search-filters-popover__panel{background:#0000;border:none;border-radius:0;box-shadow:none;color:inherit;display:flex;max-width:none;min-width:0;padding:0;position:static;z-index:auto}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/filters-popover.css */
+</style>
+<style id="jetpack-search-no-results-style-inline-css">
+.jetpack-search-no-results{margin:0}.jetpack-search-no-results[data-wp-bind--hidden]:not(:has(>:not([hidden]))),.jetpack-search-no-results[hidden]{display:none}.jetpack-search-no-results__variant{margin:0}.jetpack-search-no-results__variant[hidden]{display:none}.jetpack-search-no-results--default{align-items:center;display:flex;flex-direction:column;gap:.25rem;justify-content:center;min-block-size:12rem;opacity:.6;padding-block:2rem;padding-inline:1rem;text-align:center}.jetpack-search-no-results--default p{font-size:.875rem;line-height:1.5;margin:0;max-width:36ch}.jetpack-search-no-results--default p[hidden]{display:none}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/no-results.css */
+</style>
+<style id="jetpack-search-powered-by-style-inline-css">
+.wp-block-jetpack-search-powered-by{margin-block:var(--wp--style--block-gap,1.5em);text-align:center}.jetpack-search-powered-by__link{align-items:center;color:inherit;display:inline-flex;font-size:var(--wp--preset--font-size--small,.7em);gap:.5em;line-height:1;text-decoration:none}.jetpack-search-powered-by__logo{display:inline-flex;flex:0 0 auto;height:1em;width:1em}.jetpack-search-powered-by__logo svg{display:block;height:100%;width:100%}.jetpack-search-powered-by__text{font-weight:500}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/powered-by.css */
+</style>
+<style id="jetpack-search-results-count-style-inline-css">
+.wp-block-jetpack-search-results-count{color:inherit;font-size:.85rem;margin:0;opacity:.7}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/results-count.css */
+</style>
+<link rel='stylesheet' id='all-css-674926bbf3f5b425605d1fc48cab8bbf' href='https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/results-list.css?m=1784576016' type='text/css' media='all' />
+<style id="jetpack-search-results-load-more-style-inline-css">
+.wp-block-jetpack-search-results-load-more{padding-block:var(--wp--style--block-gap,1rem);text-align:center}.wp-block-jetpack-search-results-load-more[hidden]{display:none}.wp-block-jetpack-search-results-load-more .jetpack-search-load-more__button{cursor:pointer}.wp-block-jetpack-search-results-load-more .jetpack-search-load-more__button[hidden]{display:none}.wp-block-jetpack-search-results-load-more .jetpack-search-load-more__button:disabled{cursor:not-allowed;opacity:.5}.wp-block-jetpack-search-results-load-more.is-style-compact .jetpack-search-load-more__button{font-size:.8125rem;line-height:1.5;min-width:0;padding:.25em .75em;width:auto}.wp-block-jetpack-search-results-load-more .jetpack-search-load-more__spinner{color:inherit;display:block;margin-block:var(--wp--style--block-gap,.5rem);margin-inline:auto;opacity:.7}.wp-block-jetpack-search-results-load-more .jetpack-search-load-more__spinner[hidden]{display:none}.wp-block-jetpack-search-results-load-more .jetpack-search-load-more__sentinel{display:block;height:1px;width:100%}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/results-load-more.css */
+</style>
+<style id="jetpack-search-results-sort-style-inline-css">
+.wp-block-jetpack-search-results-sort{align-items:center;display:flex;gap:.5rem;margin-inline-start:auto}.wp-block-jetpack-search-results-sort label{color:inherit;font-size:.9rem;opacity:.8}.wp-block-jetpack-search-results-sort select{appearance:auto;border:1px solid color-mix(in srgb,currentcolor 20%,#0000);border-radius:4px;cursor:pointer;padding:.2rem .5rem}.wp-block-jetpack-search-results-sort select,.wp-block-jetpack-search-results-sort select option{background-color:var(--jp-search-page-surface,var(--wp--preset--color--base,var(--wp--preset--color--background,#fff)));color:var(--jp-search-page-ink,var(--wp--preset--color--contrast,var(--wp--preset--color--foreground,inherit)))}.wp-block-jetpack-search-results-sort .jetpack-search-results-sort__radio-group{align-items:center;border:0;display:flex;flex-wrap:wrap;margin:0;padding:0}.wp-block-jetpack-search-results-sort .jetpack-search-results-sort__radio-group legend{border:0;clip-path:inset(50%);height:1px;margin:0;overflow:hidden;padding:0;position:absolute;white-space:nowrap;width:1px}.wp-block-jetpack-search-results-sort .jetpack-search-results-sort__radio-item{align-items:center;display:flex;font-size:.9rem;position:relative}.wp-block-jetpack-search-results-sort .jetpack-search-results-sort__radio-item input[type=radio]{appearance:none;border:0;clip-path:inset(50%);height:1px;margin:0;overflow:hidden;padding:0;position:absolute;white-space:nowrap;width:1px}.wp-block-jetpack-search-results-sort .jetpack-search-results-sort__radio-item label{cursor:pointer}.wp-block-jetpack-search-results-sort .jetpack-search-results-sort__radio-item input[type=radio]:checked+label{font-weight:600;opacity:1}.wp-block-jetpack-search-results-sort .jetpack-search-results-sort__radio-item input[type=radio]:focus-visible+label{outline:2px solid currentColor;outline-offset:2px}.wp-block-jetpack-search-results-sort .jetpack-search-results-sort__radio-item:not(:last-child):after{content:"•"/"";margin-block:0;margin-inline:.5rem;opacity:.5}.jetpack-search-results-sort--popover{display:inline-block;position:relative}.jetpack-search-results-sort--popover .jetpack-search-results-sort__trigger{align-items:center;background:#0000;border:1px solid color-mix(in srgb,currentcolor 20%,#0000);border-radius:4px;color:inherit;cursor:pointer;display:inline-flex;height:2rem;justify-content:center;padding:0;width:2rem}.jetpack-search-results-sort--popover .jetpack-search-results-sort__trigger:hover:not(:disabled),.jetpack-search-results-sort--popover .jetpack-search-results-sort__trigger[aria-expanded=true]{background:color-mix(in sRGB,currentColor 6%,#0000)}.jetpack-search-results-sort--popover .jetpack-search-results-sort__trigger:disabled{cursor:not-allowed;opacity:.4}.jetpack-search-results-sort--popover .jetpack-search-results-sort__menu{background-color:var(--jp-search-page-surface,var(--wp--preset--color--base,var(--wp--preset--color--background,#fff)));border:1px solid color-mix(in srgb,currentcolor 15%,#0000);border-radius:4px;box-shadow:0 4px 16px color-mix(in sRGB,currentColor 12%,#0000);color:var(--jp-search-page-ink,var(--wp--preset--color--contrast,var(--wp--preset--color--foreground,inherit)));display:flex;flex-direction:column;font-size:1rem;inset-block-start:calc(100% + 4px);inset-inline-end:0;min-width:160px;padding:4px;position:absolute;z-index:20}.jetpack-search-results-sort--popover .jetpack-search-results-sort__menu[hidden]{display:none}.jetpack-search-results-sort--popover .jetpack-search-results-sort__menu-item{appearance:none;background:#0000;border:none;border-radius:2px;color:inherit;cursor:pointer;font:inherit;padding:6px 8px;text-align:start}.jetpack-search-results-sort--popover :is(.jetpack-search-results-sort__menu-item:focus-visible,.jetpack-search-results-sort__menu-item:hover){background:color-mix(in sRGB,currentColor 8%,#0000)}.jetpack-search-results-sort--popover .jetpack-search-results-sort__menu-item[aria-checked=true]:before{content:"✓";margin-inline-end:6px}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/results-sort.css */
+</style>
+<style id="jetpack-search-search-input-style-inline-css">
+.jetpack-search-compact-toolbar>.wp-block-jetpack-search-search-input{flex:1 1 0;min-width:0}.wp-block-jetpack-search-search-input .jetpack-search-input__inside-wrapper{align-items:center;border-bottom:1px solid #0000;display:flex;gap:.5rem;padding:.5rem 0;position:relative}@supports(border-color:color-mix(in sRGB,black 50%,white)){.wp-block-jetpack-search-search-input .jetpack-search-input__inside-wrapper{border-bottom-color:color-mix(in sRGB,currentColor 15%,#0000)}}.wp-block-jetpack-search-search-input .jetpack-search-input__icon{fill:currentColor;flex:0 0 auto;height:1.5rem;opacity:.6;width:1.5rem}.wp-block-jetpack-search-search-input .jetpack-search-input__field{background:#0000;border:0;color:inherit;flex:1 1 auto;font-size:1.25rem;line-height:1.4;min-width:0;padding:0}.wp-block-jetpack-search-search-input .jetpack-search-input__field::-webkit-search-cancel-button,.wp-block-jetpack-search-search-input .jetpack-search-input__field::-webkit-search-decoration{appearance:none}.wp-block-jetpack-search-search-input .jetpack-search-input__field::placeholder{color:inherit;opacity:.5}.wp-block-jetpack-search-search-input .jetpack-search-input__field:focus{outline:none}.wp-block-jetpack-search-search-input .jetpack-search-input__clear{background:none;border:0;color:inherit;cursor:pointer;flex:0 0 auto;font-size:1rem;line-height:1;opacity:.6;padding:.25rem .5rem}.wp-block-jetpack-search-search-input .jetpack-search-input__clear[hidden]{display:none}.wp-block-jetpack-search-search-input :is(.jetpack-search-input__clear:focus-visible,.jetpack-search-input__clear:hover){opacity:1}.wp-block-jetpack-search-search-input .jetpack-search-input__suggestions{background-color:var(--jp-search-page-surface,var(--wp--preset--color--base,var(--wp--preset--color--background,#fff)));border:1px solid color-mix(in srgb,currentcolor 15%,#0000);border-radius:4px;box-shadow:0 4px 16px color-mix(in sRGB,currentColor 12%,#0000);color:var(--jp-search-page-ink,var(--wp--preset--color--contrast,var(--wp--preset--color--foreground,inherit)));font-size:1rem;left:0;list-style:none;margin:0;max-height:60vh;overflow-y:auto;overscroll-behavior:contain;padding:4px 0;position:absolute;right:0;top:calc(100% + 4px);z-index:20}.wp-block-jetpack-search-search-input .jetpack-search-input__suggestions[hidden]{display:none}@media(max-width:480px){.wp-block-jetpack-search-search-input .jetpack-search-input__suggestions{max-height:50vh}}.wp-block-jetpack-search-search-input .jetpack-search-input__suggestions-label{color:color-mix(in sRGB,currentColor 55%,#0000);font-size:.75rem;font-weight:600;letter-spacing:.06em;padding:8px 12px 4px;text-transform:uppercase}.wp-block-jetpack-search-search-input .jetpack-search-input__suggestions-option{border-radius:2px;color:inherit;cursor:pointer;font:inherit;line-height:1.4;padding:8px 12px}@media(max-width:480px){.wp-block-jetpack-search-search-input .jetpack-search-input__suggestions-option{padding:12px}}.wp-block-jetpack-search-search-input .jetpack-search-input__suggestions-option:hover{background:color-mix(in sRGB,currentColor 8%,#0000)}.wp-block-jetpack-search-search-input .jetpack-search-input__suggestions-option.is-active{background:color-mix(in sRGB,currentColor 14%,#0000)}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/search-input.css */
+</style>
+<style id="jetpack-search-search-results-style-inline-css">
+.jetpack-search-search-results{display:flex;flex-direction:column;gap:var(--wp--style--block-gap,1.5rem)}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-search/build/search-blocks/search-results.css */
+</style>
+<link rel='stylesheet' id='all-css-6ed645d95df99ee4d5c8b56a7b02239e' href='https://blog.mohw.gov.tw/_static/??-eJwrL9DNzEvOKU1JLdbPKtbPTU3JTEzNSc1NzStB4RTkJFamFunmpKYnJlfq5Wbm6SUXF+uU49ENlEPmw/TY59oamhkYGluamFuYAQAJTC6K' type='text/css' media='all' />
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--palette-color-1: var(--theme-palette-color-1, #2872fa);--wp--preset--color--palette-color-2: var(--theme-palette-color-2, #1559ed);--wp--preset--color--palette-color-3: var(--theme-palette-color-3, #3A4F66);--wp--preset--color--palette-color-4: var(--theme-palette-color-4, #192a3d);--wp--preset--color--palette-color-5: var(--theme-palette-color-5, #e1e8ed);--wp--preset--color--palette-color-6: var(--theme-palette-color-6, #f2f5f7);--wp--preset--color--palette-color-7: var(--theme-palette-color-7, #FAFBFC);--wp--preset--color--palette-color-8: var(--theme-palette-color-8, #ffffff);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--gradient--juicy-peach: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);--wp--preset--gradient--young-passion: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);--wp--preset--gradient--true-sunset: linear-gradient(to right, #fa709a 0%, #fee140 100%);--wp--preset--gradient--morpheus-den: linear-gradient(to top, #30cfd0 0%, #330867 100%);--wp--preset--gradient--plum-plate: linear-gradient(135deg, #667eea 0%, #764ba2 100%);--wp--preset--gradient--aqua-splash: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);--wp--preset--gradient--love-kiss: linear-gradient(to top, #ff0844 0%, #ffb199 100%);--wp--preset--gradient--new-retrowave: linear-gradient(to top, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%);--wp--preset--gradient--plum-bath: linear-gradient(to top, #cc208e 0%, #6713d2 100%);--wp--preset--gradient--high-flight: linear-gradient(to right, #0acffe 0%, #495aff 100%);--wp--preset--gradient--teen-party: linear-gradient(135deg, #FF057C 0%, #8D0B93 50%, #321575 100%);--wp--preset--gradient--fabled-sunset: linear-gradient(135deg, #231557 0%, #44107A 29%, #FF1361 67%, #FFF800 100%);--wp--preset--gradient--arielle-smile: radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%);--wp--preset--gradient--itmeo-branding: linear-gradient(180deg, #2af598 0%, #009efd 100%);--wp--preset--gradient--deep-blue: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);--wp--preset--gradient--strong-bliss: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);--wp--preset--gradient--sweet-period: linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);--wp--preset--gradient--purple-division: linear-gradient(to top, #7028e4 0%, #e5b2ca 100%);--wp--preset--gradient--cold-evening: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);--wp--preset--gradient--mountain-rock: linear-gradient(to right, #868f96 0%, #596164 100%);--wp--preset--gradient--desert-hump: linear-gradient(to top, #c79081 0%, #dfa579 100%);--wp--preset--gradient--ethernal-constance: linear-gradient(to top, #09203f 0%, #537895 100%);--wp--preset--gradient--happy-memories: linear-gradient(300deg, #ff5858 0%, #f09819 100%);--wp--preset--gradient--grown-early: linear-gradient(to top, #0ba360 0%, #3cba92 100%);--wp--preset--gradient--morning-salad: linear-gradient(135deg, #B7F8DB 0%, #50A7C2 100%);--wp--preset--gradient--night-call: linear-gradient(135deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);--wp--preset--gradient--mind-crawl: linear-gradient(135deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);--wp--preset--gradient--angel-care: linear-gradient(135deg, #FFE29F 0%, #FFA99F 48%, #FF719A 100%);--wp--preset--gradient--juicy-cake: linear-gradient(to top, #e14fad 0%, #f9d423 100%);--wp--preset--gradient--rich-metal: linear-gradient(to right, #d7d2cc 0%, #304352 100%);--wp--preset--gradient--mole-hall: linear-gradient(340deg, #616161 0%, #9bc5c3 100%);--wp--preset--gradient--cloudy-knoxville: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);--wp--preset--gradient--soft-grass: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);--wp--preset--gradient--saint-petersburg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);--wp--preset--gradient--everlasting-sky: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);--wp--preset--gradient--kind-steel: linear-gradient(340deg, #e9defa 0%, #fbfcdb 100%);--wp--preset--gradient--over-sun: linear-gradient(60deg, #abecd6 0%, #fbed96 100%);--wp--preset--gradient--premium-white: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);--wp--preset--gradient--clean-mirror: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);--wp--preset--gradient--wild-apple: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);--wp--preset--gradient--snow-again: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);--wp--preset--gradient--confident-cloud: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);--wp--preset--gradient--glass-water: linear-gradient(to top, #dfe9f3 0%, white 100%);--wp--preset--gradient--perfect-white: linear-gradient(135deg, #E3FDF5 0%, #FFE6FA 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: clamp(22px, 1.375rem + ((1vw - 3.2px) * 0.625), 30px);--wp--preset--font-size--x-large: clamp(30px, 1.875rem + ((1vw - 3.2px) * 1.563), 50px);--wp--preset--font-size--xx-large: clamp(45px, 2.813rem + ((1vw - 3.2px) * 2.734), 80px);--wp--preset--font-family--albert-sans: 'Albert Sans', sans-serif;--wp--preset--font-family--alegreya: Alegreya, serif;--wp--preset--font-family--arvo: Arvo, serif;--wp--preset--font-family--bodoni-moda: 'Bodoni Moda', serif;--wp--preset--font-family--bricolage-grotesque: 'Bricolage Grotesque', sans-serif;--wp--preset--font-family--cabin: Cabin, sans-serif;--wp--preset--font-family--chivo: Chivo, sans-serif;--wp--preset--font-family--commissioner: Commissioner, sans-serif;--wp--preset--font-family--cormorant: Cormorant, serif;--wp--preset--font-family--courier-prime: 'Courier Prime', monospace;--wp--preset--font-family--crimson-pro: 'Crimson Pro', serif;--wp--preset--font-family--dm-mono: 'DM Mono', monospace;--wp--preset--font-family--dm-sans: 'DM Sans', sans-serif;--wp--preset--font-family--dm-serif-display: 'DM Serif Display', serif;--wp--preset--font-family--domine: Domine, serif;--wp--preset--font-family--eb-garamond: 'EB Garamond', serif;--wp--preset--font-family--epilogue: Epilogue, sans-serif;--wp--preset--font-family--fahkwang: Fahkwang, sans-serif;--wp--preset--font-family--figtree: Figtree, sans-serif;--wp--preset--font-family--fira-sans: 'Fira Sans', sans-serif;--wp--preset--font-family--fjalla-one: 'Fjalla One', sans-serif;--wp--preset--font-family--fraunces: Fraunces, serif;--wp--preset--font-family--gabarito: Gabarito, system-ui;--wp--preset--font-family--ibm-plex-mono: 'IBM Plex Mono', monospace;--wp--preset--font-family--ibm-plex-sans: 'IBM Plex Sans', sans-serif;--wp--preset--font-family--ibarra-real-nova: 'Ibarra Real Nova', serif;--wp--preset--font-family--instrument-serif: 'Instrument Serif', serif;--wp--preset--font-family--inter: Inter, sans-serif;--wp--preset--font-family--josefin-sans: 'Josefin Sans', sans-serif;--wp--preset--font-family--jost: Jost, sans-serif;--wp--preset--font-family--libre-baskerville: 'Libre Baskerville', serif;--wp--preset--font-family--libre-franklin: 'Libre Franklin', sans-serif;--wp--preset--font-family--literata: Literata, serif;--wp--preset--font-family--lora: Lora, serif;--wp--preset--font-family--merriweather: Merriweather, serif;--wp--preset--font-family--montserrat: Montserrat, sans-serif;--wp--preset--font-family--newsreader: Newsreader, serif;--wp--preset--font-family--noto-sans-mono: 'Noto Sans Mono', sans-serif;--wp--preset--font-family--nunito: Nunito, sans-serif;--wp--preset--font-family--open-sans: 'Open Sans', sans-serif;--wp--preset--font-family--overpass: Overpass, sans-serif;--wp--preset--font-family--pt-serif: 'PT Serif', serif;--wp--preset--font-family--petrona: Petrona, serif;--wp--preset--font-family--piazzolla: Piazzolla, serif;--wp--preset--font-family--playfair-display: 'Playfair Display', serif;--wp--preset--font-family--plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;--wp--preset--font-family--poppins: Poppins, sans-serif;--wp--preset--font-family--raleway: Raleway, sans-serif;--wp--preset--font-family--roboto: Roboto, sans-serif;--wp--preset--font-family--roboto-slab: 'Roboto Slab', serif;--wp--preset--font-family--rubik: Rubik, sans-serif;--wp--preset--font-family--rufina: Rufina, serif;--wp--preset--font-family--sora: Sora, sans-serif;--wp--preset--font-family--source-sans-3: 'Source Sans 3', sans-serif;--wp--preset--font-family--source-serif-4: 'Source Serif 4', serif;--wp--preset--font-family--space-mono: 'Space Mono', monospace;--wp--preset--font-family--syne: Syne, sans-serif;--wp--preset--font-family--texturina: Texturina, serif;--wp--preset--font-family--urbanist: Urbanist, sans-serif;--wp--preset--font-family--work-sans: 'Work Sans', sans-serif;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:root { --wp--style--global--content-size: var(--theme-block-max-width);--wp--style--global--wide-size: var(--theme-block-wide-max-width); }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: var(--theme-content-spacing); margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: var(--theme-content-spacing); }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: var(--theme-content-spacing);margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: var(--theme-content-spacing);margin-block-end: 0;}:root :where(.is-layout-flex){gap: var(--theme-content-spacing);}:root :where(.is-layout-grid){gap: var(--theme-content-spacing);}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){font-style: inherit;font-weight: inherit;letter-spacing: inherit;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-palette-color-1-color{color: var(--wp--preset--color--palette-color-1) !important;}.has-palette-color-2-color{color: var(--wp--preset--color--palette-color-2) !important;}.has-palette-color-3-color{color: var(--wp--preset--color--palette-color-3) !important;}.has-palette-color-4-color{color: var(--wp--preset--color--palette-color-4) !important;}.has-palette-color-5-color{color: var(--wp--preset--color--palette-color-5) !important;}.has-palette-color-6-color{color: var(--wp--preset--color--palette-color-6) !important;}.has-palette-color-7-color{color: var(--wp--preset--color--palette-color-7) !important;}.has-palette-color-8-color{color: var(--wp--preset--color--palette-color-8) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-palette-color-1-background-color{background-color: var(--wp--preset--color--palette-color-1) !important;}.has-palette-color-2-background-color{background-color: var(--wp--preset--color--palette-color-2) !important;}.has-palette-color-3-background-color{background-color: var(--wp--preset--color--palette-color-3) !important;}.has-palette-color-4-background-color{background-color: var(--wp--preset--color--palette-color-4) !important;}.has-palette-color-5-background-color{background-color: var(--wp--preset--color--palette-color-5) !important;}.has-palette-color-6-background-color{background-color: var(--wp--preset--color--palette-color-6) !important;}.has-palette-color-7-background-color{background-color: var(--wp--preset--color--palette-color-7) !important;}.has-palette-color-8-background-color{background-color: var(--wp--preset--color--palette-color-8) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-palette-color-1-border-color{border-color: var(--wp--preset--color--palette-color-1) !important;}.has-palette-color-2-border-color{border-color: var(--wp--preset--color--palette-color-2) !important;}.has-palette-color-3-border-color{border-color: var(--wp--preset--color--palette-color-3) !important;}.has-palette-color-4-border-color{border-color: var(--wp--preset--color--palette-color-4) !important;}.has-palette-color-5-border-color{border-color: var(--wp--preset--color--palette-color-5) !important;}.has-palette-color-6-border-color{border-color: var(--wp--preset--color--palette-color-6) !important;}.has-palette-color-7-border-color{border-color: var(--wp--preset--color--palette-color-7) !important;}.has-palette-color-8-border-color{border-color: var(--wp--preset--color--palette-color-8) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-juicy-peach-gradient-background{background: var(--wp--preset--gradient--juicy-peach) !important;}.has-young-passion-gradient-background{background: var(--wp--preset--gradient--young-passion) !important;}.has-true-sunset-gradient-background{background: var(--wp--preset--gradient--true-sunset) !important;}.has-morpheus-den-gradient-background{background: var(--wp--preset--gradient--morpheus-den) !important;}.has-plum-plate-gradient-background{background: var(--wp--preset--gradient--plum-plate) !important;}.has-aqua-splash-gradient-background{background: var(--wp--preset--gradient--aqua-splash) !important;}.has-love-kiss-gradient-background{background: var(--wp--preset--gradient--love-kiss) !important;}.has-new-retrowave-gradient-background{background: var(--wp--preset--gradient--new-retrowave) !important;}.has-plum-bath-gradient-background{background: var(--wp--preset--gradient--plum-bath) !important;}.has-high-flight-gradient-background{background: var(--wp--preset--gradient--high-flight) !important;}.has-teen-party-gradient-background{background: var(--wp--preset--gradient--teen-party) !important;}.has-fabled-sunset-gradient-background{background: var(--wp--preset--gradient--fabled-sunset) !important;}.has-arielle-smile-gradient-background{background: var(--wp--preset--gradient--arielle-smile) !important;}.has-itmeo-branding-gradient-background{background: var(--wp--preset--gradient--itmeo-branding) !important;}.has-deep-blue-gradient-background{background: var(--wp--preset--gradient--deep-blue) !important;}.has-strong-bliss-gradient-background{background: var(--wp--preset--gradient--strong-bliss) !important;}.has-sweet-period-gradient-background{background: var(--wp--preset--gradient--sweet-period) !important;}.has-purple-division-gradient-background{background: var(--wp--preset--gradient--purple-division) !important;}.has-cold-evening-gradient-background{background: var(--wp--preset--gradient--cold-evening) !important;}.has-mountain-rock-gradient-background{background: var(--wp--preset--gradient--mountain-rock) !important;}.has-desert-hump-gradient-background{background: var(--wp--preset--gradient--desert-hump) !important;}.has-ethernal-constance-gradient-background{background: var(--wp--preset--gradient--ethernal-constance) !important;}.has-happy-memories-gradient-background{background: var(--wp--preset--gradient--happy-memories) !important;}.has-grown-early-gradient-background{background: var(--wp--preset--gradient--grown-early) !important;}.has-morning-salad-gradient-background{background: var(--wp--preset--gradient--morning-salad) !important;}.has-night-call-gradient-background{background: var(--wp--preset--gradient--night-call) !important;}.has-mind-crawl-gradient-background{background: var(--wp--preset--gradient--mind-crawl) !important;}.has-angel-care-gradient-background{background: var(--wp--preset--gradient--angel-care) !important;}.has-juicy-cake-gradient-background{background: var(--wp--preset--gradient--juicy-cake) !important;}.has-rich-metal-gradient-background{background: var(--wp--preset--gradient--rich-metal) !important;}.has-mole-hall-gradient-background{background: var(--wp--preset--gradient--mole-hall) !important;}.has-cloudy-knoxville-gradient-background{background: var(--wp--preset--gradient--cloudy-knoxville) !important;}.has-soft-grass-gradient-background{background: var(--wp--preset--gradient--soft-grass) !important;}.has-saint-petersburg-gradient-background{background: var(--wp--preset--gradient--saint-petersburg) !important;}.has-everlasting-sky-gradient-background{background: var(--wp--preset--gradient--everlasting-sky) !important;}.has-kind-steel-gradient-background{background: var(--wp--preset--gradient--kind-steel) !important;}.has-over-sun-gradient-background{background: var(--wp--preset--gradient--over-sun) !important;}.has-premium-white-gradient-background{background: var(--wp--preset--gradient--premium-white) !important;}.has-clean-mirror-gradient-background{background: var(--wp--preset--gradient--clean-mirror) !important;}.has-wild-apple-gradient-background{background: var(--wp--preset--gradient--wild-apple) !important;}.has-snow-again-gradient-background{background: var(--wp--preset--gradient--snow-again) !important;}.has-confident-cloud-gradient-background{background: var(--wp--preset--gradient--confident-cloud) !important;}.has-glass-water-gradient-background{background: var(--wp--preset--gradient--glass-water) !important;}.has-perfect-white-gradient-background{background: var(--wp--preset--gradient--perfect-white) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-xx-large-font-size{font-size: var(--wp--preset--font-size--xx-large) !important;}.has-albert-sans-font-family{font-family: var(--wp--preset--font-family--albert-sans) !important;}.has-alegreya-font-family{font-family: var(--wp--preset--font-family--alegreya) !important;}.has-arvo-font-family{font-family: var(--wp--preset--font-family--arvo) !important;}.has-bodoni-moda-font-family{font-family: var(--wp--preset--font-family--bodoni-moda) !important;}.has-bricolage-grotesque-font-family{font-family: var(--wp--preset--font-family--bricolage-grotesque) !important;}.has-cabin-font-family{font-family: var(--wp--preset--font-family--cabin) !important;}.has-chivo-font-family{font-family: var(--wp--preset--font-family--chivo) !important;}.has-commissioner-font-family{font-family: var(--wp--preset--font-family--commissioner) !important;}.has-cormorant-font-family{font-family: var(--wp--preset--font-family--cormorant) !important;}.has-courier-prime-font-family{font-family: var(--wp--preset--font-family--courier-prime) !important;}.has-crimson-pro-font-family{font-family: var(--wp--preset--font-family--crimson-pro) !important;}.has-dm-mono-font-family{font-family: var(--wp--preset--font-family--dm-mono) !important;}.has-dm-sans-font-family{font-family: var(--wp--preset--font-family--dm-sans) !important;}.has-dm-serif-display-font-family{font-family: var(--wp--preset--font-family--dm-serif-display) !important;}.has-domine-font-family{font-family: var(--wp--preset--font-family--domine) !important;}.has-eb-garamond-font-family{font-family: var(--wp--preset--font-family--eb-garamond) !important;}.has-epilogue-font-family{font-family: var(--wp--preset--font-family--epilogue) !important;}.has-fahkwang-font-family{font-family: var(--wp--preset--font-family--fahkwang) !important;}.has-figtree-font-family{font-family: var(--wp--preset--font-family--figtree) !important;}.has-fira-sans-font-family{font-family: var(--wp--preset--font-family--fira-sans) !important;}.has-fjalla-one-font-family{font-family: var(--wp--preset--font-family--fjalla-one) !important;}.has-fraunces-font-family{font-family: var(--wp--preset--font-family--fraunces) !important;}.has-gabarito-font-family{font-family: var(--wp--preset--font-family--gabarito) !important;}.has-ibm-plex-mono-font-family{font-family: var(--wp--preset--font-family--ibm-plex-mono) !important;}.has-ibm-plex-sans-font-family{font-family: var(--wp--preset--font-family--ibm-plex-sans) !important;}.has-ibarra-real-nova-font-family{font-family: var(--wp--preset--font-family--ibarra-real-nova) !important;}.has-instrument-serif-font-family{font-family: var(--wp--preset--font-family--instrument-serif) !important;}.has-inter-font-family{font-family: var(--wp--preset--font-family--inter) !important;}.has-josefin-sans-font-family{font-family: var(--wp--preset--font-family--josefin-sans) !important;}.has-jost-font-family{font-family: var(--wp--preset--font-family--jost) !important;}.has-libre-baskerville-font-family{font-family: var(--wp--preset--font-family--libre-baskerville) !important;}.has-libre-franklin-font-family{font-family: var(--wp--preset--font-family--libre-franklin) !important;}.has-literata-font-family{font-family: var(--wp--preset--font-family--literata) !important;}.has-lora-font-family{font-family: var(--wp--preset--font-family--lora) !important;}.has-merriweather-font-family{font-family: var(--wp--preset--font-family--merriweather) !important;}.has-montserrat-font-family{font-family: var(--wp--preset--font-family--montserrat) !important;}.has-newsreader-font-family{font-family: var(--wp--preset--font-family--newsreader) !important;}.has-noto-sans-mono-font-family{font-family: var(--wp--preset--font-family--noto-sans-mono) !important;}.has-nunito-font-family{font-family: var(--wp--preset--font-family--nunito) !important;}.has-open-sans-font-family{font-family: var(--wp--preset--font-family--open-sans) !important;}.has-overpass-font-family{font-family: var(--wp--preset--font-family--overpass) !important;}.has-pt-serif-font-family{font-family: var(--wp--preset--font-family--pt-serif) !important;}.has-petrona-font-family{font-family: var(--wp--preset--font-family--petrona) !important;}.has-piazzolla-font-family{font-family: var(--wp--preset--font-family--piazzolla) !important;}.has-playfair-display-font-family{font-family: var(--wp--preset--font-family--playfair-display) !important;}.has-plus-jakarta-sans-font-family{font-family: var(--wp--preset--font-family--plus-jakarta-sans) !important;}.has-poppins-font-family{font-family: var(--wp--preset--font-family--poppins) !important;}.has-raleway-font-family{font-family: var(--wp--preset--font-family--raleway) !important;}.has-roboto-font-family{font-family: var(--wp--preset--font-family--roboto) !important;}.has-roboto-slab-font-family{font-family: var(--wp--preset--font-family--roboto-slab) !important;}.has-rubik-font-family{font-family: var(--wp--preset--font-family--rubik) !important;}.has-rufina-font-family{font-family: var(--wp--preset--font-family--rufina) !important;}.has-sora-font-family{font-family: var(--wp--preset--font-family--sora) !important;}.has-source-sans-3-font-family{font-family: var(--wp--preset--font-family--source-sans-3) !important;}.has-source-serif-4-font-family{font-family: var(--wp--preset--font-family--source-serif-4) !important;}.has-space-mono-font-family{font-family: var(--wp--preset--font-family--space-mono) !important;}.has-syne-font-family{font-family: var(--wp--preset--font-family--syne) !important;}.has-texturina-font-family{font-family: var(--wp--preset--font-family--texturina) !important;}.has-urbanist-font-family{font-family: var(--wp--preset--font-family--urbanist) !important;}.has-work-sans-font-family{font-family: var(--wp--preset--font-family--work-sans) !important;}
+:root :where(.wp-block-icon svg){width: 24px;}
+:root :where(.wp-block-pullquote){font-size: clamp(0.984em, 0.984rem + ((1vw - 0.2em) * 0.645), 1.5em);line-height: 1.6;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<style id="jetpack-stats-inline-css">
+img#wpstats{display:none}
+/*# sourceURL=jetpack-stats-inline-css */
+</style>
+<link rel='stylesheet' id='all-css-77ee5e806ce7c363ef5f5877b0795435' href='https://blog.mohw.gov.tw/_static/??-eJydkMEOwiAMhl9IbNQDuxifBVi3oUAJLZm+vcx43EE8NGnz9/+/tGtWjpJgEpAFIzLYQO7BL2Ax4h3YmsaAEI1Px9jKMR/WH03ZzKjES8BuK4YmJqGipvLZH7sj2uQexv4BX/NEJXI/cTEFlaVnt7NgMIKjysSyy82hzj4x3FFyOwsijTW0OEdx+xMDV8uu+CyekmqqCao1X3lH3QC3eD1pPQwXfR70G9hqxyI=' type='text/css' media='all' />
+<style id="jetpack_likes-inline-css">
+#jp-post-flair{padding-top:.5em}#content div.sharedaddy,#main div.sharedaddy,div.sharedaddy{clear:both}div.sharedaddy h3.sd-title{display:inline-block;font-size:9pt;font-weight:700;line-height:1.2;margin:0 0 1em}div.sharedaddy h3.sd-title:before{border-top:1px solid #dcdcde;content:"";display:block;margin-bottom:1em;min-width:30px;width:100%}div.jetpack-likes-widget-wrapper{min-height:50px;position:relative;width:100%}div.jetpack-likes-widget-wrapper .sd-link-color{font-size:12px}div.jetpack-comment-likes-widget-wrapper{min-height:31px;position:relative;width:100%}div.jetpack-comment-likes-widget-wrapper iframe{margin-bottom:0}#likes-other-gravatars{background-color:#fff;border:1px solid #dcdcde;border-radius:4px;box-shadow:none;display:none;height:auto;max-height:240px;min-width:220px;overflow:auto;padding:9px 12px 10px;position:absolute;z-index:1000}#likes-other-gravatars *{line-height:normal}#likes-other-gravatars .likes-text{color:#101517;font-size:12px;font-weight:500;padding-bottom:8px}#likes-other-gravatars :is(li,ul){list-style-type:none;margin:0;padding:0;text-indent:0}#likes-other-gravatars li:before{content:""}#likes-other-gravatars ul.wpl-avatars{display:block;max-height:190px;overflow:auto}#likes-other-gravatars ul.wpl-avatars li{float:none;height:28px;margin:0 0 4px;width:196px}#likes-other-gravatars ul.wpl-avatars li a{align-items:center;border-bottom:none!important;display:flex;gap:8px;margin:0 2px 0 0;text-decoration:none}#likes-other-gravatars ul.wpl-avatars li a span{color:#2c3338;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#likes-other-gravatars ul.wpl-avatars li a img{background:none;border:none;border-radius:50%;box-sizing:border-box;margin:0!important;padding:1px!important;position:static}div.sd-box{border-top:1px solid #00000021}.jetpack-likes-widget-loaded iframe,.jetpack-likes-widget-loading .likes-widget-placeholder,.jetpack-likes-widget-unloaded .likes-widget-placeholder{display:block}.jetpack-likes-widget-loaded .likes-widget-placeholder,.jetpack-likes-widget-loading iframe,.jetpack-likes-widget-unloaded iframe{display:none}.comment-likes-widget,.entry-content .post-likes-widget,.post-likes-widget{border-width:0;margin:0}.comment-likes-widget-placeholder,.post-likes-widget-placeholder{border-width:0;margin:0;position:relative}.comment-likes-widget-placeholder{display:flex;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;height:18px;position:absolute}.comment-likes-widget-placeholder:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath fill='%232ea2cc' d='m12 2 2.582 6.953L22 9.257l-5.822 4.602L18.18 21 12 16.89 5.82 21l2.002-7.14L2 9.256l7.418-.304'/%3E%3C/svg%3E");background-repeat:no-repeat;background-size:16px 16px;color:#2ea2cc;content:"";display:inline-block;height:16px;padding-right:5px;position:relative;top:3px;width:16px}.post-likes-widget-placeholder .button{display:none}:is(.comment-likes-widget-placeholder,.post-likes-widget-placeholder) .loading{color:#999;font-size:12px}.comment-likes-widget-placeholder .loading{align-self:center;color:#4e4e4e;margin-top:4px;padding-left:5px}div.sharedaddy.sd-like-enabled .sd-like h3{display:none}div.sharedaddy.sd-like-enabled .sd-like .post-likes-widget{float:none;position:absolute;top:0;width:100%}.comment-likes-widget{width:100%}.cs-rating,.pd-rating{display:block!important}.sd-gplus .sd-title{display:none}@media print{.jetpack-likes-widget-wrapper{display:none}}
+/*# sourceURL=https://blog.mohw.gov.tw/wp-content/plugins/jetpack/_inc/build/likes/style.min.css */
+</style>
+<style id="jetpack-global-styles-frontend-style-inline-css">
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+/*# sourceURL=jetpack-global-styles-frontend-style-inline-css */
+</style>
+<script id="jetpack-mu-wpcom-settings-js-before">
+var JETPACK_MU_WPCOM_SETTINGS = {"assetsUrl":"https://blog.mohw.gov.tw/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/jetpack-mu-wpcom/src/build/"};
+//# sourceURL=jetpack-mu-wpcom-settings-js-before
+</script>
+<link rel="https://api.w.org/" href="https://blog.mohw.gov.tw/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://blog.mohw.gov.tw/wp-json/wp/v2/posts/2084" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.mohw.gov.tw/xmlrpc.php?rsd" />
+
+<link rel="canonical" href="https://blog.mohw.gov.tw/2084/" />
+<link rel='shortlink' href='https://wp.me/pfTOGC-xC' />
+<noscript><link rel='stylesheet' href='https://blog.mohw.gov.tw/wp-content/themes/blocksy/static/bundle/no-scripts.min.css' type='text/css'></noscript>
+<meta name="generator" content="Elementor 4.2.0-dev2; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
+<meta name="description" content="「軟體基建」是智慧醫療落地的最後一哩路。從 FHIR 標準到 SMART 框架，這些技術已演變為推動數位平權、..." />
+			<style>
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload),
+				.e-con.e-parent:nth-of-type(n+4):not(.e-lazyloaded):not(.e-no-lazyload) * {
+					background-image: none !important;
+				}
+				@media screen and (max-height: 1024px) {
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+3):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+				@media screen and (max-height: 640px) {
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload),
+					.e-con.e-parent:nth-of-type(n+2):not(.e-lazyloaded):not(.e-no-lazyload) * {
+						background-image: none !important;
+					}
+				}
+			</style>
+			
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="台灣 SMART on FHIR 國家級基建的轉型之路" />
+<meta property="og:url" content="https://blog.mohw.gov.tw/2084/" />
+<meta property="og:description" content="「軟體基建」是智慧醫療落地的最後一哩路。從 FHIR 標準到 SMART 框架，這些技術已演變為推動數位平權、提升醫療品質的社會引擎" />
+<meta property="article:published_time" content="2026-05-14T02:10:29+00:00" />
+<meta property="article:modified_time" content="2026-05-18T07:00:39+00:00" />
+<meta property="og:site_name" content="衛生福利部部落格" />
+<meta property="og:image" content="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/1.jpeg?fit=960%2C420&#038;ssl=1" />
+<meta property="og:image:width" content="960" />
+<meta property="og:image:height" content="420" />
+<meta property="og:image:alt" content="" />
+<meta property="og:locale" content="zh_TW" />
+<meta name="twitter:text:title" content="【李建璋觀點】從數位孤島到醫療生態系：台灣 SMART on FHIR 國家級基建的轉型之路" />
+<meta name="twitter:image" content="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/1.jpeg?fit=960%2C420&#038;ssl=1&#038;w=640" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="icon" href="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/e6ada3e696b9_e5b7a5e4bd9ce58d80e59f9f-1.png?fit=32%2C32&#038;ssl=1" sizes="32x32" />
+<link rel="icon" href="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/e6ada3e696b9_e5b7a5e4bd9ce58d80e59f9f-1.png?fit=192%2C192&#038;ssl=1" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/e6ada3e696b9_e5b7a5e4bd9ce58d80e59f9f-1.png?fit=180%2C180&#038;ssl=1" />
+<meta name="msapplication-TileImage" content="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/e6ada3e696b9_e5b7a5e4bd9ce58d80e59f9f-1.png?fit=270%2C270&#038;ssl=1" />
+	</head>
+
+
+<body class="wp-singular post-template-default single single-post postid-2084 single-format-standard wp-custom-logo wp-embed-responsive wp-theme-blocksy stk--is-blocksy-theme elementor-beta elementor-default elementor-kit-45 ct-elementor-default-template" data-link="type-2" data-prefix="single_blog_post" data-header="type-1:sticky" data-footer="type-1" itemscope="itemscope" itemtype="https://schema.org/Blog">
+
+<script id='jetpack-search-theme-token-sampler'>(function(){try{var c=getComputedStyle(document.body),r=document.documentElement,ink=c.color,bg=c.backgroundColor;if(ink){r.style.setProperty('--jp-search-page-ink',ink);}if(bg&&bg!==ink&&bg!=='rgba(0, 0, 0, 0)'&&bg!=='transparent'){r.style.setProperty('--jp-search-page-surface',bg);}}catch(e){}})();</script><a class="skip-link screen-reader-text" href="#main">跳至主要內容</a><div class="ct-drawer-canvas" data-location="start">
+		<div id="search-modal" class="ct-panel" data-behaviour="modal" role="dialog" aria-label="搜尋對話框" inert>
+			<div class="ct-panel-actions">
+				<button class="ct-toggle-close" data-type="type-1" aria-label="關閉搜尋互動視窗">
+					<svg class="ct-icon" width="12" height="12" viewBox="0 0 15 15"><path d="M1 15a1 1 0 01-.71-.29 1 1 0 010-1.41l5.8-5.8-5.8-5.8A1 1 0 011.7.29l5.8 5.8 5.8-5.8a1 1 0 011.41 1.41l-5.8 5.8 5.8 5.8a1 1 0 01-1.41 1.41l-5.8-5.8-5.8 5.8A1 1 0 011 15z"/></svg>				</button>
+			</div>
+
+			<div class="ct-panel-content">
+				
+
+<form role="search" method="get" class="ct-search-form"  action="https://blog.mohw.gov.tw/" aria-haspopup="listbox" >
+
+	<input
+		type="search" class="modal-field"		placeholder="搜尋"
+		value=""
+		name="s"
+		autocomplete="off"
+		title="搜尋..."
+		aria-label="搜尋..."
+			>
+
+	<div class="ct-search-form-controls">
+		
+		<button type="submit" class="wp-element-button" data-button="icon" aria-label="搜尋按鈕">
+			<svg class="ct-icon ct-search-button-content" aria-hidden="true" width="15" height="15" viewBox="0 0 15 15"><path d="M14.8,13.7L12,11c0.9-1.2,1.5-2.6,1.5-4.2c0-3.7-3-6.8-6.8-6.8S0,3,0,6.8s3,6.8,6.8,6.8c1.6,0,3.1-0.6,4.2-1.5l2.8,2.8c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2C15.1,14.5,15.1,14,14.8,13.7z M1.5,6.8c0-2.9,2.4-5.2,5.2-5.2S12,3.9,12,6.8S9.6,12,6.8,12S1.5,9.6,1.5,6.8z"/></svg>
+			<span class="ct-ajax-loader">
+				<svg viewBox="0 0 24 24">
+					<circle cx="12" cy="12" r="10" opacity="0.2" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2"/>
+
+					<path d="m12,2c5.52,0,10,4.48,10,10" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2">
+						<animateTransform
+							attributeName="transform"
+							attributeType="XML"
+							type="rotate"
+							dur="0.6s"
+							from="0 12 12"
+							to="360 12 12"
+							repeatCount="indefinite"
+						/>
+					</path>
+				</svg>
+			</span>
+		</button>
+
+		
+					<input type="hidden" name="ct_post_type" value="post:page">
+		
+		
+
+			</div>
+
+	
+</form>
+
+
+			</div>
+		</div>
+
+		<div id="offcanvas" class="ct-panel ct-header" data-behaviour="right-side" role="dialog" aria-label="滑入對話框" inert=""><div class="ct-panel-inner">
+				<div class="ct-panel-actions">
+					
+					
+				<button class="ct-toggle-close" data-type="type-1" aria-label="關閉側選單">
+					<svg class="ct-icon" width="12" height="12" viewBox="0 0 15 15"><path d="M1 15a1 1 0 01-.71-.29 1 1 0 010-1.41l5.8-5.8-5.8-5.8A1 1 0 011.7.29l5.8 5.8 5.8-5.8a1 1 0 011.41 1.41l-5.8 5.8 5.8 5.8a1 1 0 01-1.41 1.41l-5.8-5.8-5.8 5.8A1 1 0 011 15z"/></svg>
+				</button>
+			
+				</div>
+			<div class="ct-panel-content" data-device="desktop"><div class="ct-panel-content-inner"></div></div><div class="ct-panel-content" data-device="mobile"><div class="ct-panel-content-inner">
+<nav
+	class="mobile-menu menu-container"
+	data-id="mobile-menu" data-interaction="click" data-toggle-type="type-1" data-submenu-dots="yes"	aria-label="上方目錄清單">
+
+	<ul id="menu-%e4%b8%8a%e6%96%b9%e7%9b%ae%e9%8c%84%e6%b8%85%e5%96%ae-1" class=""><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-429"><a href="https://blog.mohw.gov.tw/" class="ct-menu-link">最新文章</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-438"><a href="https://blog.mohw.gov.tw/%e9%97%9c%e6%96%bc%e9%83%a8%e8%90%bd%e6%a0%bc/" class="ct-menu-link">關於部落格</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-814"><a href="https://www.mohw.gov.tw/mp-1.html" class="ct-menu-link">衛福部官網</a></li>
+</ul></nav>
+
+</div></div></div></div></div>
+<div id="main-container">
+	<header id="header" class="ct-header" data-id="type-1" itemscope="" itemtype="https://schema.org/WPHeader"><div data-device="desktop"><div class="ct-sticky-container"><div data-sticky="shrink"><div data-row="middle" data-column-set="2"><div class="ct-container"><div data-column="start" data-placements="1"><div data-items="primary">
+<div	class="site-branding"
+	data-id="logo"		itemscope="itemscope" itemtype="https://schema.org/Organization">
+
+			<a href="https://blog.mohw.gov.tw/" class="site-logo-container" rel="home" itemprop="url" ><img loading="lazy" width="887" height="164" src="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?fit=887%2C164&amp;ssl=1" class="default-logo" alt="衛生福利部部落格" decoding="async" srcset="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?w=887&amp;ssl=1 887w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?resize=300%2C55&amp;ssl=1 300w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?resize=150%2C28&amp;ssl=1 150w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?resize=768%2C142&amp;ssl=1 768w" sizes="(max-width: 887px) 100vw, 887px" data-attachment-id="206" data-permalink="https://blog.mohw.gov.tw/?attachment_id=206" data-orig-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?fit=887%2C164&amp;ssl=1" data-orig-size="887,164" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="MOHW-blog-LOGO-1" data-image-description="" data-image-caption="" data-large-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?fit=887%2C164&amp;ssl=1" /></a>	
+	</div>
+
+</div></div><div data-column="end" data-placements="1"><div data-items="primary">
+<button
+	class="ct-header-search ct-toggle "
+	data-toggle-panel="#search-modal"
+	aria-controls="search-modal"
+	aria-label="搜尋"
+	data-label="left"
+	data-id="search">
+
+	<span class="ct-label ct-hidden-sm ct-hidden-md ct-hidden-lg" aria-hidden="true">搜尋</span>
+
+	<svg class="ct-icon" aria-hidden="true" width="15" height="15" viewBox="0 0 15 15"><path d="M14.8,13.7L12,11c0.9-1.2,1.5-2.6,1.5-4.2c0-3.7-3-6.8-6.8-6.8S0,3,0,6.8s3,6.8,6.8,6.8c1.6,0,3.1-0.6,4.2-1.5l2.8,2.8c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2C15.1,14.5,15.1,14,14.8,13.7z M1.5,6.8c0-2.9,2.4-5.2,5.2-5.2S12,3.9,12,6.8S9.6,12,6.8,12S1.5,9.6,1.5,6.8z"/></svg></button>
+</div></div></div></div></div></div><div data-row="bottom" data-column-set="1"><div class="ct-container"><div data-column="start" data-placements="1"><div data-items="primary">
+<nav
+	id="header-menu-1"
+	class="header-menu-1 menu-container"
+	data-id="menu" data-interaction="hover"	data-menu="type-1"
+	data-dropdown="type-1:simple"		data-responsive="no"	itemscope="" itemtype="https://schema.org/SiteNavigationElement"	aria-label="上方目錄清單">
+
+	<ul id="menu-%e4%b8%8a%e6%96%b9%e7%9b%ae%e9%8c%84%e6%b8%85%e5%96%ae" class="menu"><li id="menu-item-429" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-429"><a href="https://blog.mohw.gov.tw/" class="ct-menu-link">最新文章</a></li>
+<li id="menu-item-438" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-438"><a href="https://blog.mohw.gov.tw/%e9%97%9c%e6%96%bc%e9%83%a8%e8%90%bd%e6%a0%bc/" class="ct-menu-link">關於部落格</a></li>
+<li id="menu-item-814" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-814"><a href="https://www.mohw.gov.tw/mp-1.html" class="ct-menu-link">衛福部官網</a></li>
+</ul></nav>
+
+</div></div></div></div></div><div data-device="mobile"><div class="ct-sticky-container"><div data-sticky="shrink"><div data-row="middle" data-column-set="2"><div class="ct-container"><div data-column="start" data-placements="1"><div data-items="primary">
+<div	class="site-branding"
+	data-id="logo"		>
+
+			<a href="https://blog.mohw.gov.tw/" class="site-logo-container" rel="home" itemprop="url" ><img loading="lazy" width="887" height="164" src="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?fit=887%2C164&amp;ssl=1" class="default-logo" alt="衛生福利部部落格" decoding="async" srcset="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?w=887&amp;ssl=1 887w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?resize=300%2C55&amp;ssl=1 300w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?resize=150%2C28&amp;ssl=1 150w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?resize=768%2C142&amp;ssl=1 768w" sizes="(max-width: 887px) 100vw, 887px" data-attachment-id="206" data-permalink="https://blog.mohw.gov.tw/?attachment_id=206" data-orig-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?fit=887%2C164&amp;ssl=1" data-orig-size="887,164" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="MOHW-blog-LOGO-1" data-image-description="" data-image-caption="" data-large-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2024/07/MOHW-blog-LOGO-1.png?fit=887%2C164&amp;ssl=1" /></a>	
+	</div>
+
+</div></div><div data-column="end" data-placements="1"><div data-items="primary">
+<button
+	class="ct-header-search ct-toggle "
+	data-toggle-panel="#search-modal"
+	aria-controls="search-modal"
+	aria-label="搜尋"
+	data-label="left"
+	data-id="search">
+
+	<span class="ct-label ct-hidden-sm ct-hidden-md ct-hidden-lg" aria-hidden="true">搜尋</span>
+
+	<svg class="ct-icon" aria-hidden="true" width="15" height="15" viewBox="0 0 15 15"><path d="M14.8,13.7L12,11c0.9-1.2,1.5-2.6,1.5-4.2c0-3.7-3-6.8-6.8-6.8S0,3,0,6.8s3,6.8,6.8,6.8c1.6,0,3.1-0.6,4.2-1.5l2.8,2.8c0.1,0.1,0.3,0.2,0.5,0.2s0.4-0.1,0.5-0.2C15.1,14.5,15.1,14,14.8,13.7z M1.5,6.8c0-2.9,2.4-5.2,5.2-5.2S12,3.9,12,6.8S9.6,12,6.8,12S1.5,9.6,1.5,6.8z"/></svg></button>
+
+<button
+	class="ct-header-trigger ct-toggle "
+	data-toggle-panel="#offcanvas"
+	aria-controls="offcanvas"
+	data-design="simple"
+	data-label="right"
+	aria-label="選單"
+	data-id="trigger">
+
+	<span class="ct-label ct-hidden-sm ct-hidden-md ct-hidden-lg" aria-hidden="true">選單</span>
+
+	<svg class="ct-icon" width="18" height="14" viewBox="0 0 18 14" data-type="type-1" aria-hidden="true">
+		<rect y="0.00" width="18" height="1.7" rx="1"/>
+		<rect y="6.15" width="18" height="1.7" rx="1"/>
+		<rect y="12.3" width="18" height="1.7" rx="1"/>
+	</svg></button>
+</div></div></div></div></div></div></div></header>
+	<main id="main" class="site-main hfeed" itemscope="itemscope" itemtype="https://schema.org/CreativeWork">
+
+		
+	<div
+		class="ct-container-full"
+				data-content="normal"		data-vertical-spacing="top:bottom">
+
+		
+		
+	<article
+		id="post-2084"
+		class="post-2084 post type-post status-publish format-standard has-post-thumbnail hentry category-96987517 tag-agentic-ai tag-96987718 tag-96987715 tag-ai tag-96987717 tag-96987534 tag-96987714 tag-fhir tag-genai tag-his tag-medical-ai tag-oauth-2-0 tag-one-click-note tag-smart tag-smart-on-fhir tag-thas tag-twpas tag-vitalflow-ed tag-96987511">
+
+		
+<div class="hero-section is-width-constrained" data-type="type-1">
+			<header class="entry-header">
+			
+			<nav class="ct-breadcrumbs" data-source="default"  itemscope="" itemtype="https://schema.org/BreadcrumbList"><span class="first-item" itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem"><meta itemprop="position" content="1"><a href="https://blog.mohw.gov.tw/" itemprop="item"><span itemprop="name">導覽列：首頁</span></a><meta itemprop="url" content="https://blog.mohw.gov.tw/"/><svg class="ct-separator" fill="currentColor" width="8" height="8" viewBox="0 0 8 8" aria-hidden="true" focusable="false">
+				<path d="M2,6.9L4.8,4L2,1.1L2.6,0l4,4l-4,4L2,6.9z"/>
+			</svg></span><span class="item-0"itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem"><meta itemprop="position" content="2"><a href="https://blog.mohw.gov.tw/category/%e6%99%ba%e6%85%a7%e9%86%ab%e7%99%82/" itemprop="item"><span itemprop="name">智慧醫療</span></a><meta itemprop="url" content="https://blog.mohw.gov.tw/category/%e6%99%ba%e6%85%a7%e9%86%ab%e7%99%82/"/><svg class="ct-separator" fill="currentColor" width="8" height="8" viewBox="0 0 8 8" aria-hidden="true" focusable="false">
+				<path d="M2,6.9L4.8,4L2,1.1L2.6,0l4,4l-4,4L2,6.9z"/>
+			</svg></span><span class="last-item" aria-current="page" itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem"><meta itemprop="position" content="3"><span itemprop="name">【李建璋觀點】從數位孤島到醫療生態系：台灣 SMART on FHIR 國家級基建的轉型之路</span><meta itemprop="url" content="https://blog.mohw.gov.tw/2084/"/></span>			</nav>
+
+		<h1 class="page-title" itemprop="headline">【李建璋觀點】從數位孤島到醫療生態系：台灣 SMART on FHIR 國家級基建的轉型之路</h1><ul class="entry-meta" data-type="icons:slash" ><li class="meta-author" itemprop="author" itemscope="" itemtype="https://schema.org/Person"><a href="https://blog.mohw.gov.tw/author/chienchangmohw/" tabindex="-1" class="ct-media-container-static"><img loading="lazy" src="https://secure.gravatar.com/avatar/18608f735f4bbf8dedf78c5ef0d695a51d387170140735022b6d6343cfe3c4ef?s=100&amp;d=identicon&amp;r=g" width="50" height="50" style="height:50px" alt="李建璋, Chien-Chang Lee"></a><a class="ct-meta-element-author" href="https://blog.mohw.gov.tw/author/chienchangmohw/" title="作者 李建璋, Chien-Chang Lee" rel="author" itemprop="url"><span itemprop="name">李建璋, Chien-Chang Lee</span></a></li><li class="meta-date" itemprop="datePublished"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M7.5,0C3.4,0,0,3.4,0,7.5S3.4,15,7.5,15S15,11.6,15,7.5S11.6,0,7.5,0z M7.5,13.6c-3.4,0-6.1-2.8-6.1-6.1c0-3.4,2.8-6.1,6.1-6.1c3.4,0,6.1,2.8,6.1,6.1C13.6,10.9,10.9,13.6,7.5,13.6z M10.8,9.2c-0.1,0.2-0.4,0.4-0.6,0.4c-0.1,0-0.2,0-0.3-0.1L7.2,8.1C7,8,6.8,7.8,6.8,7.5V4c0-0.4,0.3-0.7,0.7-0.7S8.2,3.6,8.2,4v3.1l2.4,1.2C10.9,8.4,11,8.8,10.8,9.2z"/></svg><time class="ct-meta-element-date" datetime="2026-05-14T10:10:29+08:00">2026 年 5 月 14 日</time></li><li class="meta-categories" data-type="simple"><svg width="13" height="13" viewBox="0 0 15 15"><path d="M14.4,1.2H0.6C0.3,1.2,0,1.5,0,1.9V5c0,0.3,0.3,0.6,0.6,0.6h0.6v7.5c0,0.3,0.3,0.6,0.6,0.6h11.2c0.3,0,0.6-0.3,0.6-0.6V5.6h0.6C14.7,5.6,15,5.3,15,5V1.9C15,1.5,14.7,1.2,14.4,1.2z M12.5,12.5h-10V5.6h10V12.5z M13.8,4.4H1.2V2.5h12.5V4.4z M5.6,7.5c0-0.3,0.3-0.6,0.6-0.6h2.5c0.3,0,0.6,0.3,0.6,0.6S9.1,8.1,8.8,8.1H6.2C5.9,8.1,5.6,7.8,5.6,7.5z"/></svg><a href="https://blog.mohw.gov.tw/category/%e6%99%ba%e6%85%a7%e9%86%ab%e7%99%82/" rel="tag" class="ct-term-96987517">智慧醫療</a></li></ul>		</header>
+	</div>
+					
+		<div class="ct-share-box is-width-constrained" data-location="top" data-type="type-2" >
+			<span class="ct-module-title">社群分享</span>
+			<div data-color="official" data-icons-type="custom:solid">
+							
+				<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fblog.mohw.gov.tw%2F2084%2F" data-network="facebook" aria-label="Facebook" style="--official-color: #557dbc" rel="noopener noreferrer nofollow">
+					<span class="ct-icon-container">
+					<svg
+					width="20px"
+					height="20px"
+					viewBox="0 0 20 20"
+					aria-hidden="true">
+						<path d="M20,10.1c0-5.5-4.5-10-10-10S0,4.5,0,10.1c0,5,3.7,9.1,8.4,9.9v-7H5.9v-2.9h2.5V7.9C8.4,5.4,9.9,4,12.2,4c1.1,0,2.2,0.2,2.2,0.2v2.5h-1.3c-1.2,0-1.6,0.8-1.6,1.6v1.9h2.8L13.9,13h-2.3v7C16.3,19.2,20,15.1,20,10.1z"/>
+					</svg>
+				</span>				</a>
+							
+				<a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fblog.mohw.gov.tw%2F2084%2F&amp;text=%E3%80%90%E6%9D%8E%E5%BB%BA%E7%92%8B%E8%A7%80%E9%BB%9E%E3%80%91%E5%BE%9E%E6%95%B8%E4%BD%8D%E5%AD%A4%E5%B3%B6%E5%88%B0%E9%86%AB%E7%99%82%E7%94%9F%E6%85%8B%E7%B3%BB%EF%BC%9A%E5%8F%B0%E7%81%A3%20SMART%20on%20FHIR%20%E5%9C%8B%E5%AE%B6%E7%B4%9A%E5%9F%BA%E5%BB%BA%E7%9A%84%E8%BD%89%E5%9E%8B%E4%B9%8B%E8%B7%AF" data-network="twitter" aria-label="X (Twitter)" style="--official-color: #000000" rel="noopener noreferrer nofollow">
+					<span class="ct-icon-container">
+					<svg
+					width="20px"
+					height="20px"
+					viewBox="0 0 20 20"
+					aria-hidden="true">
+						<path d="M2.9 0C1.3 0 0 1.3 0 2.9v14.3C0 18.7 1.3 20 2.9 20h14.3c1.6 0 2.9-1.3 2.9-2.9V2.9C20 1.3 18.7 0 17.1 0H2.9zm13.2 3.8L11.5 9l5.5 7.2h-4.3l-3.3-4.4-3.8 4.4H3.4l5-5.7-5.3-6.7h4.4l3 4 3.5-4h2.1zM14.4 15 6.8 5H5.6l7.7 10h1.1z"/>
+					</svg>
+				</span>				</a>
+							
+				<a href="https://social-plugins.line.me/lineit/share?url=https%3A%2F%2Fblog.mohw.gov.tw%2F2084%2F&amp;text=%E3%80%90%E6%9D%8E%E5%BB%BA%E7%92%8B%E8%A7%80%E9%BB%9E%E3%80%91%E5%BE%9E%E6%95%B8%E4%BD%8D%E5%AD%A4%E5%B3%B6%E5%88%B0%E9%86%AB%E7%99%82%E7%94%9F%E6%85%8B%E7%B3%BB%EF%BC%9A%E5%8F%B0%E7%81%A3%20SMART%20on%20FHIR%20%E5%9C%8B%E5%AE%B6%E7%B4%9A%E5%9F%BA%E5%BB%BA%E7%9A%84%E8%BD%89%E5%9E%8B%E4%B9%8B%E8%B7%AF" data-network="line" aria-label="Line" style="--official-color: #20be60" rel="noopener noreferrer nofollow">
+					<span class="ct-icon-container">
+					<svg
+					width="20px"
+					height="20px"
+					viewBox="0 0 20 20"
+					aria-hidden="true">
+						<path d="M16.1 8.2c.3 0 .5.2.5.5s-.2.5-.5.5h-1.5v.9h1.5c.3 0 .5.2.5.5s-.2.5-.5.5h-2c-.3 0-.5-.2-.5-.5v-4c0-.3.2-.5.5-.5h2c.3 0 .5.2.5.5s-.2.5-.5.5h-1.5V8h1.5zm-3.2 2.5c0 .2-.1.4-.4.5h-.2c-.2 0-.3-.1-.4-.2l-2-2.8v2.5c0 .3-.2.5-.5.5s-.5-.2-.5-.5v-4c0-.2.1-.4.4-.5h.2c.2 0 .3.1.4.2L12 9.2V6.8c0-.3.2-.5.5-.5s.5.2.5.5v3.9zm-4.8 0c0 .3-.2.5-.5.5s-.5-.2-.5-.5v-4c0-.3.2-.5.5-.5s.5.2.5.5v4zm-2 .6h-2c-.3 0-.5-.2-.5-.5v-4c0-.3.2-.5.5-.5s.5.2.5.5v3.5h1.5c.3 0 .5.2.5.5 0 .2-.2.5-.5.5M20 8.6C20 4.1 15.5.5 10 .5S0 4.1 0 8.6c0 4 3.6 7.4 8.4 8 .3.1.8.2.9.5.1.3.1.6 0 .9l-.1.9c0 .3-.2 1 .9.5 1.1-.4 5.8-3.4 7.9-5.8 1.3-1.6 2-3.2 2-5"/>
+					</svg>
+				</span>				</a>
+			
+			</div>
+					</div>
+
+			
+		
+		<div class="entry-content is-layout-constrained">
+			
+<p class="wp-block-paragraph">「軟體基建」是智慧醫療落地的最後一哩路。從 FHIR 標準到 SMART 框架，這些技術已演變為推動數位平權、提升醫療品質的社會引擎</p>
+
+
+
+<blockquote class="wp-block-quote is-layout-flow wp-block-quote-is-layout-flow">
+<p class="wp-block-paragraph">文/李建璋 | 2026-04-08發表<br>出處：<a href="https://www.ithome.com.tw/guest-post/174905" target="_blank" rel="noreferrer noopener">https://www.ithome.com.tw/guest-post/174905</a></p>
+</blockquote>
+
+
+
+<h3 class="wp-block-heading"><strong>1. 醫療資訊的「基建革命」：重塑智慧醫療的發展藍圖</strong></h3>
+
+
+
+<p class="wp-block-paragraph">過去十年，台灣智慧醫療發展的挑戰，並非缺乏先進的 AI 演算法，而是往往過度迷戀於單一亮點 App 的開發，卻忽視了最核心的命題：智慧醫療的成功，並不取決於應用程式本身的優劣，而取決於底層軟體基礎設施（Software Infrastructure）的健全。許多人會問：「台灣身為科技之島，難道還缺乏基礎設施嗎？」答案是：我們不缺電力、不缺光纖，但我們極度缺乏標準化的軟體基礎設施。</p>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-995f960e wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p class="wp-block-paragraph">目前的醫療體系充斥著「電子病歷碎片化」的結構性問題，這不僅導致病人資訊無法跨院無縫流通，更造成了嚴重的數位不平權。頂尖的 AI 診斷技術往往鎖在醫學中心的深牆內。深層的問題在於「數位不平權」。過往頂尖的 AI 診斷輔助或創新醫療軟體，往往僅能在資源充足的醫學中心開發與運行。中小型醫院受限於技術與經費，難以導入這些新科技，最終導致城鄉、院際之間的醫療品質出現數位落差。</p>
+
+
+
+<p class="wp-block-paragraph">這不是單純購買軟體就能解決的。回顧網際網路的發展，之所以能有如今的應用盛世，關鍵在於 HTTP 與 HTML 協定的標準化。若醫療資訊持續維持封閉格式，每一次介接都像是在重新發明輪胎。解決上述結構性問題的關鍵，在於引入標準化的「作業系統」概念，將醫療資料從封閉孤島轉化為全球通用的 FHIR 協定，作為數位轉型的底層支柱。</p>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<figure class="wp-block-image size-full"><img fetchpriority="high" data-recalc-dims="1" fetchpriority="high" decoding="async" width="624" height="418" data-attachment-id="2087" data-permalink="https://blog.mohw.gov.tw/2084/2-4/" data-orig-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/2.jpeg?fit=624%2C418&amp;ssl=1" data-orig-size="624,418" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="2" data-image-description="" data-image-caption="" data-large-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/2.jpeg?fit=624%2C418&amp;ssl=1" src="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/2.jpeg?resize=624%2C418&#038;ssl=1" alt="" class="wp-image-2087" srcset="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/2.jpeg?w=624&amp;ssl=1 624w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/2.jpeg?resize=300%2C201&amp;ssl=1 300w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/2.jpeg?resize=150%2C100&amp;ssl=1 150w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+</div>
+</div>
+
+
+
+<h3 class="wp-block-heading"><strong>2. 下世代電子病歷工程：從技術自主到國家標準</strong></h3>
+
+
+
+<p class="wp-block-paragraph">隨著衛福部推動「次世代電子病歷」轉型，台灣正經歷一場從「技術自主」邁向「國家標準」的關鍵工程。這不僅是資訊系統的改版，更是將 台灣核心資料（TW Core Data for Interoperability, TWCDI） 定義為醫療數據的國家標準，讓所有醫療資訊不再各自為政。</p>
+
+
+
+<p class="wp-block-paragraph">透過政府主導的技術開發，我們已成功打造出一套符合國際規範的 FHIR 轉換與介接工具。這套工具的穩定性已在長庚醫院、馬偕醫院、以及中山醫學大學附設醫院等指標性醫療體系中獲得實證。這些醫學中心的成功試辦，證明了標準化介接能大幅降低系統整合的困難度，並提升臨床資料的實用性。</p>
+
+
+
+<p class="wp-block-paragraph">以下是從技術研發到全台醫學中心落地的關鍵進程：</p>
+
+
+
+<ul class="wp-block-list">
+<li>技術自主研發： 完成符合國際規範的 FHIR 數據轉換工具。</li>
+
+
+
+<li>指標醫院驗證： 於長庚、馬偕、中山醫等院所驗證臨床穩定性。</li>
+
+
+
+<li>全國性標準化： 以 TW Core IG 為軸心，將標準推廣至全台所有醫學中心。</li>
+
+
+
+<li>生態系雛形： 吸引產學研界投入，初步匯聚 115 個標準化應用程式。</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">標準化資料的完成僅是第一步，接下來的核心挑戰在於如何透過這些資料驅動應用端的革命，讓醫療軟體實現真正的隨插即用。</p>
+
+
+
+<h3 class="wp-block-heading"><strong>3. SMART on FHIR：醫療系統的「通用插座」與作業系統</strong></h3>
+
+
+
+<p class="wp-block-paragraph">若將 FHIR 比作標準化的電力規格，SMART on FHIR 就是醫療系統中的「通用插座」。SMART （Substitutable Medical Applications and Reusable Technologies, SMART&nbsp;)是由美國哈佛大學 Kenneth D.Mandl 教授於 2010 年發明，歷經十年發展，現已成為美國立法強制執行的全國電子病歷應用標準。在過去，若一個 AI 應用要推廣至 10 家醫院，開發者必須面對 10 種不同的資料接口；現在，透過 SMART 標準，醫療 App 能像智慧手機應用程式一樣，在不同的電子病歷系統（EHR）上實現隨插即用（Plug-and-Play）。</p>
+
+
+
+<p class="wp-block-paragraph">這場技術革命的意義，在於將醫療軟體的部署邏輯從「手工對接」轉向「生態規模化」。從開發者的視角而言，SMART 建立了一個低進入門檻（Low barriers to entry）的開放標準生態圈。開發團隊只需基於標準 API 撰寫一次程式碼，應用程式即可運行於各大 EHR 廠商（如 Epic、Cerner 等）系統中。這種 「Write once, run anywhere」 的架構，是驅動醫療數位創新爆發的絕對關鍵。</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" data-recalc-dims="1" decoding="async" width="960" height="420" data-attachment-id="2089" data-permalink="https://blog.mohw.gov.tw/2084/1-3/" data-orig-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/1.jpeg?fit=960%2C420&amp;ssl=1" data-orig-size="960,420" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="1" data-image-description="" data-image-caption="" data-large-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/1.jpeg?fit=960%2C420&amp;ssl=1" src="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/1.jpeg?resize=960%2C420&#038;ssl=1" alt="" class="wp-image-2089" srcset="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/1.jpeg?w=960&amp;ssl=1 960w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/1.jpeg?resize=300%2C131&amp;ssl=1 300w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/1.jpeg?resize=150%2C66&amp;ssl=1 150w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/1.jpeg?resize=768%2C336&amp;ssl=1 768w" sizes="(max-width: 960px) 100vw, 960px" /></figure>
+
+
+
+<h3 class="wp-block-heading"><strong>4. SMART on FHIR技術核心</strong></h3>
+
+
+
+<p class="wp-block-paragraph">SMART on FHIR 技術核心如下</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>身分驗證層（Authentication）：</strong>&nbsp;解決「你是誰」的問題。SMART 在 OAuth 2.0 之上疊加了 OpenID Connect (OIDC) 協定。當醫師或病患啟動 App 時，OIDC 會確認資源擁有者（Resource Owner）的真實身分，核發 ID Token。這確保系統能精準識別操作者，無論是檢視病歷的病患，或是下達醫囑的專科醫師。</li>
+
+
+
+<li><strong>安全授權層（Authorization）：&nbsp;</strong>解決「你能做什麼」的問題。採用 OAuth 2.0 標準，第三方應用程式（Client Application）在取得授權後，從授權伺服器獲得 Access Token。隨後，App 憑此 Token 向 FHIR Server 發起 RESTful API 呼叫。這讓使用者在不洩露 EHR 帳密的前提下，安全地委派特定資料存取權。</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading"><strong>5. 隱私守護設計：差異化授權與最小化資料存取</strong></h3>
+
+
+
+<p class="wp-block-paragraph">在高度重視隱私的醫療領域，傳統「全有或全無」的資料存取模式已過時。SMART on FHIR 將<strong>隱私守護設計（Privacy by Design）</strong>深植於架構中，其核心武器便是 SMART Scopes（授權範圍）。SMART Scopes 實踐了最小權限原則（Principle of Least Privilege）。它透過極精細的語法定義邊界，標籤包含三個層次：存取類型（如針對特定病患 patient 或全域 user）、資源類型（如 Immunization 紀錄或 Observation 數值）、以及具體操作（如 read 或 write）。</p>
+
+
+
+<p class="wp-block-paragraph">例如，一款監測血壓的 App 僅會請求 patient/Observation.read 權限。系統與使用者皆能確保該 App 無法越權讀取用藥紀錄（如 patient/MedicationRequest.read），更無法竄改病歷。最新的 SMART v2 規範更針對<strong>精細授權（Granular scopes）</strong>進行優化，為醫療隱私築起堅不可摧的防線。</p>
+
+
+
+<h3 class="wp-block-heading"><strong>6. 無縫融入臨床工作流：IFrame 與前端整合技術</strong></h3>
+
+
+
+<p class="wp-block-paragraph">再先進的 AI 工具，如果要求醫師跳出原本的 EHR 介面、額外開啟視窗並重新輸入病患 ID，最終必將被臨床捨棄。深度整合工作流（Workflow Integration）才是系統存活的關鍵。SMART on FHIR 的 UI 整合依賴於 IFrame（內嵌框架） 等技術。當醫師在 EHR 中檢視病患病歷時，可直接從選單啟動 SMART 應用程式（如：生長曲線圖 App）。此時，第三方 Web App 會以 IFrame 形式直接內嵌於 EHR 介面中。系統會在背景將當下的「執行情境（Context）」（如病患 ID 與醫師身分）平滑傳遞給認證伺服器。</p>
+
+
+
+<p class="wp-block-paragraph">對醫師而言，這個 App 的使用體驗與 EHR 原生功能無異，完全不會打斷臨床診斷的節奏。此外，透過 SMART Web Messaging 技術，內嵌 App 能與外層 EHR 即時溝通（如自動導航或寫入醫囑草稿區）。結合 CDS Hooks，我們更能實現在特定臨床事件發生時自動觸發應用程式，達成真正的「緊密 EHR 決策支援整合」。</p>
+
+
+
+<h3 class="wp-block-heading"><strong>7. 國家級醫療 App 市集：台灣健康應用程式空間 (THAS)</strong></h3>
+
+
+
+<p class="wp-block-paragraph">今天，我們正站在一個歷史性的轉捩點上。台灣正式推出了首個國家級的 SMART on FHIR 應用程式市集——Taiwan Health App Space (THAS)。這不僅僅是一個「軟體商店」，而是一場底層架構的革命。THAS 採用了具備高度語意互通性（Semantic Interoperability）的 HL7 FHIR R4 標準與台灣核心實作指引（TW Core IG），結合 OAuth 2.0 安全授權，讓醫療應用程式能像智慧型手機上的 App 一樣「隨插即用」。目前市集已匯聚 115 個應用程式，展現了極為健康的生態比例：50% 來自產業界，50% 來自醫學中心與研發機構。其內容可歸納為「醫療人工智慧」、「臨床決策支援」、「資料視覺化」與「行政營運效率」四大核心面向：</p>
+
+
+
+<h4 class="wp-block-heading"><strong>A. 醫療人工智慧 (Medical AI)：次世代診斷的數位感官</strong></h4>
+
+
+
+<p class="wp-block-paragraph">醫療 AI 已從實驗室走向床邊。在 THAS 平台上，AI 不再是獨立運作的黑箱，而是透過 SMART on FHIR 無縫嵌入工作流，成為醫師的「第二雙眼」。</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>一圖多篩</strong>：極大化影像價值的「機會性篩檢」 面對肺癌與心血管疾病等沉默殺手，神瑞科技的「DeepLung-CAC 100」平台展示了機會性篩檢（Opportunistic Screening）的威力。系統能在單次低劑量電腦斷層（LDCT）中，同步偵測肺結節與冠狀動脈鈣化風險。透過 FHIR 格式，分析報告能直接回寫至 HIS，將閱片時間從 20 分鐘壓縮至 5 分鐘內。同樣地，三軍總醫院的「AI 胸部 X 光篩檢」能同步辨識急症病灶並預測骨質疏鬆風險（T-score 推估），讓醫師在既有流程中同時掌握急性異常與慢性風險。</li>
+
+
+
+<li><strong>深度量化與即時防線</strong>：在精準醫療領域，巨明生醫的「肯威比 (CanWellBeing)」僅需 3 秒即可完成腹部 CT 的肌群分割，將肌少症風險轉化為 70 多項 FHIR 結構化指標，輔助化療劑量優化。而在心血管急症中，廣達電腦的「QOCA 心電圖分析」與中國醫藥大學附設醫院的偵測軟體，將防線前推至救護車端，實證顯示能將 Door-to-balloon（到院至氣球擴張） 時間縮短達 14 分鐘，實現無縫搶救。</li>
+</ul>
+
+
+
+<h4 class="wp-block-heading"><strong>B. 臨床決策支援 (CDS)：資訊海嘯時代的智慧副駕</strong></h4>
+
+
+
+<p class="wp-block-paragraph">現代醫學的複雜度已超越人腦極限，醫師面臨嚴重的認知超載（Cognitive Overload）。真正的 CDS 必須具備「情境感知」能力，而非僅是擾人的警示彈窗。</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>主動式預判與實證醫學</strong>：台北榮總的「醫析 (MediPrisma)」採用 Agentic AI 架構，在病歷載入瞬間主動提示潛在風險（如 eGFR 下降趨勢），並整合 RAG（檢索增強生成） 技術確保建議皆附有文獻來源，解決了 AI 的「幻覺」痛點。</li>
+
+
+
+<li><strong>與死神賽跑的即時預警</strong>：針對敗血症，台北榮總的「SepsisProbe」與基隆長庚的「CHARM」系統利用即時生命徵象與 FHIR 數據，在數秒內產出風險評分，協助急診醫師安全排除低風險病患，避免抗生素濫用與資源浪費。此外，高雄長庚與林口長庚分別在「急性腎損傷預警」與「核醫藥物劑量治理」上，利用規則引擎為用藥安全築起最後一道防線。</li>
+</ul>
+
+
+
+<h4 class="wp-block-heading"><strong>C. 資料視覺化 (Data Visualization)：破譯複雜病程的臨床敘事</strong></h4>
+
+
+
+<p class="wp-block-paragraph">醫療數據的價值在於解讀。THAS 中的應用正致力於將破碎數據編織成連貫的病人旅程（Patient Journey）。</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>打造臨床戰情室</strong>：高雄榮總的「火線指揮官」系統顛覆了傳統列表式病歷，透過時間軸視覺化技術，讓醫師在 30 秒內掌握跨院的檢驗趨勢與用藥變化。微服務公司的「病人就醫歷程平台」則實現了跨裝置的全人照護。</li>
+
+
+
+<li><strong>動態趨勢與知識圖譜</strong>：萬芳醫院的「VitalFlow ED」監控急診病情的「變化率」而非靜態數值，主動識別惡化風險。中國醫大附醫則將 FHIR 資源轉化為互動式的知識圖譜，讓醫師能「沿著臨床線索」探索複雜的共病與用藥脈絡。</li>
+</ul>
+
+
+
+<h4 class="wp-block-heading"><strong>D. 行政與營運效率 (Administrative Efficiency)：終結醫療過勞的解藥</strong></h4>
+
+
+
+<p class="wp-block-paragraph">我們必須誠實地面對醫療人員的職業倦怠（Burnout）。THAS 平台正以自動化技術終結低價值的行政勞動。</p>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-995f960e wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<ul class="wp-block-list">
+<li><strong>品管自動化與病摘生成</strong>：台北長庚引入 CQL（臨床品質語言） 技術，將原本需耗時數週的醫療品質監測（如 ESG、抗生素使用率）轉型為即時監測。新光醫院的「智慧護理系統」提升文書效率達 54%，並達成轉錄零錯誤。台北醫學大學的「One-Click NOTE」則利用 GenAI 讓原本需 40 分鐘的病歷撰寫縮減至 15 分鐘內。</li>
+
+
+
+<li><strong>消滅編碼與申報痛點</strong>：台北榮總與昕力資訊分別透過 AI 輔助 ICD-10 編碼，降低退件率。而國軍高雄總醫院的「TWPAS」系統則實現了高額藥物的事前審查自動化，將申請時間從一小時縮短至 10 分鐘，實現「診斷即送件」，讓病患更快獲得救命藥物。</li>
+</ul>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<figure class="wp-block-image size-full"><img loading="lazy" data-recalc-dims="1" decoding="async" width="624" height="340" data-attachment-id="2092" data-permalink="https://blog.mohw.gov.tw/2084/3-2/" data-orig-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/3.jpeg?fit=624%2C340&amp;ssl=1" data-orig-size="624,340" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="3" data-image-description="" data-image-caption="" data-large-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/3.jpeg?fit=624%2C340&amp;ssl=1" src="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/3.jpeg?resize=624%2C340&#038;ssl=1" alt="" class="wp-image-2092" srcset="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/3.jpeg?w=624&amp;ssl=1 624w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/3.jpeg?resize=300%2C163&amp;ssl=1 300w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/3.jpeg?resize=150%2C82&amp;ssl=1 150w" sizes="(max-width: 624px) 100vw, 624px" /></figure>
+</div>
+</div>
+
+
+
+<h3 class="wp-block-heading"><strong>8. 國際視野下的台灣模式：引領全球的數位醫療新戰略</strong></h3>
+
+
+
+<div class="wp-block-columns is-layout-flex wp-container-core-columns-is-layout-995f960e wp-block-columns-is-layout-flex">
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<p class="wp-block-paragraph">台灣已成為全球第一個由政府主導、採用國際標準打造國家級 SMART 市集的先行者。這項成就讓我們佔據了政策制高點：</p>
+
+
+
+<ol class="wp-block-list">
+<li>打破廠商壟斷： 不同於美國受限於大型 EHR 廠商的封閉生態，台灣的 App 能跨品牌流通。</li>
+
+
+
+<li>超越客製化局限： 不同於英國 NHS 的封閉式開發，台灣完全對齊國際 FHIR 標準，具備極強的輸出潛力。</li>
+
+
+
+<li>引發國際關注： 泰國 Mahidol University 醫療體系已正式提出合作，證明台灣具備輸出「數位醫療基建」的能力。</li>
+</ol>
+</div>
+
+
+
+<div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow" style="flex-basis:50%">
+<figure class="wp-block-image size-full"><img loading="lazy" data-recalc-dims="1" loading="lazy" decoding="async" width="612" height="336" data-attachment-id="2095" data-permalink="https://blog.mohw.gov.tw/2084/4-3/" data-orig-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/4-1.jpeg?fit=612%2C336&amp;ssl=1" data-orig-size="612,336" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="4" data-image-description="" data-image-caption="" data-large-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/4-1.jpeg?fit=612%2C336&amp;ssl=1" src="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/4-1.jpeg?resize=612%2C336&#038;ssl=1" alt="" class="wp-image-2095" srcset="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/4-1.jpeg?w=612&amp;ssl=1 612w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/4-1.jpeg?resize=300%2C165&amp;ssl=1 300w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/05/4-1.jpeg?resize=150%2C82&amp;ssl=1 150w" sizes="(max-width: 612px) 100vw, 612px" /></figure>
+</div>
+</div>
+
+
+
+<h3 class="wp-block-heading"><strong>9. 結論：啟動數據驅動的醫療新經濟</strong></h3>
+
+
+
+<p class="wp-block-paragraph">「軟體基建」是智慧醫療落地的最後一哩路。從 FHIR 標準到 SMART 框架，這些技術已演變為推動數位平權、提升醫療品質的社會引擎。哈佛大學 Kenneth Mandl 教授一路見證了我們的進程，他盛讚：「李處長目前推動的工程將引爆資料驅動的經濟市場。」 我常將 SMART 比喻為醫療數據領域的 WWW（全球資訊網），建立一個通用基盤以打破資訊壟斷。當數據接口統一，「醫療瀏覽器」開始運轉，我們將徹底擺脫數位孤島。我呼籲所有 IT 專業人士與臨床醫師共同投入這個生態系，在標準化的基石上，共同打造造福全球病患的創新應用。</p>
+		</div>
+
+		
+					<div class="entry-tags is-width-constrained "><span class="ct-module-title">標籤</span><div class="entry-tags-items"><a href="https://blog.mohw.gov.tw/tag/agentic-ai/" rel="tag"><span>#</span> Agentic AI</a><a href="https://blog.mohw.gov.tw/tag/%e7%9b%a3%e6%b8%ac%e8%a1%80%e5%a3%93/" rel="tag"><span>#</span> 監測血壓</a><a href="https://blog.mohw.gov.tw/tag/%e9%80%9a%e7%94%a8%e6%8f%92%e5%ba%a7/" rel="tag"><span>#</span> 通用插座</a><a href="https://blog.mohw.gov.tw/tag/%e9%86%ab%e7%99%82ai/" rel="tag"><span>#</span> 醫療AI</a><a href="https://blog.mohw.gov.tw/tag/%e9%9a%b1%e7%a7%81%e5%ae%88%e8%ad%b7%e8%a8%ad%e8%a8%88/" rel="tag"><span>#</span> 隱私守護設計</a><a href="https://blog.mohw.gov.tw/tag/%e9%9b%bb%e5%ad%90%e7%97%85%e6%ad%b7/" rel="tag"><span>#</span> 電子病歷</a><a href="https://blog.mohw.gov.tw/tag/%e8%bb%9f%e9%ab%94%e5%9f%ba%e5%bb%ba/" rel="tag"><span>#</span> 軟體基建</a><a href="https://blog.mohw.gov.tw/tag/fhir/" rel="tag"><span>#</span> FHIR</a><a href="https://blog.mohw.gov.tw/tag/genai/" rel="tag"><span>#</span> GenAI</a><a href="https://blog.mohw.gov.tw/tag/his/" rel="tag"><span>#</span> HIS</a><a href="https://blog.mohw.gov.tw/tag/medical-ai/" rel="tag"><span>#</span> Medical AI</a><a href="https://blog.mohw.gov.tw/tag/oauth-2-0/" rel="tag"><span>#</span> OAuth 2.0</a><a href="https://blog.mohw.gov.tw/tag/one-click-note/" rel="tag"><span>#</span> One-Click NOTE</a><a href="https://blog.mohw.gov.tw/tag/smart/" rel="tag"><span>#</span> SMART</a><a href="https://blog.mohw.gov.tw/tag/smart-on-fhir/" rel="tag"><span>#</span> Smart on FHIR</a><a href="https://blog.mohw.gov.tw/tag/thas/" rel="tag"><span>#</span> THAS</a><a href="https://blog.mohw.gov.tw/tag/twpas/" rel="tag"><span>#</span> TWPAS</a><a href="https://blog.mohw.gov.tw/tag/vitalflow-ed/" rel="tag"><span>#</span> VitalFlow ED</a><a href="https://blog.mohw.gov.tw/tag/%e6%99%ba%e6%85%a7%e9%86%ab%e7%99%82/" rel="tag"><span>#</span> 智慧醫療</a></div></div>		
+		
+		
+	
+		<div
+			class="ct-related-posts is-width-constrained "
+					>
+			
+											<h4 class="ct-module-title">
+					相關文章				</h4>
+							
+			
+			<div class="ct-related-posts-items" data-layout="grid">
+							
+				<article  itemscope="itemscope" itemtype="https://schema.org/CreativeWork"><div id="post-2231" class="post-2231 post type-post status-publish format-standard has-post-thumbnail hentry category-96987517 tag-ai tag-96987537 tag-fhir tag-fhir-box tag-his tag-smart-health-asia tag-smart-health-europe tag-smart-on-fhir tag-96987510 tag-96987511"><a class="ct-media-container" href="https://blog.mohw.gov.tw/2231/" aria-label="2026 Smart Health Asia 峰會：台灣智慧醫療數位公共基礎建設之願景與實踐"><img loading="lazy" width="768" height="429" src="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/08/1920v3.jpg?fit=768%2C429&amp;ssl=1" class="attachment-medium_large size-medium_large wp-post-image" alt="" loading="lazy" decoding="async" srcset="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/08/1920v3.jpg?w=1920&amp;ssl=1 1920w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/08/1920v3.jpg?resize=300%2C168&amp;ssl=1 300w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/08/1920v3.jpg?resize=1024%2C572&amp;ssl=1 1024w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/08/1920v3.jpg?resize=150%2C84&amp;ssl=1 150w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/08/1920v3.jpg?resize=768%2C429&amp;ssl=1 768w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/08/1920v3.jpg?resize=1536%2C858&amp;ssl=1 1536w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/08/1920v3.jpg?resize=1200%2C670&amp;ssl=1 1200w" sizes="auto, (max-width: 768px) 100vw, 768px" data-attachment-id="2248" data-permalink="https://blog.mohw.gov.tw/2231/1920v3/" data-orig-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/08/1920v3.jpg?fit=1920%2C1072&amp;ssl=1" data-orig-size="1920,1072" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;,&quot;alt&quot;:&quot;&quot;}" data-image-title="1920v3" data-image-description="" data-image-caption="" data-large-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/08/1920v3.jpg?fit=1024%2C572&amp;ssl=1" itemprop="image" style="aspect-ratio: 16/9;" /></a><h4 class="related-entry-title"><a href="https://blog.mohw.gov.tw/2231/" rel="bookmark">2026 Smart Health Asia 峰會：台灣智慧醫療數位公共基礎建設之願景與實踐</a></h4><ul class="entry-meta" data-type="simple:slash" data-id="daa202" ><li class="meta-author" itemprop="author" itemscope="" itemtype="https://schema.org/Person"><a class="ct-meta-element-author" href="https://blog.mohw.gov.tw/author/chienchangmohw/" title="作者 李建璋, Chien-Chang Lee" rel="author" itemprop="url"><span itemprop="name">李建璋, Chien-Chang Lee</span></a></li><li class="meta-date" itemprop="datePublished"><time class="ct-meta-element-date" datetime="2026-08-24T09:16:19+08:00">2026 年 8 月 24 日</time></li></ul></div></article>
+							
+				<article  itemscope="itemscope" itemtype="https://schema.org/CreativeWork"><div id="post-2166" class="post-2166 post type-post status-publish format-standard has-post-thumbnail hentry category-96987517 tag-96987755 tag-96987748 tag-96987754 tag-llm tag-96987753 tag-96987756 tag-96987752"><a class="ct-media-container" href="https://blog.mohw.gov.tw/2166/" aria-label="迎接春嬌，長照客服的數位阿凡達"><img loading="lazy" width="768" height="432" src="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/06/%E8%BF%8E%E6%8E%A5%E6%98%A5%E5%AC%8C%EF%BC%8C%E9%95%B7%E7%85%A7%E5%AE%A2%E6%9C%8D%E7%9A%84%E6%95%B8%E4%BD%8D%E9%98%BF%E5%87%A1%E9%81%94_%E5%B0%81%E9%9D%A2%E5%9C%96-1.png?fit=768%2C432&amp;ssl=1" class="attachment-medium_large size-medium_large wp-post-image" alt="迎接春嬌，長照客服的數位阿凡達" loading="lazy" decoding="async" data-attachment-id="2167" data-permalink="https://blog.mohw.gov.tw/2166/%e8%bf%8e%e6%8e%a5%e6%98%a5%e5%ac%8c%ef%bc%8c%e9%95%b7%e7%85%a7%e5%ae%a2%e6%9c%8d%e7%9a%84%e6%95%b8%e4%bd%8d%e9%98%bf%e5%87%a1%e9%81%94_%e5%b0%81%e9%9d%a2%e5%9c%96-2/" data-orig-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/06/%E8%BF%8E%E6%8E%A5%E6%98%A5%E5%AC%8C%EF%BC%8C%E9%95%B7%E7%85%A7%E5%AE%A2%E6%9C%8D%E7%9A%84%E6%95%B8%E4%BD%8D%E9%98%BF%E5%87%A1%E9%81%94_%E5%B0%81%E9%9D%A2%E5%9C%96-1.png?fit=960%2C540&amp;ssl=1" data-orig-size="960,540" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;,&quot;alt&quot;:&quot;&quot;}" data-image-title="迎接春嬌，長照客服的數位阿凡達" data-image-description="" data-image-caption="" data-large-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/06/%E8%BF%8E%E6%8E%A5%E6%98%A5%E5%AC%8C%EF%BC%8C%E9%95%B7%E7%85%A7%E5%AE%A2%E6%9C%8D%E7%9A%84%E6%95%B8%E4%BD%8D%E9%98%BF%E5%87%A1%E9%81%94_%E5%B0%81%E9%9D%A2%E5%9C%96-1.png?fit=960%2C540&amp;ssl=1" itemprop="image" style="aspect-ratio: 16/9;" /></a><h4 class="related-entry-title"><a href="https://blog.mohw.gov.tw/2166/" rel="bookmark">迎接春嬌，長照客服的數位阿凡達</a></h4><ul class="entry-meta" data-type="simple:slash" data-id="138c79" ><li class="meta-author" itemprop="author" itemscope="" itemtype="https://schema.org/Person"><a class="ct-meta-element-author" href="https://blog.mohw.gov.tw/author/chienchangmohw/" title="作者 李建璋, Chien-Chang Lee" rel="author" itemprop="url"><span itemprop="name">李建璋, Chien-Chang Lee</span></a></li><li class="meta-date" itemprop="datePublished"><time class="ct-meta-element-date" datetime="2026-06-09T11:34:44+08:00">2026 年 6 月 9 日</time></li></ul></div></article>
+							
+				<article  itemscope="itemscope" itemtype="https://schema.org/CreativeWork"><div id="post-2143" class="post-2143 post type-post status-publish format-standard has-post-thumbnail hentry category-96987517 tag-ehds tag-96987534 tag-fhir tag-gdhcn tag-ips tag-who tag-96987746 tag-96987510 tag-96987511 tag-96987744"><a class="ct-media-container" href="https://blog.mohw.gov.tw/2143/" aria-label="世衛行動團台灣在國際數位健康躍升的角色"><img loading="lazy" width="768" height="432" src="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/06/AA.jpg?fit=768%2C432&amp;ssl=1" class="attachment-medium_large size-medium_large wp-post-image" alt="" loading="lazy" decoding="async" srcset="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/06/AA.jpg?w=910&amp;ssl=1 910w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/06/AA.jpg?resize=300%2C169&amp;ssl=1 300w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/06/AA.jpg?resize=150%2C84&amp;ssl=1 150w, https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/06/AA.jpg?resize=768%2C432&amp;ssl=1 768w" sizes="auto, (max-width: 768px) 100vw, 768px" data-attachment-id="2150" data-permalink="https://blog.mohw.gov.tw/2143/aa/" data-orig-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/06/AA.jpg?fit=910%2C512&amp;ssl=1" data-orig-size="910,512" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;,&quot;alt&quot;:&quot;&quot;}" data-image-title="AA" data-image-description="" data-image-caption="" data-large-file="https://i0.wp.com/blog.mohw.gov.tw/wp-content/uploads/2026/06/AA.jpg?fit=910%2C512&amp;ssl=1" itemprop="image" style="aspect-ratio: 16/9;" /></a><h4 class="related-entry-title"><a href="https://blog.mohw.gov.tw/2143/" rel="bookmark">世衛行動團台灣在國際數位健康躍升的角色</a></h4><ul class="entry-meta" data-type="simple:slash" data-id="a25dcf" ><li class="meta-author" itemprop="author" itemscope="" itemtype="https://schema.org/Person"><a class="ct-meta-element-author" href="https://blog.mohw.gov.tw/author/chienchangmohw/" title="作者 李建璋, Chien-Chang Lee" rel="author" itemprop="url"><span itemprop="name">李建璋, Chien-Chang Lee</span></a></li><li class="meta-date" itemprop="datePublished"><time class="ct-meta-element-date" datetime="2026-06-01T09:16:35+08:00">2026 年 6 月 1 日</time></li></ul></div></article>
+						</div>
+
+			
+					</div>
+
+	
+	
+	</article>
+
+	
+		
+			</div>
+
+	</main>
+
+	<footer id="footer" class="ct-footer" data-id="type-1" itemscope="" itemtype="https://schema.org/WPFooter"><div data-row="top"><div class="ct-container"><div data-column="widget-area-1"><div class="ct-widget is-layout-flow widget_block widget_text" id="block-10">
+<p class="wp-block-paragraph"><strong>衛生福利部地址：115204 台北市南港區忠孝東路6段488號<br>總機電話：(02)8590-6666</strong></p>
+</div></div><div data-column="widget-area-2"><div class="ct-widget is-layout-flow widget_block widget_text" id="block-9">
+<p class="has-text-align-right has-palette-color-3-color has-text-color has-link-color wp-elements-1 wp-block-paragraph"><strong><a href="https://www.mohw.gov.tw/cp-81-157-1.html">資訊安全政策</a> │ <a href="https://blog.mohw.gov.tw/%e9%9a%b1%e7%a7%81%e6%ac%8a%e6%94%bf%e7%ad%96/">隱私權政策</a></strong></p>
+</div></div></div></div></footer></div>
+
+<!--  -->
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/blocksy/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<meta id="bilmur" property="bilmur:data" content="" data-customproperties="{&quot;woo_active&quot;:&quot;0&quot;,&quot;logged_in&quot;:&quot;0&quot;,&quot;wptheme&quot;:&quot;blocksy&quot;,&quot;wptheme_is_block&quot;:&quot;0&quot;}" data-provider="wordpress.com" data-service="atomic"  data-site-tz="Asia/Taipei"  >
+<script defer src="https://s0.wp.com/wp-content/js/bilmur.min.js?m=202639"></script>
+<div class="ct-drawer-canvas" data-location="end"><div class="ct-drawer-inner">
+	<a href="#main-container" class="ct-back-to-top "
+		data-shape="circle"
+		data-alignment="right"
+		title="到最上面" aria-label="到最上面" hidden>
+
+		<svg class="ct-icon" width="15" height="15" viewBox="0 0 20 20"><path d="M10,0L9.4,0.6L0.8,9.1l1.2,1.2l7.1-7.1V20h1.7V3.3l7.1,7.1l1.2-1.2l-8.5-8.5L10,0z"/></svg>	</a>
+
+	</div></div>					<div class="jetpack-subscription-modal">
+						<div class="jetpack-subscription-modal__modal-content">
+								
+	<div class="wp-block-group has-border-color jetpack-subscription-modal__modal-content-form is-layout-flow wp-block-group-is-layout-flow" style="border-color:#dddddd;border-width:1px;margin-top:0;margin-bottom:0;padding:32px">
+
+		
+		<h2 class="wp-block-heading has-text-align-center" style="margin-top:4px;margin-bottom:10px;font-size:clamp(16.834px, 1.052rem + ((1vw - 3.2px) * 0.716), 26px);font-style:normal;font-weight:600">探索更多來自 衛生福利部部落格 的內容</h2>
+		
+
+		
+		<p class="has-text-align-center wp-block-paragraph" style='margin-top:4px;margin-bottom:0px;font-size:clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.078), 15px);'>立即訂閱即可持續閱讀，還能取得所有封存文章。</p>
+		
+
+			<div class="wp-block-jetpack-subscriptions__supports-newline is-style-compact wp-block-jetpack-subscriptions">
+		<div class="wp-block-jetpack-subscriptions__container is-not-subscriber">
+							<form
+					action="https://wordpress.com/email-subscriptions"
+					method="post"
+					accept-charset="utf-8"
+					data-blog="234947922"
+					data-post_access_level="everybody"
+					data-subscriber_email=""
+					id="subscribe-blog"
+				>
+					<div class="wp-block-jetpack-subscriptions__form-elements">
+												<p id="subscribe-email">
+							<label
+								id="subscribe-field-label"
+								for="subscribe-field"
+								class="screen-reader-text"
+							>
+								輸入你的電子郵件地址…							</label>
+							<input
+									required="required"
+									type="email"
+									name="email"
+									autocomplete="email"
+									
+									style="font-size: 16px;padding: 15px 23px 15px 23px;border-radius: 50px;border-width: 1px;"
+									placeholder="輸入你的電子郵件地址…"
+									value=""
+									id="subscribe-field"
+									title="請填寫此欄位。"
+								/>						</p>
+												<p id="subscribe-submit"
+													>
+							<input type="hidden" name="action" value="subscribe"/>
+							<input type="hidden" name="blog_id" value="234947922"/>
+							<input type="hidden" name="source" value="https://blog.mohw.gov.tw/2084/"/>
+							<input type="hidden" name="sub-type" value="subscribe-block"/>
+							<input type="hidden" name="app_source" value="atomic-subscription-modal-lo"/>
+							<input type="hidden" name="redirect_fragment" value="subscribe-blog"/>
+							<input type="hidden" name="lang" value="zh_TW"/>
+							<input type="hidden" id="_wpnonce" name="_wpnonce" value="d64216849e" /><input type="hidden" name="_wp_http_referer" value="/2084/" /><input type="hidden" name="post_id" value="2084"/>							<button type="submit"
+																	class="wp-block-button__link"
+																									style="font-size: 16px;padding: 15px 23px 15px 23px;margin: 0; margin-left: 10px;border-radius: 50px;border-width: 1px;"
+																name="jetpack_subscriptions_widget"
+							>
+								訂閱							</button>
+						</p>
+					</div>
+				</form>
+								</div>
+	</div>
+	
+
+		
+		<p class="has-text-align-center jetpack-subscription-modal__close wp-block-paragraph" style="margin-top:20px;font-size:14px"><a href="#">繼續閱讀</a></p>
+		
+	</div>
+							</div>
+					</div>
+						<script>
+				( () => {
+					const lazyloadRunObserver = () => {
+						const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` );
+						const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => {
+							entries.forEach( ( entry ) => {
+								if ( entry.isIntersecting ) {
+									let lazyloadBackground = entry.target;
+									if( lazyloadBackground ) {
+										lazyloadBackground.classList.add( 'e-lazyloaded' );
+									}
+									lazyloadBackgroundObserver.unobserve( entry.target );
+								}
+							});
+						}, { rootMargin: '200px 0px 200px 0px' } );
+						lazyloadBackgrounds.forEach( ( lazyloadBackground ) => {
+							lazyloadBackgroundObserver.observe( lazyloadBackground );
+						} );
+					};
+					const events = [
+						'DOMContentLoaded',
+						'elementor/lazyload/observe',
+					];
+					events.forEach( ( event ) => {
+						document.addEventListener( event, lazyloadRunObserver );
+					} );
+				} )();
+			</script>
+					<div id="jp-carousel-loading-overlay" style="display: none;">
+			<div id="jp-carousel-loading-wrapper">
+				<span id="jp-carousel-library-loading"><svg class="jetpack-spinner" width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="50" cy="50" r="46" fill="none" stroke="#ddd" stroke-width="8"/><path d="M 50 4 A 46 46 0 0 1 96 50" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" dur="1.4s" from="0 50 50" to="360 50 50" repeatCount="indefinite"/></path></svg></span>
+			</div>
+		</div>
+		<div class="jp-carousel-overlay jp-carousel-light" style="display: none;">
+
+		<div class="jp-carousel-container jp-carousel-light">
+			<!-- The Carousel Swiper -->
+			<div
+				class="jp-carousel-wrap swiper jp-carousel-swiper-container jp-carousel-transitions"
+				itemscope
+				itemtype="https://schema.org/ImageGallery">
+				<div class="jp-carousel swiper-wrapper"></div>
+				<div class="jp-swiper-button-prev swiper-button-prev">
+					<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<mask id="maskPrev" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="9" height="12">
+							<path d="M16.2072 16.59L11.6496 12L16.2072 7.41L14.8041 6L8.8335 12L14.8041 18L16.2072 16.59Z" fill="white"/>
+						</mask>
+						<g mask="url(#maskPrev)">
+							<rect x="0.579102" width="23.8823" height="24" fill="#FFFFFF"/>
+						</g>
+					</svg>
+				</div>
+				<div class="jp-swiper-button-next swiper-button-next">
+					<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<mask id="maskNext" mask-type="alpha" maskUnits="userSpaceOnUse" x="8" y="6" width="8" height="12">
+							<path d="M8.59814 16.59L13.1557 12L8.59814 7.41L10.0012 6L15.9718 12L10.0012 18L8.59814 16.59Z" fill="white"/>
+						</mask>
+						<g mask="url(#maskNext)">
+							<rect x="0.34375" width="23.8822" height="24" fill="#FFFFFF"/>
+						</g>
+					</svg>
+				</div>
+			</div>
+			<!-- The main close buton -->
+			<div class="jp-carousel-close-hint">
+				<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<mask id="maskClose" mask-type="alpha" maskUnits="userSpaceOnUse" x="5" y="5" width="15" height="14">
+						<path d="M19.3166 6.41L17.9135 5L12.3509 10.59L6.78834 5L5.38525 6.41L10.9478 12L5.38525 17.59L6.78834 19L12.3509 13.41L17.9135 19L19.3166 17.59L13.754 12L19.3166 6.41Z" fill="white"/>
+					</mask>
+					<g mask="url(#maskClose)">
+						<rect x="0.409668" width="23.8823" height="24" fill="#FFFFFF"/>
+					</g>
+				</svg>
+			</div>
+			<!-- Image info, comments and meta -->
+			<div class="jp-carousel-info">
+				<div class="jp-carousel-info-footer">
+					<div class="jp-carousel-pagination-container">
+						<div class="jp-swiper-pagination swiper-pagination"></div>
+						<div class="jp-carousel-pagination"></div>
+					</div>
+					<div class="jp-carousel-photo-title-container">
+						<div class="jp-carousel-photo-caption"></div>
+					</div>
+					<div class="jp-carousel-photo-icons-container">
+						<a href="#" class="jp-carousel-icon-btn jp-carousel-icon-info" aria-label="切換照片中繼資料可見度">
+							<span class="jp-carousel-icon">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="maskInfo" mask-type="alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="21" height="20">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M12.7537 2C7.26076 2 2.80273 6.48 2.80273 12C2.80273 17.52 7.26076 22 12.7537 22C18.2466 22 22.7046 17.52 22.7046 12C22.7046 6.48 18.2466 2 12.7537 2ZM11.7586 7V9H13.7488V7H11.7586ZM11.7586 11V17H13.7488V11H11.7586ZM4.79292 12C4.79292 16.41 8.36531 20 12.7537 20C17.142 20 20.7144 16.41 20.7144 12C20.7144 7.59 17.142 4 12.7537 4C8.36531 4 4.79292 7.59 4.79292 12Z" fill="white"/>
+									</mask>
+									<g mask="url(#maskInfo)">
+										<rect x="0.8125" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+							</span>
+						</a>
+												<a href="#" class="jp-carousel-icon-btn jp-carousel-icon-comments" aria-label="切換照片留言可見度">
+							<span class="jp-carousel-icon">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="maskComments" mask-type="alpha" maskUnits="userSpaceOnUse" x="2" y="2" width="21" height="20">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M4.3271 2H20.2486C21.3432 2 22.2388 2.9 22.2388 4V16C22.2388 17.1 21.3432 18 20.2486 18H6.31729L2.33691 22V4C2.33691 2.9 3.2325 2 4.3271 2ZM6.31729 16H20.2486V4H4.3271V18L6.31729 16Z" fill="white"/>
+									</mask>
+									<g mask="url(#maskComments)">
+										<rect x="0.34668" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+
+								<span class="jp-carousel-has-comments-indicator" aria-label="這張圖片有留言。"></span>
+							</span>
+						</a>
+											</div>
+				</div>
+				<div class="jp-carousel-info-extra">
+					<div class="jp-carousel-info-content-wrapper">
+						<div class="jp-carousel-photo-title-container">
+							<div class="jp-carousel-photo-title"></div>
+						</div>
+						<div class="jp-carousel-comments-wrapper">
+															<div id="jp-carousel-comments-loading">
+									<span>載入迴響中...</span>
+								</div>
+								<div class="jp-carousel-comments"></div>
+								<div id="jp-carousel-comment-form-container">
+									<span id="jp-carousel-comment-form-spinner"><svg class="jetpack-spinner" width="20" height="20" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><circle cx="50" cy="50" r="46" fill="none" stroke="#ddd" stroke-width="8"/><path d="M 50 4 A 46 46 0 0 1 96 50" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" dur="1.4s" from="0 50 50" to="360 50 50" repeatCount="indefinite"/></path></svg></span>
+									<div id="jp-carousel-comment-post-results"></div>
+																														<form id="jp-carousel-comment-form">
+												<label for="jp-carousel-comment-form-comment-field" class="screen-reader-text">發表迴響…</label>
+												<textarea
+													name="comment"
+													class="jp-carousel-comment-form-field jp-carousel-comment-form-textarea"
+													id="jp-carousel-comment-form-comment-field"
+													placeholder="發表迴響…"
+												></textarea>
+												<div id="jp-carousel-comment-form-submit-and-info-wrapper">
+													<div id="jp-carousel-comment-form-commenting-as">
+																													<fieldset>
+																<label for="jp-carousel-comment-form-email-field">電子郵件 (必要)</label>
+																<input type="text" name="email" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-email-field" />
+															</fieldset>
+															<fieldset>
+																<label for="jp-carousel-comment-form-author-field">名稱 (必要)</label>
+																<input type="text" name="author" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-author-field" />
+															</fieldset>
+															<fieldset>
+																<label for="jp-carousel-comment-form-url-field">網站</label>
+																<input type="text" name="url" class="jp-carousel-comment-form-field jp-carousel-comment-form-text-field" id="jp-carousel-comment-form-url-field" />
+															</fieldset>
+																											</div>
+													<input
+														type="submit"
+														name="submit"
+														class="jp-carousel-comment-form-button"
+														id="jp-carousel-comment-form-button-submit"
+														value="發佈留言" />
+												</div>
+											</form>
+																											</div>
+													</div>
+						<div class="jp-carousel-image-meta">
+							<div class="jp-carousel-title-and-caption">
+								<div class="jp-carousel-photo-info">
+									<div class="jp-carousel-caption" itemprop="caption description"></div>
+								</div>
+
+								<div class="jp-carousel-photo-description"></div>
+							</div>
+							<a class="jp-carousel-image-download" href="#" aria-label="下載圖片" target="_blank" style="display: none;">
+								<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="3" y="3" width="19" height="18">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M5.84615 5V19H19.7775V12H21.7677V19C21.7677 20.1 20.8721 21 19.7775 21H5.84615C4.74159 21 3.85596 20.1 3.85596 19V5C3.85596 3.9 4.74159 3 5.84615 3H12.8118V5H5.84615ZM14.802 5V3H21.7677V10H19.7775V6.41L9.99569 16.24L8.59261 14.83L18.3744 5H14.802Z" fill="white"/>
+									</mask>
+									<g mask="url(#mask0)">
+										<rect x="0.870605" width="23.8823" height="24" fill="#FFFFFF"/>
+									</g>
+								</svg>
+								<span class="jp-carousel-download-text"></span>
+							</a>
+							<div class="jp-carousel-image-map" style="display: none;"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		</div>
+		<link rel='stylesheet' id='all-css-fbe71a9dbcd39c46659db37af863bcf0' href='https://blog.mohw.gov.tw/_static/??-eJx1jMsKgCAQAH8o24QiL9GnhG1LmE9cxd+PDh67zjDTksAYCoUCydXbBIaHStJo4TAB4XQRLQM3kyiPyDy0/8LHqzpiQJ1jZXJdiA6+we43uapFTVLN8wtFFC9D' type='text/css' media='all' />
+<style id="core-block-supports-inline-css">
+.wp-container-core-columns-is-layout-995f960e{flex-wrap:nowrap;}.wp-elements-1 a:where(:not(.wp-element-button)){color:var(--wp--preset--color--palette-color-3);}
+/*# sourceURL=core-block-supports-inline-css */
+</style>
+<link rel='stylesheet' id='all-css-37a33ed7633a1acf65cd6cf9fa559e29' href='https://blog.mohw.gov.tw/wp-content/plugins/jetpack/_inc/blocks/subscriptions/view.css?m=1779184514' type='text/css' media='all' />
+<script id="ct-scripts-js-extra">
+var ct_localizations = {"ajax_url":"https://blog.mohw.gov.tw/wp-admin/admin-ajax.php","public_url":"https://blog.mohw.gov.tw/wp-content/themes/blocksy/static/bundle/","rest_url":"https://blog.mohw.gov.tw/wp-json/","search_url":"https://blog.mohw.gov.tw/search/QUERY_STRING/","show_more_text":"\u986f\u793a\u66f4\u591a","more_text":"\u66f4\u591a","search_live_results":"\u641c\u5c0b\u7d50\u679c","search_live_no_results":"\u627e\u4e0d\u5230\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c","search_live_no_result":"\u627e\u4e0d\u5230\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c","search_live_one_result":"\u60a8\u5df1\u627e\u5230 %s \u500b\u7b26\u5408\u7684. \u8acb\u6309 Tab \u9375\u4f86\u9078\u64c7\u5b83.","search_live_many_results":"\u60a8\u5df1\u627e\u5230 %s \u500b\u7b26\u5408\u7684. \u8acb\u6309 Tab \u9375\u4f86\u9078\u64c7\u5b83.","search_live_stock_status_texts":{"instock":"\u5c1a\u6709\u5eab\u5b58","outofstock":"\u6c92\u6709\u5eab\u5b58"},"clipboard_copied":"\u5df2\u5b8c\u6210\u8907\u88fd\uff01","clipboard_failed":"\u8907\u88fd\u5931\u6557","expand_submenu":"\u5c55\u958b\u4e0b\u62c9\u9078\u55ae","collapse_submenu":"\u6536\u5408\u4e0b\u62c9\u9078\u55ae","dynamic_js_chunks":[{"id":"blocksy_sticky_header","selector":"header [data-sticky]","url":"https://blog.mohw.gov.tw/wp-content/plugins/blocksy-companion/static/bundle/sticky.js?ver=2.1.55","version":"2.1.55"}],"dynamic_styles":{"lazy_load":"https://blog.mohw.gov.tw/wp-content/themes/blocksy/static/bundle/non-critical-styles.min.css?ver=2.1.42","search_lazy":"https://blog.mohw.gov.tw/wp-content/themes/blocksy/static/bundle/non-critical-search-styles.min.css?ver=2.1.42","back_to_top":"https://blog.mohw.gov.tw/wp-content/themes/blocksy/static/bundle/back-to-top.min.css?ver=2.1.42"},"dynamic_styles_selectors":[{"selector":".ct-header-cart, #woo-cart-panel","url":"https://blog.mohw.gov.tw/wp-content/themes/blocksy/static/bundle/cart-header-element-lazy.min.css?ver=2.1.42"},{"selector":".flexy","url":"https://blog.mohw.gov.tw/wp-content/themes/blocksy/static/bundle/flexy.min.css?ver=2.1.42"},{"selector":".ct-pagination","url":"https://blog.mohw.gov.tw/wp-content/themes/blocksy/static/bundle/pagination.min.css?ver=2.1.42"},{"selector":"#account-modal","url":"https://blog.mohw.gov.tw/wp-content/plugins/blocksy-companion/static/bundle/header-account-modal-lazy.min.css?ver=2.1.55"},{"selector":".ct-header-account","url":"https://blog.mohw.gov.tw/wp-content/plugins/blocksy-companion/static/bundle/header-account-dropdown-lazy.min.css?ver=2.1.55"}],"login_generic_error_msg":"\u767c\u751f\u610f\u5916\u932f\u8aa4\u3002\u8acb\u7a0d\u5f8c\u518d\u8a66\u4e00\u6b21\u3002"};
+//# sourceURL=ct-scripts-js-extra
+</script>
+<script type='text/javascript'  src='https://blog.mohw.gov.tw/wp-content/themes/blocksy/static/bundle/main.js?m=1778837287'></script>
+<script id="wp-dom-ready-js" src="https://blog.mohw.gov.tw/wp-includes/js/dist/dom-ready.min.js?ver=3fe927cab37bf38d6a23"></script>
+<script id="subscription-modal-js-js-extra">
+var subscriptionData = {"homeUrl":"blog.mohw.gov.tw"};
+//# sourceURL=subscription-modal-js-js-extra
+</script>
+<script type='text/javascript'  src='https://blog.mohw.gov.tw/wp-content/plugins/jetpack/modules/comments/subscription-modal-on-comment/subscription-modal.js?m=1764003632'></script>
+<script id="jetpack-stats-js-before">
+_stq = window._stq || [];
+_stq.push([ "view", {"v":"ext","blog":"234947922","post":"2084","tz":"8","srv":"blog.mohw.gov.tw","hp":"atomic","ac":"2","amp":"0","j":"1:16.3-a.3"} ]);
+_stq.push([ "clickTrackerInit", "234947922", "2084" ]);
+//# sourceURL=jetpack-stats-js-before
+</script>
+<script data-wp-strategy="defer" defer fetchpriority="low" id="jetpack-stats-js" src="https://stats.wp.com/e-202639.js"></script>
+<script id="jetpack-carousel-js-extra">
+var jetpackSwiperLibraryPath = {"url":"https://blog.mohw.gov.tw/wp-content/plugins/jetpack/_inc/blocks/swiper.js"};
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"zh","ajaxurl":"https://blog.mohw.gov.tw/wp-admin/admin-ajax.php","nonce":"aa8fe04d12","display_exif":"1","display_comments":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"white","comment":"\u7559\u8a00","post_comment":"\u767c\u4f48\u7559\u8a00","write_comment":"\u767c\u8868\u8ff4\u97ff\u2026","loading_comments":"\u8f09\u5165\u8ff4\u97ff\u4e2d...","image_label":"\u4ee5\u5168\u87a2\u5e55\u958b\u555f\u5716\u7247\u3002","download_original":"\u6aa2\u8996\u5b8c\u6574\u5927\u5c0f \u003Cspan class=\"photo-size\"\u003E{0}\u003Cspan class=\"photo-size-times\"\u003E\u00d7\u003C/span\u003E{1}\u003C/span\u003E","no_comment_text":"\u8acb\u78ba\u8a8d\u4f60\u5df2\u7d93\u8f38\u5165\u4e00\u4e9b\u6587\u5b57\u624d\u53ef\u767c\u8868\u8ff4\u97ff\u3002","no_comment_email":"\u8acb\u63d0\u4f9b\u96fb\u5b50\u90f5\u4ef6\u4f4d\u5740\u624d\u53ef\u767c\u8868\u8ff4\u97ff\u3002","no_comment_author":"\u8acb\u63d0\u4f9b\u4f60\u7684\u59d3\u540d\u624d\u53ef\u767c\u8868\u8ff4\u97ff\u3002","comment_post_error":"\u62b1\u6b49\uff0c\u4f46\u4f60\u767c\u8868\u8ff4\u97ff\u6642\u51fa\u73fe\u4e86\u4e00\u500b\u932f\u8aa4\u3002\u8acb\u7a0d\u5f8c\u518d\u8a66\u4e00\u6b21\u3002","comment_approved":"\u4f60\u7684\u8ff4\u97ff\u5df2\u6838\u51c6\u3002","comment_unapproved":"\u4f60\u7684\u8ff4\u97ff\u6b63\u5728\u5be9\u6838\u4e2d\u3002","camera":"\u7167\u76f8\u6a5f","aperture":"\u5149\u5708","shutter_speed":"\u5feb\u9580\u901f\u5ea6","focal_length":"\u7126\u8ddd","copyright":"\u7248\u6b0a","comment_registration":"0","require_name_email":"1","login_url":"https://blog.mohw.gov.tw/wp-login.php?redirect_to=https%3A%2F%2Fblog.mohw.gov.tw%2F2084%2F","blog_id":"1","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"]};
+//# sourceURL=jetpack-carousel-js-extra
+</script>
+<script type='text/javascript'  src='https://blog.mohw.gov.tw/wp-content/plugins/jetpack/_inc/build/carousel/jetpack-carousel.min.js?m=1785801844'></script>
+<script id="jetpack-blocks-assets-base-url-js-before">
+var Jetpack_Block_Assets_Base_Url="https://blog.mohw.gov.tw/wp-content/plugins/jetpack/_inc/blocks/";
+//# sourceURL=jetpack-blocks-assets-base-url-js-before
+</script>
+<script type='text/javascript'  src='https://blog.mohw.gov.tw/wp-includes/js/dist/vendor/wp-polyfill.min.js?m=1784059681'></script>
+<script data-wp-strategy="defer" defer id="jetpack-block-subscriptions-js" src="https://blog.mohw.gov.tw/wp-content/plugins/jetpack/_inc/blocks/subscriptions/view.js?minify=false&#038;ver=16.3-a.3"></script>
+
+</body>
+</html>

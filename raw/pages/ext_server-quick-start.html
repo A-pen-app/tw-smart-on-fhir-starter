@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>
+      SMART on FHIR -- Tutorials -- Server Quick-start
+    </title>
+
+    <link href="/assets/css/bootstrap4.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+
+    <style>
+      h2, h3 { margin-top: 40px;}
+      li {margin-bottom: 8px;}
+      ul {margin-top: 8px;}
+    </style>
+
+  </head>
+  <body>
+
+    <!-- Docs master nav -->
+    <header style="text-align: center; margin: 40px 0">
+        <a href="https://smarthealthit.org">
+          <img src="/assets/img/smart-logo.svg" alt="SMART on FHIR Logo" style="max-height: 90px;" />
+        </a>
+    </header>
+
+    <!-- Docs page layout -->
+    <div id="master">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-12" role="main">
+            <h1 id="tutorials---quick-start-making-your-ehr-smart">Tutorials - Quick-start: Making your EHR SMART</h1>
+
+<p>This is a getting-started guide for Health IT systems looking to support pluggable
+apps using SMART on FHIR. We’ll take you through the process of allowing your users to launch
+a single app: the open-source SMART Growth Charts app.</p>
+
+<p>To get Growth Charts running inside your EHR, you’ll implement a basic SMART on FHIR server that can:</p>
+
+<ol>
+  <li>Expose clinical data using FHIR <code class="language-plaintext highlighter-rouge">Patient</code> and <code class="language-plaintext highlighter-rouge">Observation</code> resources</li>
+  <li>Protect your clinical data via the <a href="http://docs.smarthealthit.org/authorization/">SMART on FHIR App Authorization protocol</a> (based on OAuth2).</li>
+  <li>Allow a user to launch Growth Charts by clicking a “launch” button</li>
+</ol>
+
+<p>To get up and running as easily as possible, this quick-start guide helps you
+through two scenarios: first, to run the app in debugging mode against an
+unprotected server, and second, to get the app running against an
+OAuth2-protected server.</p>
+
+<h2 id="debugging-launch-growth-charts-against-your-unprotected-server">Debugging: Launch Growth Charts against your unprotected server</h2>
+
+<p>Once you’ve exposed the necessary clinical data (see payload examples below for
+full details), make sure that you’re exposing Cross-Origin Request Support (CORS) headers
+with your HTTP responses. A quick set of headers to get starter would be:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Access-Control-Allow-Headers: origin, authorization, accept, content-type, x-requested-with
+Access-Control-Allow-Methods: GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS
+Access-Control-Allow-Origin: *
+</code></pre></div></div>
+
+<p>At this point, you can launch the Growth Charts app in debugging mode (no
+authorization required).</p>
+
+<p>You’ll expose a “launch” button that users can click from within an existing EHR session.  When a user clicks this button, you’ll load the following URL in a new browser window (or an iframe, or an embedded browser widget, depending on the architecture of your EHR), supplying two URL parameters:</p>
+
+<p><a href="http://examples.smarthealthit.org/growth-chart-app/launch.html?fhirServiceUrl=https://r2.smarthealthit.org&amp;patientId=smart-1482713">http://examples.smarthealthit.org/growth-chart-app/launch.html?fhirServiceUrl=https://r2.smarthealthit.org&amp;patientId=smart-1482713</a></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">fhirServiceUrl={FHIR base URL of your unprotected server}</code></li>
+  <li><code class="language-plaintext highlighter-rouge">patientId={patient ID from the current user session}</code></li>
+</ul>
+
+<p>You can click the URL above for a live example (running against our open testing server).</p>
+
+<h2 id="for-real-launch-growth-charts-against-your-oauth2-protected-server">For real: Launch Growth Charts against your OAuth2-protected server</h2>
+
+<p>Once you’ve implemented the <a href="http://docs.smarthealthit.org/authorization">SMART on FHIR Authorization
+protocols</a>, you can wire up your “launch” button to launch
+the app in production mode (with authorization) by completing the following
+sequence:</p>
+
+<h4 id="1-create-a-launch-context">1. Create a launch context</h4>
+
+<p>On your back-end, as soon as a user clicks the launch button you’ll create a SMART “launch context” that includes (at least) the patient ID from the current EHR user session.  You’ll assign a new “launch id” to
+this context, and you’ll pass that id to the Growth Charts app as a URL parameter. In
+the real world, you’d create a launch context every time a user launches an app
+ – though for prototyping, you might just want to create a trivial implementation
+that hard-codes a set of sample values.</p>
+
+<h4 id="2-open-the-app">2. Open the app</h4>
+
+<p>When a user launches the Growth Charts app from inside your EHR, you’ll load the following URL in a new browser window (or an iframe, or an embedded browser widget, depending on the architecture of your EHR), supplying two URL parameters:</p>
+
+<p><a href="#">http://examples.smarthealthit.org/growth-chart-app/launch.html?</a></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">iss={FHIR base URL of your OAuth2-protected server}</code></li>
+  <li><code class="language-plaintext highlighter-rouge">launch={opaque launch ID generated by your server}</code></li>
+</ul>
+
+<p>(Note: the link above is for example purposes only. You’ll need to fill in your
+own server’s issuer and a launch ID to proceed.)</p>
+
+<h2 id="data-requirements">Data requirements</h2>
+
+<p>When the SMART Growth Charts, it will fetch:</p>
+
+<h3 id="1-patient-demographics">1. Patient demographics</h3>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="s1">'https://r2.smarthealthit.org/Patient/smart-1482713'</span> <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span>
+</code></pre></div></div>
+
+<h3 id="2-all-weight-height-head-circumference-and-bmi-observations">2. All Weight, Height, Head Circumference, and BMI Observations</h3>
+<p>Note LOINC Codes: <code class="language-plaintext highlighter-rouge">3141-9</code>, <code class="language-plaintext highlighter-rouge">8302-2</code>, <code class="language-plaintext highlighter-rouge">8287-5</code>, <code class="language-plaintext highlighter-rouge">39156-5</code></p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="s1">'https://r2.smarthealthit.org/Observation?subject%3APatient=smart-1482713&amp;code=3141-9%2C8302-2%2C8287-5%2C39156-5&amp;_count=50'</span> <span class="nt">-H</span> <span class="s1">'Accept: application/json'</span> 
+</code></pre></div></div>
+
+<h2 id="sample-patient-demographics">Sample patient demographics</h2>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"resourceType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1482713"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lastUpdated"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-30T14:31:27.885+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"versionId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"18619"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"generated"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"div"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;</span><span class="se">\n</span><span class="s2">        </span><span class="se">\n</span><span class="s2">            &lt;p&gt;Susan Clark&lt;/p&gt;</span><span class="se">\n</span><span class="s2">      </span><span class="se">\n</span><span class="s2">          &lt;/div&gt;"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"given"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"Susan"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"A."</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nl">"use"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"official"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"family"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"Clark"</span><span class="w">
+         </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="nl">"address"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"country"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"USA"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"city"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Tulsa"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"state"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"OK"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"use"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"line"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"52 Highland St"</span><span class="w">
+         </span><span class="p">],</span><span class="w">
+         </span><span class="nl">"postalCode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"74116"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="nl">"gender"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"telecom"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"system"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"phone"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"use"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"800-576-9327"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"system"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"susan.clark@example.com"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">],</span><span class="w">
+   </span><span class="nl">"active"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"birthDate"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2000-12-27"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"identifier"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Medical record number"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"coding"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+               </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MR"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"system"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hl7.org/fhir/v2/0203"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"display"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Medical record number"</span><span class="w">
+               </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"system"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://hospital.smarthealthit.org"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1482713"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"use"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"usual"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="sample-vitals-height-weight-bmi">Sample vitals (height, weight, BMI)</h2>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"total"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"resourceType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Bundle"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"searchset"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"entry"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"search"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"mode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"match"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"resource"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"resourceType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"effectiveDateTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2003-11-28"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"428-height"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"generated"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"div"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;2003-11-28: height = 115.316 cm&lt;/div&gt;"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"versionId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"19628"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"lastUpdated"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-30T14:31:29.576+00:00"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"height"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"coding"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                     </span><span class="nl">"system"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://loinc.org"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8302-2"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"display"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"height"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+               </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"encounter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter/428"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"subject"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/1482713"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"final"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"valueQuantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"unit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"cm"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"system"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://unitsofmeasure.org"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">115.316</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"cm"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"fullUrl"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://r2.smarthealthit.org/Observation/428-height"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"search"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"mode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"match"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"resource"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"weight"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"coding"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                     </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3141-9"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"system"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://loinc.org"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"display"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"weight"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+               </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"lastUpdated"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-30T14:31:29.645+00:00"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"versionId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"19676"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"valueQuantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"system"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://unitsofmeasure.org"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"unit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"kg"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">18.55193</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"kg"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"final"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"subject"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/1482713"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"encounter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter/428"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"428-weight"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"effectiveDateTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2003-11-28"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"resourceType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"generated"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"div"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;2003-11-28: weight = 18.55193 kg&lt;/div&gt;"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"fullUrl"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://r2.smarthealthit.org/Observation/428-weight"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+         </span><span class="nl">"fullUrl"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"https://r2.smarthealthit.org/Observation/428-bmi"</span><span class="p">,</span><span class="w">
+         </span><span class="nl">"search"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"mode"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"match"</span><span class="w">
+         </span><span class="p">},</span><span class="w">
+         </span><span class="nl">"resource"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"subject"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/1482713"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"final"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"valueQuantity"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">13.9</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"kg/m2"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"unit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"kg/m2"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"system"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://unitsofmeasure.org"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"encounter"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter/428"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"lastUpdated"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-30T14:31:29.663+00:00"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"versionId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"19688"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bmi"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"coding"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                     </span><span class="nl">"code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"39156-5"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"system"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://loinc.org"</span><span class="p">,</span><span class="w">
+                     </span><span class="nl">"display"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"bmi"</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+               </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+               </span><span class="nl">"div"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;2003-11-28: bmi = 13.9 kg/m2&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+               </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"generated"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"effectiveDateTime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2003-11-28"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"428-bmi"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"resourceType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Observation"</span><span class="w">
+         </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="sample-encounter-note-app-can-work-without-encounter-details">Sample Encounter (note: app can work without encounter details)</h2>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"resourceType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Encounter"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"class"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ambulatory"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"finished"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"text"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"div"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;2003-11-28: ambulatory encounter&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"generated"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="nl">"id"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"428"</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"meta"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lastUpdated"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-30T14:31:27.908+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"versionId"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"18639"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="nl">"period"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"end"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2003-11-28"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"start"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2003-11-28"</span><span class="w">
+   </span><span class="p">},</span><span class="w">
+   </span><span class="nl">"patient"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"reference"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Patient/1482713"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div></div>
+
+          </div>
+        </div>
+     
+      </div>
+    </div>
+    <script>
+      window.github_branch = "master";
+    </script>
+
+    <footer class="text-center" style="margin: 40px 0;">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <a href="https://smarthealthit.org">SMART Health IT</a>
+            <span class="text-muted mx-2">|</span>
+            <a href="https://github.com/smart-on-fhir/smart-on-fhir.github.io/edit/master/index.md">Add a link</a> 
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <br/>
+            <span class="text-muted">© Copyright 2020 by the Computational Health Informatics Program, Boston Children’s Hospital, Boston, MA</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script>
+       $("a[href='https://web.archive.org/web/*']").attr('href', 'https://web.archive.org/web/*/'+window.location.href);
+    </script>
+  </body>
+</html>

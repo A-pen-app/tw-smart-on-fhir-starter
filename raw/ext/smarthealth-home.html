@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- 關閉頁面快取 -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <title>臺灣智慧醫療學校</title>
+
+  <style>
+    /* 關閉觸控縮放與雙擊縮放 */
+    html,
+    body {
+      touch-action: manipulation;
+      -ms-touch-action: manipulation;
+    }
+
+    /* 防止 iOS Input 聚焦時自動縮放 (使用 1rem 相對尺寸，滿足無障礙規範 CS2140401C) */
+    input,
+    textarea,
+    select {
+      font-size: 1rem !important;
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-63WFQCSH38"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-63WFQCSH38');
+  </script>
+  <script type="module" crossorigin src="/assets/index-D7CfJ0yZ.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-C42V_o6Y.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  <script>
+    const fontRatio = 0.0625; // 1px = 0.0625rem (基於 16px = 1rem)
+
+    // 1. 替換 style 標籤中的 font-size px 為 rem/em，解決 CS2140401C (AA)
+    function processStyleTag(styleTag) {
+      if (!styleTag) return;
+      if (styleTag.textContent && /font-size:\s*\d+(?:\.\d+)?px/i.test(styleTag.textContent)) {
+        styleTag.textContent = styleTag.textContent.replace(
+          /font-size:\s*(\d+(?:\.\d+)?)px(\s*!important)?/gi,
+          function (match, px, important) {
+            const remVal = (parseFloat(px) * fontRatio).toFixed(3).replace(/\.?0+$/, '');
+            return 'font-size:' + remVal + 'rem' + (important || '') + ';';
+          }
+        );
+      }
+      try {
+        const sheet = styleTag.sheet;
+        if (sheet && sheet.cssRules) {
+          for (let i = 0; i < sheet.cssRules.length; i++) {
+            const rule = sheet.cssRules[i];
+            if (rule.style && rule.style.fontSize && rule.style.fontSize.includes('px')) {
+              const pxVal = parseFloat(rule.style.fontSize);
+              if (!isNaN(pxVal)) {
+                rule.style.fontSize = (pxVal * fontRatio).toFixed(3).replace(/\.?0+$/, '') + 'rem';
+              }
+            }
+          }
+        }
+      } catch (e) {}
+    }
+
+    function replaceAllFontSizes(rootNode) {
+      const target = rootNode || document;
+      if (target.tagName === 'STYLE') {
+        processStyleTag(target);
+      } else if (target.querySelectorAll) {
+        target.querySelectorAll('style').forEach(processStyleTag);
+      }
+    }
+
+    // 2. 檢查並補足所有 input 的 title 與 aria-label，解決 HM1130104C (A)
+    function checkInputTitleAttributes(rootNode) {
+      const target = rootNode || document;
+      const inputs = target.tagName === 'INPUT' ? [target] : (target.querySelectorAll ? target.querySelectorAll('input') : []);
+      inputs.forEach(input => {
+        const currentTitle = input.getAttribute('title');
+        const currentLabel = input.getAttribute('aria-label');
+        if (currentTitle && currentTitle !== input.type && currentTitle.trim()) return;
+        if (currentLabel && currentLabel.trim()) return;
+
+        // A. 處理 Ant Design 的 a-select 搜尋輸入框
+        if (input.classList.contains('ant-select-selection-search-input') || input.type === 'search') {
+          const selectWrapper = input.closest('.ant-select');
+          let selectTitle = selectWrapper ? selectWrapper.getAttribute('title') : '';
+          if (!selectTitle) {
+            const prefix = input.closest('.custom-select')?.querySelector('.select-prefix');
+            if (prefix) selectTitle = prefix.textContent.replace('：', '').trim();
+          }
+          const finalTitle = selectTitle || '下拉選單搜尋項目';
+          input.setAttribute('title', finalTitle);
+          input.setAttribute('aria-label', finalTitle);
+          return;
+        }
+
+        // B. 處理 a-checkbox 核取方塊
+        if (input.type === 'checkbox') {
+          const label = input.closest('label');
+          const labelText = label ? label.textContent.trim() : '';
+          const finalTitle = labelText || '核取方塊';
+          input.setAttribute('title', finalTitle);
+          input.setAttribute('aria-label', finalTitle);
+          return;
+        }
+
+        // C. 處理一般文字輸入與其他類型
+        let derivedTitle = '';
+        if (input.placeholder && input.placeholder.trim()) {
+          derivedTitle = input.placeholder.trim();
+        } else if (input.id) {
+          const label = document.querySelector(`label[for="${input.id}"]`);
+          if (label) derivedTitle = label.textContent.replace('*', '').trim();
+        }
+        const fallbackTitle = derivedTitle || (input.type ? (input.type === 'text' ? '請輸入內容' : input.type) : '輸入欄位');
+        input.setAttribute('title', fallbackTitle);
+        input.setAttribute('aria-label', fallbackTitle);
+      });
+    }
+
+    // 3. 檢查並補足按鈕與分頁元件無障礙屬性，解決 HM1410200C (A)
+    function checkButtonRoleAttributes(rootNode) {
+      const target = rootNode || document;
+
+      // A. 特別處理 Ant Design a-pagination 分頁按鈕
+      const paginationButtons = target.querySelectorAll ? target.querySelectorAll('button.ant-pagination-item-link, .ant-pagination-item-link') : [];
+      paginationButtons.forEach(btn => {
+        if (!btn.getAttribute('aria-label') || !btn.getAttribute('aria-label').trim()) {
+          const isPrev = btn.closest('.ant-pagination-prev') || btn.querySelector('.anticon-left');
+          const isNext = btn.closest('.ant-pagination-next') || btn.querySelector('.anticon-right');
+          if (isPrev) {
+            btn.setAttribute('aria-label', '上一頁');
+            btn.setAttribute('title', '上一頁');
+          } else if (isNext) {
+            btn.setAttribute('aria-label', '下一頁');
+            btn.setAttribute('title', '下一頁');
+          } else {
+            btn.setAttribute('aria-label', '分頁按鈕');
+            btn.setAttribute('title', '分頁按鈕');
+          }
+        }
+      });
+
+      // B. 處理其餘按鈕
+      const buttons = target.querySelectorAll ? target.querySelectorAll('button, [role="button"], input[type="button"], input[type="submit"], input[type="reset"], a[href="#"], a[href^="javascript:"]') : [];
+      buttons.forEach(element => {
+        if (element.tagName === 'A' && !element.hasAttribute('role')) {
+          element.setAttribute('role', 'button');
+        }
+        let hasName = false;
+        if (element.textContent && element.textContent.trim()) hasName = true;
+        if (element.getAttribute('aria-label') && element.getAttribute('aria-label').trim()) hasName = true;
+        if (element.getAttribute('aria-labelledby')) hasName = true;
+        if (element.getAttribute('title') && element.getAttribute('title').trim()) hasName = true;
+        if ((element.type === 'button' || element.type === 'submit') && element.value && element.value.trim()) hasName = true;
+
+        if (!hasName) {
+          element.setAttribute('aria-label', '按鈕');
+        }
+        if (element.tagName === 'BUTTON' && !element.hasAttribute('type')) {
+          element.setAttribute('type', 'button');
+        }
+      });
+    }
+
+    // 4. 檢查圖片替代文字，解決 HM1110100C (A)
+    function checkImageAltAttributes(rootNode) {
+      const target = rootNode || document;
+      const images = target.tagName === 'IMG' ? [target] : (target.querySelectorAll ? target.querySelectorAll('img') : []);
+      images.forEach(img => {
+        if (!img.hasAttribute('alt') || img.getAttribute('alt') === null) {
+          const pageTitle = document.title ? document.title.replace(' - 臺灣智慧醫療學校', '').trim() : '';
+          img.setAttribute('alt', pageTitle ? `${pageTitle} 內容圖片` : '網頁內容圖片');
+        }
+      });
+    }
+
+    // 執行全域檢查
+    function runAllA11yFixes(rootNode) {
+      replaceAllFontSizes(rootNode);
+      checkInputTitleAttributes(rootNode);
+      checkButtonRoleAttributes(rootNode);
+      checkImageAltAttributes(rootNode);
+    }
+    window.runAllA11yFixes = runAllA11yFixes;
+
+    // DOM 載入階段即時執行
+    document.addEventListener('DOMContentLoaded', function () {
+      runAllA11yFixes(document);
+    });
+    window.addEventListener('load', function () {
+      runAllA11yFixes(document);
+    });
+
+    // 監聽 DOM 動態變化 (應對 Vue SPA 路由切換、非同步組件載入與 CSS-in-JS 動態插入)
+    const observer = new MutationObserver(function (mutations) {
+      let needsStyleSweep = false;
+      for (const mutation of mutations) {
+        if (mutation.type === 'childList') {
+          for (const node of mutation.addedNodes) {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              if (node.tagName === 'STYLE') {
+                processStyleTag(node);
+                needsStyleSweep = true;
+              } else {
+                runAllA11yFixes(node);
+              }
+            } else if (node.nodeType === Node.TEXT_NODE && node.parentElement?.tagName === 'STYLE') {
+              processStyleTag(node.parentElement);
+              needsStyleSweep = true;
+            }
+          }
+        } else if (mutation.type === 'characterData') {
+          if (mutation.target.parentElement?.tagName === 'STYLE') {
+            processStyleTag(mutation.target.parentElement);
+            needsStyleSweep = true;
+          }
+        }
+      }
+      if (needsStyleSweep) {
+        setTimeout(() => replaceAllFontSizes(document), 10);
+        setTimeout(() => replaceAllFontSizes(document), 100);
+      }
+    });
+
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+      characterData: true
+    });
+
+    // 定期掃描確保所有動態與延遲掛載組件持續合規 (250ms 間隔)
+    setInterval(function () {
+      replaceAllFontSizes(document);
+      checkInputTitleAttributes(document);
+      checkButtonRoleAttributes(document);
+      checkImageAltAttributes(document);
+    }, 250);
+  </script>
+</body>
+
+</html>

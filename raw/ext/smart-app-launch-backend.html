@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>Client Authentication: Asymmetric (public key) - SMART App Launch v2.2.0</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+    <link href="assets/css/hl7.css" rel="stylesheet"/>
+    <link href="assets/css/fhir-ig.css" rel="stylesheet"/>
+<link href="assets/css/smart.css" rel="stylesheet"/>
+
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="fhir-logo" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="fhir-logo" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="fhir-logo" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="fhir-logo" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+
+    <style type="text/css">h2{--heading-prefix:"4.1"}
+    h3,h4,h5,h6{--heading-prefix:"4.1"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+        <!-- Placeholder for child template header declarations -->
+
+        <div id="hl7-nav">
+          <a id="hl7-logo" no-external="true" href="http://hl7.org">
+            <img height="50" alt="Visit the HL7 website" src="assets/images/hl7-logo-header.png"/>
+          </a>
+        </div>
+        <div id="family-nav">
+          <a id="family-logo" no-external="true" href="http://hl7.org/fhir"><img height="50" alt="Visit the FHIR website" src="assets/images/fhir-logo-www.png"/> </a>
+        </div>
+        <div id="hl7-search">
+          <a id="hl7-search-lnk" no-external="true" href="searchform.html"><img alt="Search FHIR" src="assets/images/search.png"/></a>
+        </div>
+
+        <div id="project-nav">
+          <a id="project-logo" no-external="true" href="http://smarthealthit.org"><img height="55" alt="Visit the SMART Health IT website" src="assets/images/smart-logo.png"/> </a>
+        </div>
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">SMART App Launch</span>
+            <br/>
+            <span style="display:inline-block;">2.2.0 - STU 2.2
+
+
+
+  <img alt="International flag" src="assets/images/001.svg" height="16" title="International"/>
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+  <li>
+    <a href="index.html">Overview</a>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Apps
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="app-launch.html">Intro</a>
+      </li>
+      <li>
+        <a href="app-launch.html#register-app-with-ehr">Register App</a>
+      </li>
+      <li>
+        <a href="app-launch.html#launch-app-standalone-launch">Standalone Launch</a>
+      </li>
+      <li>
+        <a href="app-launch.html#launch-app-ehr-launch">EHR Launch</a>
+      </li>
+      <li>
+        <a href="app-launch.html#retrieve-well-knownsmart-configuration">Discovery</a>
+      </li>
+      <li>
+        <a href="app-launch.html#obtain-authorization-code">Request Authorization Code</a>
+      </li>
+      <li>
+        <a href="app-launch.html#obtain-access-token">Request Access Token</a>
+      </li>
+      <li>
+        <a href="app-launch.html#access-fhir-api">Access FHIR API</a>
+      </li>
+      <li>
+        <a href="scopes-and-launch-context.html">Scopes and Launch Context</a>
+      </li>
+      <li>
+        <a href="app-state.html">Persisting App State</a>
+      </li>
+      <li>
+        <a href="task-launch.html">Task Requesting Launch</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Backend Services
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="backend-services.html">Backend Services</a>
+      </li>
+      <li>
+        <a href="token-introspection.html">Token Introspection</a>
+      </li>
+    </ul>
+  </li>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Authentication
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="client-confidential-asymmetric.html">Client Authentication - Asymmetric (public key)</a>
+      </li>
+      <li>
+        <a href="client-confidential-symmetric.html">Client Authentication - Symmetric (shared secret)</a>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <a href="conformance.html">Conformance</a>
+  </li>
+ <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Brands
+    <span class="badge" style="background: none; border: 1px solid white; font-size: .75em; vertical-align: middle; margin-left: 5px;">New</span>
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="brands.html">User-Access Brands and Endpoints</a>
+      </li>
+      <li>
+        <a href="example-brands.html">User-Access Brand Examples</a>
+      </li>
+    </ul>
+  </li><li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">See also
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="artifacts.html">Artifacts</a>
+      </li>
+      <li>
+        <a href="best-practices.html">Best Practices</a>
+      </li>
+      <li>
+        <a href="examples.html">Examples</a>
+      </li>
+      <li>
+        <a href="references.html">References</a>
+      </li>
+      <li>
+        <a href="http://hl7.org/fhir/smart-app-launch/history.html">History</a>
+      </li>
+    </ul>
+  </li> 
+</ul>
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><a href='client-authentication.html'><b>Client Authentication</b></a></li><li><b>Client Authentication: Asymmetric (public key)</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">This page is part of the Smart App Launch Implementation Guide (v2.2.0: <a no-external="true" href="https://confluence.hl7.org/display/HL7/HL7+Balloting" title="Standard for Trial-Use">STU</a> 2.2) based on <a no-external="true" href="http://hl7.org/fhir/R4">FHIR (HL7® FHIR® Standard) R4</a>. This is the current published version.  For a full list of available versions, see the <a no-external="true" href="http://hl7.org/fhir/smart-app-launch/history.html">Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>Client Authentication: Asymmetric (public key)</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#profile-audience-and-scope" id="markdown-toc-profile-audience-and-scope">Profile Audience and Scope</a></li>
+  <li><a href="#underlying-standards" id="markdown-toc-underlying-standards">Underlying Standards</a></li>
+  <li><a href="#advertising-server-support-for-this-profile" id="markdown-toc-advertising-server-support-for-this-profile">Advertising server support for this profile</a></li>
+  <li><a href="#registering-a-client-communicating-public-keys" id="markdown-toc-registering-a-client-communicating-public-keys">Registering a client (communicating public keys)</a></li>
+  <li><a href="#authenticating-to-the-token-endpoint" id="markdown-toc-authenticating-to-the-token-endpoint">Authenticating to the Token endpoint</a></li>
+  <li><a href="#worked-example" id="markdown-toc-worked-example">Worked example</a></li>
+</ul>
+
+</div>
+<h3 id="profile-audience-and-scope">Profile Audience and Scope</h3>
+
+<p>This profile describes SMART’s
+<a href="conformance.html"><code class="highlighter-rouge">client-confidential-asymmetric</code></a> authentication mechanism.  It is intended
+for SMART clients that can manage and sign assertions with asymmetric keys.
+Specifically, this profile describes the registration-time metadata required for
+a client using asymmetric keys, and the runtime process by which a client can
+authenticate to an OAuth server’s token endpoint. This profile can be
+implemented by user-facing SMART apps in the context of the <a href="app-launch.html">SMART App Launch</a>
+flow or by <a href="backend-services.html">SMART Backend Services</a> that
+establish a connection with no user-facing authorization step.</p>
+
+<h4 id="use-this-profile-when-the-following-conditions-apply">Use this profile when the following conditions apply:</h4>
+
+<ul>
+  <li>The target FHIR authorization server supports SMART’s <code class="highlighter-rouge">client-confidential-asymmetric</code> capability</li>
+  <li>The client can manage asymmetric keys for authentication</li>
+  <li>The client is able to protect a private key</li>
+</ul>
+
+<p><em>Note</em>: The FHIR specification includes a set of <a href="http://hl7.org/fhir/security.html">security
+considerations</a> including security, privacy,
+and access control. These considerations apply to diverse use cases and provide
+general guidance for choosing among security specifications for particular use
+cases.</p>
+
+<h3 id="underlying-standards">Underlying Standards</h3>
+
+<ul>
+  <li><a href="http://www.hl7.org/fhir/http.html">HL7 FHIR RESTful API</a></li>
+  <li><a href="https://tools.ietf.org/html/rfc5246">RFC5246, The Transport Layer Security Protocol, V1.2</a></li>
+  <li><a href="https://tools.ietf.org/html/rfc6749">RFC6749, The OAuth 2.0 Authorization Framework</a></li>
+  <li><a href="https://tools.ietf.org/html/rfc7515">RFC7515, JSON Web Signature</a></li>
+  <li><a href="https://www.rfc-editor.org/rfc/rfc7517.txt">RFC7517, JSON Web Key</a></li>
+  <li><a href="https://tools.ietf.org/html/rfc7518">RFC7518, JSON Web Algorithms</a></li>
+  <li><a href="https://tools.ietf.org/html/rfc7519">RFC7519, JSON Web Token (JWT)</a></li>
+  <li><a href="https://tools.ietf.org/html/rfc7521">RFC7521, Assertion Framework for OAuth 2.0 Client Authentication and Authorization Grants</a></li>
+  <li><a href="https://tools.ietf.org/html/rfc7523">RFC7523, JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants</a></li>
+  <li><a href="https://tools.ietf.org/html/rfc7591">RFC7591, OAuth 2.0 Dynamic Client Registration Protocol</a></li>
+</ul>
+
+<p><a id="discovery-requirements"></a></p>
+
+<h3 id="advertising-server-support-for-this-profile">Advertising server support for this profile</h3>
+<p>As described in the <a href="conformance.html">Conformance section</a>, a server advertises its support for SMART Confidential Clients with Asymmetric Keys by including the <code class="highlighter-rouge">client-confidential-asymmetric</code> capability at is <code class="highlighter-rouge">.well-known/smart-configuration</code> endpoint; configuration properties include <code class="highlighter-rouge">token_endpoint</code>, <code class="highlighter-rouge">scopes_supported</code>, <code class="highlighter-rouge">token_endpoint_auth_methods_supported</code> (with values that include <code class="highlighter-rouge">private_key_jwt</code>), and <code class="highlighter-rouge">token_endpoint_auth_signing_alg_values_supported</code> (with values that include at least one of <code class="highlighter-rouge">RS384</code>, <code class="highlighter-rouge">ES384</code>).</p>
+
+<h4 id="example-well-knownsmart-configuration-response">Example <code class="highlighter-rouge">.well-known/smart-configuration</code> Response</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "token_endpoint": "https://ehr.example.com/auth/token",
+  "token_endpoint_auth_methods_supported": ["private_key_jwt"],
+  "token_endpoint_auth_signing_alg_values_supported": ["RS384", "ES384"],
+  "scopes_supported": ["system/*.rs"]
+}
+</code></pre></div></div>
+
+<h3 id="registering-a-client-communicating-public-keys">Registering a client (communicating public keys)</h3>
+
+<p>Before a SMART client can run against a FHIR server, the client SHALL generate
+or obtain an asymmetric key pair and SHALL register its public key set with that
+FHIR server’s authorization service (referred to below as the “FHIR authorization server”).
+SMART does not require a
+standards-based registration process, but we encourage FHIR service implementers to
+consider using the <a href="https://tools.ietf.org/html/draft-ietf-oauth-dyn-reg">OAuth 2.0 Dynamic Client Registration
+Protocol</a>.</p>
+
+<p>No matter how a client registers with a FHIR authorization server, the
+client SHALL register the <strong>public key</strong> that the
+client will use to authenticate itself to the FHIR authorization server.  The public key SHALL
+be conveyed to the FHIR authorization server in a JSON Web Key (JWK) structure presented within
+a JWK Set, as defined in
+<a href="https://tools.ietf.org/html/rfc7517">JSON Web Key Set (JWKS)</a>.  The client SHALL
+protect the associated private key from unauthorized disclosure
+and corruption.</p>
+
+<p>For consistency in implementation, FHIR authorization servers SHALL support registration of client JWKs using both of the following techniques (clients SHALL choose a server-supported method at registration time):</p>
+
+<ol>
+  <li>
+    <p>URL to JWK Set (strongly preferred). This URL communicates the TLS-protected
+  endpoint where the client’s public JWK Set can be found.
+  This endpoint SHALL be accessible via TLS without client authentication or authorization. Advantages
+  of this approach are that
+  it allows a client to rotate its own keys by updating the hosted content at the
+  JWK Set URL, assures that the public key used by the FHIR authorization server is current, and avoids the
+  need for the FHIR authorization server to maintain and protect the JWK Set. The client SHOULD return a “Cache-Control” header in its JWKS response</p>
+  </li>
+  <li>
+    <p>JWK Set directly (strongly discouraged). If a client cannot host the JWK
+  Set at a TLS-protected URL, it MAY supply the JWK Set directly to the FHIR authorization server at
+  registration time.  In this case, the FHIR authorization server SHALL protect the JWK Set from corruption,
+  and SHOULD remind the client to send an update whenever the key set changes.  Conveying
+  the JWK Set directly carries the limitation that it does not enable the client to
+  rotate its keys in-band.  Including both the current and successor keys within the JWK Set
+  helps counter this limitation.  However, this approach places increased responsibility
+  on the FHIR authorization server for protecting the integrity of the key(s) over time, and denies the FHIR authorization server the
+  opportunity to validate the currency and integrity of the key at the time it is used.</p>
+  </li>
+</ol>
+
+<p>The client SHALL be capable of generating a JSON Web Signature in accordance with <a href="https://tools.ietf.org/html/rfc7515">RFC7515</a>. The client SHALL support both <code class="highlighter-rouge">RS384</code> and <code class="highlighter-rouge">ES384</code> for the JSON Web Algorithm (JWA) header parameter as defined in <a href="https://tools.ietf.org/html/rfc7518">RFC7518</a>.
+The FHIR authorization server SHALL be capable of validating signatures with at least one of <code class="highlighter-rouge">RS384</code> or <code class="highlighter-rouge">ES384</code>.
+Over time, best practices for asymmetric signatures are likely to evolve. While this specification mandates a baseline of support clients and servers MAY support and use additional algorithms for signature validation.
+As a reference, the signature algorithm discovery protocol <code class="highlighter-rouge">token_endpoint_auth_signing_alg_values_supported</code> property is defined in OpenID Connect as part of the <a href="https://tools.ietf.org/html/rfc8414">OAuth2 server metadata</a>.</p>
+
+<p>No matter how a JWK Set is communicated to the FHIR authorization server, each JWK SHALL represent an
+asymmetric key by including <code class="highlighter-rouge">kty</code> and <code class="highlighter-rouge">kid</code> properties, with content conveyed using
+“bare key” properties (i.e., direct base64 encoding of key material as integer values).
+This means that:</p>
+
+<ul>
+  <li>For RSA public keys, each JWK SHALL include <code class="highlighter-rouge">n</code> and <code class="highlighter-rouge">e</code> values (modulus and exponent)</li>
+  <li>For ECDSA public keys, each JWK SHALL include <code class="highlighter-rouge">crv</code>, <code class="highlighter-rouge">x</code>, and <code class="highlighter-rouge">y</code> values (curve,
+x-coordinate, and y-coordinate, for EC keys)</li>
+</ul>
+
+<p>Upon registration, the client SHALL be assigned a <code class="highlighter-rouge">client_id</code>, which the client SHALL use when
+requesting an access token.</p>
+
+<h3 id="authenticating-to-the-token-endpoint">Authenticating to the Token endpoint</h3>
+
+<p>This specification describes how a client authenticates using an asymmetric key, e.g., when requesting an access token during: <a href="app-launch.html#step-5-access-token">SMART App Launch</a> or <a href="backend-services.html#step-3-access-token">SMART Backend Services</a>, authentication is based on the OAuth 2.0 client credentials flow, with a <a href="https://tools.ietf.org/html/rfc7523">JWT
+assertion</a> as the client’s authentication mechanism.</p>
+
+<p>To begin the exchange, the client SHALL use the <a href="https://tools.ietf.org/html/rfc5246">Transport Layer Security
+(TLS) Protocol Version 1.2 (RFC5246)</a> or a more recent version of TLS to
+authenticate the identity of the FHIR authorization server and to establish an encrypted,
+integrity-protected link for securing all exchanges between the client
+and the FHIR authorization server’s token endpoint.  All exchanges described herein between the client
+and the FHIR server SHALL be secured using TLS V1.2 or a more recent version of TLS .</p>
+
+<h4 id="request">Request</h4>
+
+<p>Before a client can request an access token, it SHALL generate a
+one-time-use JSON Web Token (JWT) that will be used to authenticate the client to
+the FHIR authorization server. The authentication JWT SHALL include the
+following claims, and SHALL be signed with the client’s private
+key (which SHOULD be an <code class="highlighter-rouge">RS384</code> or <code class="highlighter-rouge">ES384</code> signature). For a practical reference on JWT, as well as debugging
+tools and client libraries, see <a href="https://jwt.io">https://jwt.io</a>.</p>
+
+<table class="table">
+  <thead>
+    <th colspan="3">Authentication JWT Header Values</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>alg</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>The JWA algorithm (e.g., <code>RS384</code>, <code>ES384</code>) used for signing the authentication JWT.
+      </td>
+    </tr>
+    <tr>
+      <td><code>kid</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>The identifier of the key-pair used to sign this JWT. This identifier SHALL
+          be unique within the client's JWK Set.</td>
+    </tr>
+    <tr>
+      <td><code>typ</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Fixed value: <code>JWT</code>.</td>
+    </tr>
+    <tr>
+      <td><code>jku</code></td>
+      <td><span class="label label-info">optional</span></td>
+      <td>The TLS-protected URL to the JWK Set that contains the public key(s) accessible without authentication or authorization. When present, this SHALL match the JWKS URL value that the client supplied to the FHIR authorization server at client registration time. When absent, the FHIR authorization server SHOULD fall back on the JWK Set URL or the JWK Set supplied at registration time. See section <a href="#signature-verification">Signature Verification</a> for details.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table">
+  <thead>
+    <th colspan="3">Authentication JWT Claims</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>iss</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Issuer of the JWT -- the client's <code>client_id</code>, as determined during registration with the FHIR authorization server
+        (note that this is the same as the value for the <code>sub</code> claim)</td>
+    </tr>
+    <tr>
+      <td><code>sub</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>The client's <code>client_id</code>, as determined during registration with the FHIR authorization server
+      (note that this is the same as the value for the <code>iss</code> claim)</td>
+    </tr>
+    <tr>
+      <td><code>aud</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>The FHIR authorization server's "token URL" (the same URL to which this authentication JWT will be posted -- see below)</td>
+    </tr>
+    <tr>
+      <td><code>exp</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Expiration time integer for this authentication JWT, expressed in seconds since the "Epoch" (1970-01-01T00:00:00Z UTC). This time SHALL be no more than five minutes in the future.</td>
+    </tr>
+    <tr>
+      <td><code>jti</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>A nonce string value that uniquely identifies this authentication JWT.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>After generating an authentication JWT, the client requests an access token following either the <a href="app-launch.html#step-5-access-token">SMART App Launch</a> or the <a href="backend-services.html#step-3-access-token">SMART Backend Services</a> specification.  Authentication details are conveyed using the following additional properties on the token request:</p>
+
+<table class="table">
+  <thead>
+    <th colspan="3">Parameters</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>client_assertion_type</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Fixed value: <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code></td>
+    </tr>
+    <tr>
+      <td><code>client_assertion</code></td>
+      <td><span class="label label-success">required</span></td>
+      <td>Signed authentication JWT value (see above)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="response">Response</h4>
+
+<h5 id="signature-verification">Signature Verification</h5>
+
+<p>The FHIR authorization server SHALL validate the JWT according to the
+processing requirements defined in <a href="https://tools.ietf.org/html/rfc7523#section-3">Section 3 of RFC7523</a> including validation of the signature on the JWT.</p>
+
+<p>In addition, the authentication server SHALL:</p>
+<ul>
+  <li>check that the <code class="highlighter-rouge">jti</code> value has not been previously encountered for the given <code class="highlighter-rouge">iss</code> within the maximum allowed authentication JWT lifetime (e.g., 5 minutes). This check prevents replay attacks.</li>
+  <li>ensure that the <code class="highlighter-rouge">client_id</code> provided is known and matches the JWT’s <code class="highlighter-rouge">iss</code> claim.</li>
+</ul>
+
+<p>To resolve a key to verify signatures, a FHIR authorization server SHALL follow this algorithm:</p>
+
+<ol>
+  <li>If the <code>jku</code> header is present, verify that the <code>jku</code> is whitelisted (i.e., that it
+    matches the JWKS URL value supplied at registration time for the specified <code>client_id</code>).
+    <ol type="a">
+      <li>If the <code>jku</code> header is not whitelisted, the signature verification fails.</li>
+      <li>If the <code>jku</code> header is whitelisted, create a set of potential keys by dereferencing the <code>jku</code> URL. Proceed to step 3.</li>
+    </ol>
+  </li>
+  <li>If the <code>jku</code> header is absent, create a set of potential key sources consisting of all keys found in the registration-time JWKS or found by dereferencing the registration-time JWK Set URL. Proceed to step 3.</li>
+  <li>Identify a set of candidate keys by filtering the potential keys to identify the single key where the <code>kid</code> matches the value supplied in the client's JWT header, and the <code>kty</code> is consistent with the signature algorithm supplied in the client's JWT header (e.g., <code>RSA</code> for a JWT using an RSA-based signature, or <code>EC</code> for a JWT using an EC-based signature). If no keys match, or more than one key matches, the verification fails.</li>
+  <li>Attempt to verify the JWK using the key identified in step 3.</li>
+</ol>
+
+<p>To retrieve the keys from a JWKS URL in step 1 or step 2, a FHIR authorization server issues a HTTP GET request for that URL to obtain a JWKS response. For example, if a client has registered a JWKS URL of https://client.example.com/path/to/jwks.json, the server retrieves the client’s JWKS with a GET request for that URL, including a header of <code class="highlighter-rouge">Accept: application/json</code>.</p>
+
+<p>If an error is encountered during the authentication process, the server SHALL
+respond with an <code class="highlighter-rouge">invalid_client</code> error as defined by
+the <a href="https://tools.ietf.org/html/rfc6749#section-5.2">OAuth 2.0 specification</a>.</p>
+
+<ul>
+  <li>The FHIR authorization server SHALL NOT cache a JWKS for longer than the client’s cache-control header indicates.</li>
+  <li>The FHIR authorization server SHOULD cache a client’s JWK Set according to the client’s cache-control header; it doesn’t need to retrieve it anew every time. </li>
+</ul>
+
+<p>Processing of the access token request proceeds according to either the <a href="app-launch.html#step-5-access-token">SMART App Launch</a> or the <a href="backend-services.html#step-3-access-token">SMART Backend Services</a> specification.</p>
+
+<h3 id="worked-example">Worked example</h3>
+
+<p>Assume that a “bilirubin result monitoring service” client has registered with a FHIR authorization server whose token endpoint is at “https://authorize.smarthealthit.org/token”, establishing the following</p>
+
+<ul>
+  <li>JWT “issuer” URL: <code class="highlighter-rouge">https://bili-monitor.example.com</code></li>
+  <li>OAuth2 <code class="highlighter-rouge">client_id</code>: <code class="highlighter-rouge">https://bili-monitor.example.com</code></li>
+  <li>JWK identifier: <code class="highlighter-rouge">kid</code> value (see <a href="RS384.public.json">example JWK</a>)</li>
+</ul>
+
+<p>The client protects its private key from unauthorized access, use, and modification.</p>
+
+<p>At runtime, when the bilirubin monitoring service needs to authenticate to the token endpoint, it generates a one-time-use authentication JWT.</p>
+
+<p><strong>JWT Headers:</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "typ": "JWT",
+  "alg": "RS384",
+  "kid": "eee9f17a3b598fd86417a980b591fbe6"
+}
+</code></pre></div></div>
+
+<p><strong>JWT Payload:</strong></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  "iss": "https://bili-monitor.example.com",
+  "sub": "https://bili-monitor.example.com",
+  "aud": "https://authorize.smarthealthit.org/token",
+  "exp": 1422568860,
+  "jti": "random-non-reusable-jwt-id-123"
+}
+</code></pre></div></div>
+
+<p>Using the client’s RSA private key, with SHA-384 hashing (as specified for
+an <code class="highlighter-rouge">RS384</code> algorithm (<code class="highlighter-rouge">alg</code>) parameter value in RFC7518), the signed token
+value is:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>eyJhbGciOiJSUzM4NCIsImtpZCI6ImVlZTlmMTdhM2I1OThmZDg2NDE3YTk4MGI1OTFmYmU2IiwidHlwIjoiSldUIn0.eyJpc3MiOiJodHRwczovL2JpbGktbW9uaXRvci5leGFtcGxlLmNvbSIsInN1YiI6Imh0dHBzOi8vYmlsaS1tb25pdG9yLmV4YW1wbGUuY29tIiwiYXVkIjoiaHR0cHM6Ly9hdXRob3JpemUuc21hcnRoZWFsdGhpdC5vcmcvdG9rZW4iLCJleHAiOjE0MjI1Njg4NjAsImp0aSI6InJhbmRvbS1ub24tcmV1c2FibGUtand0LWlkLTEyMyJ9.D5kAqNJwaftCqsRdVVQDq6dMBxuGFOF5svQJuXbcYp-oEyg5qOwK9ZE5cGLTHxqwfpUPNzRKgVdIGuhawAA-8g0s1nKQae8CuKs33hhKh4J34xSEwW3MYs1gwI4GHTtR_g3kYSX6QCi14Ed3GIAvYFgqRqt-gD7sewMUXL4SB8I8cXcDbCqVizm7uPVhjw6QaeKZygJJ_AVLhM4Xs9LTy4HAhdCHpN0FrNmCerUIYJvHDpcod7A0jDmxdoeW1KIBYlhdhQNwjtsTvT1ce4qacN_3KIv_fIzCKLIgDv9eWxkjAtxOmIm8aW5gX9xX7X0nbd0QglIyiic_bZVNNEh0kg
+</code></pre></div></div>
+
+<p>Note: to inspect this example JWT, you can visit https://jwt.io. Paste the signed
+JWT value above into the “Encoded”  field, and paste the <a href="RS384.public.json">sample public signing key</a> (starting with the <code class="highlighter-rouge">{"kty": "RSA"</code> JSON object, and excluding the <code class="highlighter-rouge">{ "keys": [</code> JWK Set wrapping array) into the “Public Key” box.
+The plaintext JWT will be displayed in the “Decoded:Payload”  field, and a “Signature Verified” message will appear.</p>
+
+<p>For a complete code example demonstrating how to generate this assertion, see: <a href="authorization-example-jwks-and-signatures.html">rendered Jupyter Notebook</a>, <a href="authorization-example-jwks-and-signatures.ipynb">source .ipynb file</a>.</p>
+
+<h4 id="requesting-an-access-token">Requesting an Access Token</h4>
+
+<p>A <code class="highlighter-rouge">client_assertion</code> generated in this fashion can be used to request an access token as part of a SMART App Launch authorization flow, or as part of a SMART Backend Services authorization flow. See complete example:</p>
+
+<ul>
+  <li>SMART App Launch: <a href="app-launch.html">specification</a>; <a href="example-app-launch-asymmetric-auth.html#step-5-access-token">full example</a></li>
+  <li>SMART Backend Services: <a href="backend-services.html">specification</a>; <a href="example-backend-services.html#step-3-access-token">full example</a></li>
+</ul>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2020+ <a style="color:var(--footer-hyperlink-text-color)" href="http://www.hl7.org/Special/committees/fiwg">HL7 International / FHIR Infrastructure</a> and <a style="color:var(--footer-hyperlink-text-color)" href="https://smarthealthit.org">Boston Children's Hospital</a>.  Package hl7.fhir.uv.smart-app-launch#2.2.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Tue, Apr 30, 2024 19:24+0000">2024-04-30</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+                 | <a style="color: #81BEF7" target="_blank" href="http://hl7.org/fhir/smart-app-launch/history.html">Version History</a> |
+                 <a style="color: #81BEF7" rel="license" href="http://hl7.org/fhir/R4/license.html"><img style="border-style: none;" alt="CC0" src="cc0.png"/></a> |
+                 <!--<a style="color: #81BEF7" href="todo.html">Search</a> | --> 
+                 <a style="color: #81BEF7" target="_blank" href="http://hl7.org/fhir-issues">Propose a change</a>
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+  
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>

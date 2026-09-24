@@ -1,0 +1,7 @@
+<!doctype html><meta charset="utf-8"><title>ehr-launch</title>
+<script src="https://cdn.jsdelivr.net/npm/fhirclient@2.6.3/build/fhir-client.js"></script>
+<script type="module">
+  import { CLIENT_ID, EHR_SCOPE } from "./src/config.js";
+  // EHR launch: the EHR opens this page with ?iss=...&launch=..., fhirclient reads both from the URL.
+  FHIR.oauth2.authorize({ clientId: CLIENT_ID, scope: EHR_SCOPE, redirectUri: "index.html" });
+</script>

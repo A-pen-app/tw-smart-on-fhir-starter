@@ -1,0 +1,12 @@
+<!doctype html>
+<meta charset="utf-8"><title>ehr-launch</title>
+<script src="https://cdn.jsdelivr.net/npm/fhirclient@2/build/fhir-client.js"></script>
+<script>
+  // EHR launch: the EHR opens this page as ?iss=<fhir base>&launch=<opaque code>.
+  // fhirclient reads both from the URL, so no iss/launch options are needed here.
+  FHIR.oauth2.authorize({
+    clientId: "twfhir-poc",
+    scope: "launch patient/*.read openid fhirUser",   // "launch" (not launch/patient): the EHR supplies the patient
+    redirectUri: "index.html"
+  });
+</script>

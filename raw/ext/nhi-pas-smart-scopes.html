@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML>
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <title>SMART on FHIR規範要求與支援能力 - 臺灣健保事前審查實作指引 v1.2.6</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="author" content="http://hl7.org/fhir"/>
+
+    <link href="fhir.css" rel="stylesheet"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap-fhir.css" rel="stylesheet"/>
+
+    <!-- Project extras -->
+    <link href="assets/css/project.css" rel="stylesheet"/>
+    <link href="assets/css/pygments-manni.css" rel="stylesheet"/>
+    <link href="assets/css/jquery-ui.css" rel="stylesheet"/>
+  	<link href="assets/css/prism.css" rel="stylesheet" />
+  	<link href="assets/css/cqf.css" rel="stylesheet" />
+    <!-- Placeholder for child template CSS declarations -->
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+<link href="assets/css/ig.css" rel="stylesheet" />
+    
+<!-- Google tag (gtag.js) 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-99T9HWYLHC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-99T9HWYLHC');
+</script>-->
+
+    <script type="text/javascript" src="fhir-table-scripts.js"> </script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/icon-fhir-144.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/icon-fhir-114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/icon-fhir-72.png"/>
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/icon-fhir-57.png"/>
+    <link rel="shortcut icon" href="assets/ico/favicon.png"/>
+  </head>
+  <body onload="document.body.style.opacity='1'">
+
+	  <script src="assets/js/prism.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid.js"></script>
+    <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
+    <style type="text/css">h2{--heading-prefix:"15"}
+    h3,h4,h5,h6{--heading-prefix:"15"}</style>
+    <div id="segment-header" class="segment">  <!-- segment-header -->
+      <div class="container">  <!-- container -->
+
+        <div id="hl7-nav">
+  <a id="hl7-logo" no-external="true" href="index.html" style="width: 10px;">
+    <img height="50" alt="TW" src="assets/images/logo-header.png" />
+  </a>
+</div>
+<div id="hl7-search">
+  <a id="hl7-search-lnk" no-external="true" href="searchform.html"><img alt="Search FHIR"
+      src="assets/images/search.png" /></a>
+</div>
+
+        <div id="ig-status">
+          <p><span style="font-size:12pt;font-weight:bold">臺灣健保事前審查實作指引</span>
+            <br/>
+            <span style="display:inline-block;">1.2.6 - ci-build
+
+
+            </span>
+          </p>
+        </div>
+      </div> <!-- /container -->
+    </div>  <!-- /segment-header -->
+
+    <div id="segment-navbar" class="segment">  <!-- segment-navbar -->
+      <div id="stripe"> </div>
+      <div class="container">  <!-- container -->
+        <!-- HEADER CONTENT -->
+
+        <nav class="navbar navbar-inverse">
+          <!--status-bar-->
+          <div class="container">
+            <button data-target=".navbar-inverse-collapse" class="navbar-toggle" data-toggle="collapse" type="button">
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+              <span class="icon-bar"> </span>
+            </button>
+            <a class="navbar-brand hidden" href="http://hl7.org/fhir/R4/index.html">FHIR</a>
+            <div class="nav-collapse collapse navbar-inverse-collapse">
+              <ul xmlns="http://www.w3.org/1999/xhtml" class="nav navbar-nav">
+	<li><a href="index.html">應用說明</a></li>
+	<li><a href="toc.html">目錄</a></li>
+	<li class="dropdown">
+		<a href="vision.html">視覺化邏輯模型<b class="caret"></b></a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="vision-cancer.html">癌藥事前審查</a>
+			</li>
+			<li>
+				<a href="vision-imm.html">免疫製劑事前審查</a>
+			</li>
+		</ul>
+	</li>
+ 	<li class="dropdown">
+		<a href="artifacts.html">規範文件<b class="caret"></b></a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="capabilitystatements.html">能力聲明</a>
+			</li>
+			<li>
+				<a href="searchparameters.html">查詢參數</a>
+			</li>
+			<li>
+				<a href="models.html">邏輯模型</a>
+			</li>
+			<li>
+				<a href="profiles-and-extensions.html">FHIR Profiles及Extensions</a>
+			</li>
+			<li>
+				<a href="terminologies.html">專門術語</a>
+			</li>
+		</ul>
+	</li>
+ 	<li><a href="examples.html">範例</a></li>
+	<li><a href="downloads.html">結構定義與範例檔下載</a></li>
+	<li class="dropdown">
+		<a href="security.html">安全性<b class="caret"></b></a>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="security.html">安全性</a>
+			</li>
+			<li>
+				<a href="scopes.html">SMART on FHIR規範要求與支援能力</a>
+			</li>
+		</ul>
+	</li>
+	<li><a href="validate.html">驗證教學</a></li>
+	<li><a href="https://build.fhir.org/ig/TWNHIFHIR/cql/index.html" target="_blank">預檢規則(FHIR CQL)</a></li>
+</ul>      
+
+            </div>  <!-- /.nav-collapse -->
+          </div>  <!-- /.container -->
+        </nav>  <!-- /.navbar -->
+      <!-- /HEADER CONTENT -->
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-navbar -->
+    <!--status-bar-->
+
+    <div id="segment-breadcrumb" class="segment">  <!-- segment-breadcrumb -->
+      <div class="container">  <!-- container -->
+        <ul class="breadcrumb">
+          <li><a href='toc.html'><b>Table of Contents</b></a></li><li><b>SMART on FHIR規範要求與支援能力</b></li>
+
+        </ul>
+      </div>  <!-- /container -->
+    </div>  <!-- /segment-breadcrumb -->
+
+    <a name="top"> </a>
+    <div id="segment-content" class="segment">  <!-- segment-content -->
+      <div class="container">  <!-- container -->
+        <div class="row">
+          <div class="inner-wrapper">
+
+<style type="text/css">
+h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
+h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
+h4:before{color:silver;counter-increment:composite;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) " ";}
+h5:before{color:silver;counter-increment:detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) " ";}
+h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefix) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(more-detail)" ";}
+</style>
+<div class="col-12">
+  <!--ReleaseHeader--><p id="publish-box">臺灣健保事前審查實作指引, published by 衛生福利部中央健康保險署. This guide is not an authorized publication; it is the continuous build for version 1.2.6  built by the FHIR (HL7&reg; FHIR&reg; Standard) CI Build. This version is based on the current content of <a href='https://github.com/TWNHIFHIR/pas/'>https://github.com/TWNHIFHIR/pas/</a> and changes regularly. See the <a href='https://nhicore.nhi.gov.tw/pas/history.html'>Directory of published versions</a></p><!--EndReleaseHeader-->
+  <h2>SMART on FHIR規範要求與支援能力</h2>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+    <p><!-- white space is critical inside of capture --></p>
+<div class="markdown-toc">
+<ul id="markdown-toc">
+  <li><a href="#能力集合-capability-sets" id="markdown-toc-能力集合-capability-sets">能力集合 (Capability Sets)</a></li>
+  <li><a href="#存取權限檢驗-token-introspection" id="markdown-toc-存取權限檢驗-token-introspection">存取權限檢驗 (Token Introspection)</a></li>
+  <li><a href="#smart存取範圍-scopes" id="markdown-toc-smart存取範圍-scopes">SMART存取範圍 (Scopes)</a></li>
+  <li><a href="#伺服端必須shall支援well-knownsmart-configuration功能" id="markdown-toc-伺服端必須shall支援well-knownsmart-configuration功能">伺服端必須(SHALL)支援<code class="language-plaintext highlighter-rouge">/.well-known/smart-configuration</code>功能</a></li>
+</ul>
+
+</div>
+<p><a href="https://hl7.org/fhir/smart-app-launch/STU2.2" target="_blank">SMART App Launch</a>實作指引定義了一套基於OAuth 2.0的授權與驗證模式，讓應用程式能與FHIR系統安全地整合。本章節說明TWPAS服務在支援前端應用程式（User-Facing Applications）與後端服務（Backend Services）時，所需遵循的SMART on FHIR規範要求與支援能力。</p>
+
+<h3 id="能力集合-capability-sets">能力集合 (Capability Sets)</h3>
+<p>為了促進互通性，SMART on FHIR定義了一組核心能力。伺服器需公開支援的能力，並組合成「能力集合(Capability Set)」，以因應特定使用情境。</p>
+
+<h4 id="醫院端應用程式-user-facing-applications">醫院端應用程式 (User-Facing Applications)</h4>
+<p>若伺服端需支援醫院端應用程式，至少<strong>建議應該(SHOULD)</strong>支援下列能力集合；若為健保署認證系統，則<strong>必須(SHALL)</strong>支援兩者：</p>
+<ul>
+  <li><a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#patient-access-for-standalone-apps" target="_blank">Patient Access for Standalone Apps</a></li>
+  <li><a href="https://hl7.org/fhir/smart-app-launch/STU2.2/conformance.html#clinician-access-for-standalone" target="_blank">Clinician Access for EHR Launch</a></li>
+</ul>
+
+<h4 id="後端服務-backend-services">後端服務 (Backend Services)</h4>
+<p>若伺服端需支援後端服務（例如醫院資訊系統與健保署平台之間的自動介接），則<strong>必須(SHALL)</strong>支援下列能力：</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Client-confidential-asymmetric</code></li>
+  <li><code class="language-plaintext highlighter-rouge">system/scopes</code></li>
+</ul>
+
+<h3 id="存取權限檢驗-token-introspection">存取權限檢驗 (Token Introspection)</h3>
+<p>TWPAS伺服端<strong>必須(SHALL)</strong>支援SMART App Launch IG中所定義的<a href="https://hl7.org/fhir/smart-app-launch/STU2.2/token-introspection.html#token-introspection">存取權限檢驗 (Token Introspection)</a>。</p>
+
+<h3 id="smart存取範圍-scopes">SMART存取範圍 (Scopes)</h3>
+
+<h4 id="語法">語法</h4>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;patient|user|system&gt; / &lt;fhir-resource&gt;. &lt;c | r | u | d |s&gt; [?param=value]</code></p>
+
+<h5 id="存取範圍主體">存取範圍主體</h5>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">patient</code> = 以病人身分存取病人的資料</li>
+  <li><code class="language-plaintext highlighter-rouge">user</code> = 以使用者（如醫師、藥師）身分情境存取病人資料（例如醫師在院內系統查詢病人事前審查申請狀態）</li>
+  <li><code class="language-plaintext highlighter-rouge">system</code> = 系統對系統之間存取資料（例如醫院資訊系統與健保署平台批次上傳事前審查申請）</li>
+</ul>
+
+<h5 id="存取操作類型cruds">存取操作類型(CRUDS)</h5>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">c</code> = 新增(create)</li>
+  <li><code class="language-plaintext highlighter-rouge">r</code> = 讀取(read)</li>
+  <li><code class="language-plaintext highlighter-rouge">u</code> = 更新(update)</li>
+  <li><code class="language-plaintext highlighter-rouge">d</code> = 刪除(delete)</li>
+  <li><code class="language-plaintext highlighter-rouge">s</code> = 查詢(search)</li>
+</ul>
+
+<h4 id="twpas存取範圍">TWPAS存取範圍</h4>
+<h5 id="必須shall支援之存取範圍">必須(SHALL)支援之存取範圍</h5>
+<table class="table table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>Resource型別</th>
+            <th>存取範圍</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Bundle</th>
+            <th>system/Bundle.crs</th>
+        </tr>
+        <tr>
+            <th>ClaimResponse</th>
+            <th>system/ClaimResponse.rs</th>
+        </tr>
+     </tbody>
+</table>
+
+<h3 id="伺服端必須shall支援well-knownsmart-configuration功能">伺服端必須(SHALL)支援<code class="language-plaintext highlighter-rouge">/.well-known/smart-configuration</code>功能</h3>
+<p>除了在伺服端之能力聲明所定義的能力外，伺服端<strong>必須(SHALL)</strong>於<a href="https://hl7.org/fhir/smart-app-launch/STU2/conformance.html#using-well-known">Well-Known Uniform Resource Identifiers (URIs)</a>的JSON檔中，描述其SMART能力。</p>
+
+<h4 id="必要的smart-app-launch-metadata">必要的SMART App Launch Metadata</h4>
+<p>依據SMART App Launch指引，以下為必要欄位：</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">issuer</code> (conditional)</li>
+  <li><code class="language-plaintext highlighter-rouge">jwks_uri</code> (conditional)</li>
+  <li><code class="language-plaintext highlighter-rouge">authorization_endpoint</code></li>
+  <li><code class="language-plaintext highlighter-rouge">grant_types_supported</code></li>
+  <li><code class="language-plaintext highlighter-rouge">token_endpoint</code></li>
+  <li><code class="language-plaintext highlighter-rouge">capabilities</code></li>
+  <li><code class="language-plaintext highlighter-rouge">code_challenge_methods_supported</code></li>
+</ul>
+
+<h4 id="建議應該要的smart-app-launch-metadata">建議應該要的SMART App Launch Metadata</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">scopes_supported</code></li>
+  <li><code class="language-plaintext highlighter-rouge">introspection_endpoint</code></li>
+</ul>
+
+<h4 id="well-knownsmart-configuration範例"><code class="language-plaintext highlighter-rouge">/.well-known/smart-configuration</code>範例</h4>
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre></div></div>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.nhi.gov.tw"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"jwks_uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.nhi.gov.tw/.well-known/jwks.json"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"authorization_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.nhi.gov.tw/auth/authorize"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.nhi.gov.tw/auth/token"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token_endpoint_auth_methods_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Client_secret_basic"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"private_key_jwt"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"grant_types_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"authorization_code"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Client_credentials"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"registration_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.nhi.gov.tw/auth/register"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"scopes_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"openid"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"profile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"launch"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"launch/patient"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"offline_access"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"system/Bundle.crs"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"system/ClaimResponse.rs"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"response_types_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"code"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"management_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.nhi.gov.tw/user/manage"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"revocation_endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.nhi.gov.tw/user/revoke"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"code_challenge_methods_supported"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"S256"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"capabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"launch-ehr"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"permission-patient"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"permission-user"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"permission-v2"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Client-public"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Client-confidential-symmetric"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Client-confidential-asymmetric"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"context-ehr-patient"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sso-openid-connect"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+
+
+
+</div>
+        </div>  <!-- /inner-wrapper -->
+      </div>  <!-- /row -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-content -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"> </script>     <!-- note keep space here, otherwise it will be transformed to empty tag -> fails -->
+  <script type="text/javascript" src="assets/js/jquery-ui.min.js"> </script>
+
+  <script type="text/javascript" src="assets/js/window-hash.js"> </script>
+  <a name="bottom"> </a>
+  <div id="segment-footer" igtool="footer" class="segment">  <!-- segment-footer -->
+    <div class="container">  <!-- container -->
+
+      <div class="inner-wrapper">
+        <p>
+          IG &#169; 2024+ <a style="color:var(--footer-hyperlink-text-color)" href="https://www.nhi.gov.tw">衛生福利部中央健康保險署</a>.  Package tw.gov.mohw.nhi.pas#1.2.6 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>. Generated <span title="Thu, Aug 27, 2026 03:44+0000">2026-08-27</span>
+          <br/>
+          <span style="color: var(--footer-highlight-text-color)">
+                      Links: <a style="color: var(--footer-hyperlink-text-color)" href="toc.html">Table of Contents</a> |
+                 <a style="color: var(--footer-hyperlink-text-color)" href="qa.html">QA Report</a>
+                 
+                
+| <a style="color: #81BEF7" target="_blank" href="https://nhicore.nhi.gov.tw/pas/history.html">Version History</a>
+          </span>
+        </p>
+      </div>  <!-- /inner-wrapper -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-footer -->
+  
+  <div id="segment-post-footer" class="segment hidden">  <!-- segment-post-footer -->
+    <div class="container">  <!-- container -->
+    </div>  <!-- /container -->
+  </div>  <!-- /segment-post-footer -->
+
+  <!-- JS and analytics only. -->
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="assets/js/respond.min.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard.min.js"> </script>
+  <script type="text/javascript" src="assets/js/clipboard-btn.js"> </script>
+  <script type="text/javascript" src="assets/js/anchor-hover.js"> </script>
+  <!-- Analytics Below
+  ================================================== -->
+  </body>
+</html>
+

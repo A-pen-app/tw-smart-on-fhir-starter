@@ -1,0 +1,167 @@
+
+CQL測試環境（CDS Hook Service）| 臺灣醫療資訊標準大平台
+臺灣醫療資訊標準大平台
+最新消息
+簡介與沿革
+簡介與沿革
+部長的話
+處長的話
+背景說明
+原電子病歷專區
+三大核心
+FHIR
+什麼是FHIR
+FHIR教育專區
+實作指引（IG）
+國家實作指引（IG）專區
+實作指引(IG)提案暨審查作業及說明
+實作指引(IG)草稿及提案
+民間實作指引(IG)分享專區
+TWCDI 
+TWCDI 
+TWCDI +
+TWCDI 提案
+Tool
+全國專門術語平台
+Rule Library
+什麼是 Rule Library
+CQL教育專區
+應用情境說明
+CQL 測試環境
+Library 資源
+SMART on FHIR
+什麼是 SMART
+SMART 教育專區
+APP開發說明
+上架流程範例
+TW APP Gallery
+三大標準
+SNOMED CT
+什麼是 SNOMED CT
+SCT 教育專區
+SCT官方文件與工具
+SCT 資料集
+LOINC
+什麼是LOINC
+LOINC 教育專區
+LOINC 官方文件與工具
+LOINC 資料集
+RxNorm
+什麼是 RxNorm
+RxNorm 教育專區
+RxNorm 官方文件與工具
+線上提問專區
+認證實驗室
+計畫網站
+臺灣醫療資訊標準大平台
+臺灣健康資料空間
+臺灣健康規則空間
+臺灣健康應用空間
+SNOMED CT
+LOINC
+RxNorm
+臺灣智慧醫療學校
+臺灣智慧醫療三大中心
+全國臨床AI應用登錄平台
+全球醫療 AI 聯邦學習媒合平台
+繁體中文
+English
+開啟選單
+最新消息
+簡介與沿革
+簡介與沿革
+部長的話
+處長的話
+背景說明
+原電子病歷專區
+三大核心
+FHIR
+什麼是 FHIR
+FHIR 教育專區
+實作指引 (IG)
+國家實作指引 (IG) 專區
+實作指引 (IG) 提案暨審查作業及說明
+實作指引 (IG) 草稿及提案
+民間實作指引 (IG) 分享專區
+TWCDI
+TWCDI
+TWCDI +
+TWCDI 提案
+Tool
+全國專門術語平台
+Rule Library
+什麼是 Rule Library
+CQL 教育專區
+應用情境說明
+CQL 測試環境
+Library 資源
+SMART on FHIR
+什麼是 SMART
+SMART 教育專區
+APP 開發說明
+上架流程範例
+TW APP Gallery
+三大標準
+SNOMED CT
+什麼是 SNOMED CT
+SCT 教育專區
+SCT 官方文件與工具
+SCT 資料集
+LOINC
+什麼是 LOINC
+LOINC 教育專區
+LOINC 官方文件與工具
+LOINC 資料集
+RxNorm
+什麼是 RxNorm
+RxNorm 教育專區
+RxNorm 官方文件與工具
+線上提問專區
+認證實驗室
+計畫網站
+臺灣醫療資訊標準大平台
+臺灣健康資料空間
+臺灣健康規則空間
+臺灣健康應用空間
+SNOMED CT
+LOINC
+RxNorm
+臺灣智慧醫療學校
+臺灣智慧醫療三大中心
+全國臨床AI應用登錄平台
+全球醫療 AI 聯邦學習媒合平台
+CQL 測試環境（CDS Hook Service）
+首頁
+什麼是 Rule Library
+CQL 測試環境（CDS Hook Service）
+CQL 測試環境
+提供使用者上傳 CQL 及病患資料透過 CDS Service 進行測試。
+CDS Hooks Sandbox 測試流程
+一、開啟 CDS Hooks Sandbox
+二、設定 CDS Services
+1. 按齒輪設定
+2. “Add CDS Services”
+3. Save
+三、設定 FHIR Server 及 Patient
+1. 按齒輪設定
+2. “Change FHIR Server”
+3. 輸入 Patient Resource ID
+4. Save
+四、展示結果
+(圖片來源：工研院整理製作)
+Test Cases
+- 以下提供相關健保給付代碼之測試Patient Resource ID
+- 17022B
+251ef3c4-a37f-412c-bec0-63cb930e21ce：Include
+cddd0c52-35b9-4cf8-bfa2-0c65eb70e89e：符合適應症且申報超過三次
+6b70273d-0d8b-4cd4-a23f-1f9988366b20：符合適應症但非兒科申報
+- 09139C
+eae41a33-d553-4603-a7cf-ef85fcbc7fd2：Exclude
+bcd1e27d-91ed-4832-a02e-1ab7773232a6：Include
+b2ce1e59-44c9-4cd9-8fb3-e0c8bbe1cd22：妊娠糖尿病患者且申報超過6次
+f822d8ef-7693-490b-9c22-d6270ba395a3：符合適應症且申報超過4次
+地址：115204 台北市南港區忠孝東路6段488號
+總機電話
+：(03) 591-9291
+聯絡信箱
+：medstandard@itri.org.tw

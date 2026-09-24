@@ -1,0 +1,459 @@
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="Tooplate">
+
+    <title>FHIR Sample Code</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link href="/Content/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/Content/css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="/Content/css/apexcharts.css" rel="stylesheet">
+
+    <link href="/Content/css/tooplate-mini-finance.css" rel="stylesheet">
+    <!--
+
+    Tooplate 2135 Mini Finance
+
+    https://www.tooplate.com/view/2135-mini-finance
+
+    Bootstrap 5 Dashboard Admin Template
+
+    -->
+    
+    <style>
+        @media (max-width: 576px) {
+            #sidebarMenu {
+                margin-top: 30px !important; /* 请尝试添加 !important 规则 */
+            }
+        }
+
+        /* @media (max-width: 576px) {
+            #collapseB_KeycloakHAPI_TeachingManual {
+                width: 100%;
+                height: 300px;
+                -webkit-overflow-scrolling: touch;
+                overflow: scroll;
+
+            }
+        }*/
+        .code_print {
+            padding: 10px 15px 10px;
+            width: auto;
+            overflow: auto;
+            background-color: rgb(239, 240, 241);
+        }
+
+            .code_print .keyword {
+                color: #0074D9; /* Python 关键字的颜色 */
+            }
+
+            .code_print .string {
+                color: #FF4136; /* 字符串的颜色 */
+            }
+
+            .code_print .comment {
+                color: #888888; /* 注释的颜色 */
+            }
+
+        .h6Code {
+            text-align: center;
+        }
+
+        #myTab_Bundle h6 {
+            color: #e63946;
+        }
+
+        .collapseB {
+            color: #000000;
+        }
+
+        .nothing {
+            height: 50px;
+        }
+        /*.iframe_PDF {
+            user-select: none;
+        }*/
+        iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border: 2px solid #000;
+        }
+
+        .white_title {
+            text-align: center;
+        }
+
+        .index_button ul li a {
+            font-size: 18px;
+        }
+
+        .table-responsive td{
+            padding: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="navbar sticky-top flex-md-nowrap">
+        <div class="col-md-4 col-lg-4 me-0 px-4 fs-6">
+            
+            <a class="navbar-brand" href="/twsample/">
+                <i class="bi-box"></i>
+                FHIR Sample Code
+            </a>
+        </div>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="col-md-4 col-lg-4 me-0 px-4 fs-6 justify-content-end mb-6">
+            <ul class="nav flex-column flex-sm-row h-100 container-fluid justify-content-end" style="list-style-type: none;">
+                <li class="nav-item">
+                    <a class="page-link" id="PageClient" aria-current="page" href="/Home/ClientIndex">
+                        FHIR Client
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="page-link" id="PageServer" aria-current="page" href="/Server">
+                        FHIR Server
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="page-link" id="PageQandA" aria-current="page" href="/QandA">
+                        問答專區
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="page-link" id="PageUser" aria-current="page" href="/User">
+                        <i class="bi bi-person"></i>
+                        <span class="" id="UserLoginOrNot"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+
+    </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <main class="main-wrapper py-5 px-md-5 border-start">
+                    
+
+
+<div class="title-group mb-3">
+    <h1 class="h2 mb-0">FHIR Sample Code</h1>
+</div>
+
+<div class="custom-block bg-white">
+    
+    本公開範例網站由衛生福利部之「112年度智慧健康雲專案辦公室營運案專案」經費支應下建置，本範例網站分為三個部分，包含符合新版 TW Core IG 之 FHIR Server 與 FHIR Client 的原始碼範例，以及問答專區。
+    <br /><br />
+    第一個部分為 FHIR Client的範例網站，提供醫療資訊開發者進行系統開發原始碼之參考，其資訊包含以供完成設計之20個TW Core Resources之資料操作範例，包含Resource查照之共用參數、請求方法、查詢參數、以及CRUD的不同種程式語言開發範例，系統開發語言則包含PYTHON, JAVA, 與C#。
+    <br /><br />
+    第二個部分為FHIR Server的範例網站，提供伺服器需求者進行開放程式碼之伺服器安裝說明、架構微調方法，其包含HAPI FHIR Server (Linux and Windows), Smart on FHIR, Burni FHIR (Linux), 與 LinuxForHealth FHIR (Linux)。上述四個開放資源皆在Apache 2.0 授權規範下，FHIR Server的範例網站完整說明四個不同的伺服器之安裝流程，提供相關單位參考。
+    <br /><br />
+    第三個部分為問答專區，相關使用者可以在問答專區進行資訊的提問，將由智慧健康雲專案辦公室FHIR技術團隊提供回應。
+    <br /><br />
+    平臺操作教學影片：<a href="https://youtu.be/WPthXEu1MM8">https://youtu.be/WPthXEu1MM8</a>
+
+    <br /><br />
+    <div class="index_button">
+        <ul class="nav flex-column flex-md-row container-fluid justify-content-center">
+            <li class="nav-item">
+                <a class="page-link" id="PageClient" aria-current="page" href="/Home/ClientIndex">
+                    FHIR Client
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="page-link" id="PageServer" aria-current="page" href="/Server">
+                    FHIR Server
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+
+    <br /><br />
+    20 個Core Resource包含以下清單:<br />
+    Condition<br />
+    DiagnosticReport<br />
+    Encounter<br />
+    Medication<br />
+    MedicationRequest<br />
+    Observation<br />
+    Organization<br />
+    Patient<br />
+    Practitioner<br />
+    Procedure<br />
+    PractitionerRole<br />
+    AllergyIntolerance<br />
+    MedicationStatement<br />
+    MedicationDispense<br />
+    Specimen<br />
+    Location<br />
+    ImagingStudy<br />
+    Media<br />
+    Composition<br />
+    Bundle<br />
+</div>
+<div class="custom-block bg-white">
+    <h6 class="h6Code">作者(貢獻者)</h6>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align: center; white-space: nowrap; ">角色</th>
+                    <th style="text-align: center">機構名稱</th>
+                    <th style="text-align: center">姓名</th>
+                    <th style="text-align: center; min-width: 250px;">所屬單位</th>
+                    <th style="text-align: center">聯絡方式</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align: center; white-space: nowrap; ">作者</td>
+                    <td rowspan="4" style="text-align: center; white-space: nowrap; padding: 20px;">衛生福利部資訊處</td>
+                    <td style="text-align: center; white-space: nowrap;">李修安</td>
+                    <td style="text-align: center">國家衛生研究院 - 癌症研究所  (National Health Research Institutes - The National Institute of Cancer Research)</td>
+                    <td style="text-align: center">billy72325@gmail.com</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; white-space: nowrap; ">作者</td>
+                    <td style="text-align: center">黃睿駿</td>
+                    <td style="text-align: center">國家衛生研究院 - 癌症研究所  (National Health Research Institutes - The National Institute of Cancer Research)</td>
+                    <td style="text-align: center">a27114171@gmail.com</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; white-space: nowrap; ">作者</td>
+                    <td style="text-align: center">劉貞沂</td>
+                    <td style="text-align: center">國家衛生研究院 - 癌症研究所  (National Health Research Institutes - The National Institute of Cancer Research)</td>
+                    <td style="text-align: center">jennyliu1003@gmail.com</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center; white-space: nowrap; ">作者</td>
+                    <td style="text-align: center">燕洛嫺</td>
+                    <td style="text-align: center">社團法人台灣醫學資訊學會(Taiwan Association for Medical Information)</td>
+                    <td style="text-align: center">reachelyen@gmail.com</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    
+</div>
+
+
+
+                    <footer class="site-footer">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-12 col-12">
+                                    <p class="copyright-text">
+                                        本網站所有教學資訊均來自
+                                        <a rel="sponsored" href="https://hl7.org/fhir/R4/" target="_blank">
+                                            FHIR官網
+                                        </a>
+                                        
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </footer>
+                </main>
+
+            </div>
+        </div>
+    <!-- JAVASCRIPT FILES -->
+    
+    <script src="/Scripts/jquery-3.6.4.min.js"></script>
+
+    <script src="/Scripts/js/jquery.min.js"></script>
+    <script src="/Scripts/js/bootstrap.bundle.min.js"></script>
+    <script src="/Scripts/js/apexcharts.min.js"></script>
+    <script src="/Scripts/js/custom.js"></script>
+
+
+    
+    <script type="text/javascript">
+        var options = {
+            series: [13, 43, 22],
+            chart: {
+                width: 380,
+                type: 'pie',
+            },
+            labels: ['Balance', 'Expense', 'Credit Loan',],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#pie-chart"), options);
+        chart.render();
+    </script>
+
+    <script type="text/javascript">
+        var options = {
+            series: [{
+                name: 'Income',
+                data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+            }, {
+                name: 'Expense',
+                data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+            }, {
+                name: 'Transfer',
+                data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            },
+            yaxis: {
+                title: {
+                    text: '$ (thousands)'
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return "$ " + val + " thousands"
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+
+</body>
+</html>
+
+<script>
+    if ('Home_Index' == "Home") {
+        $("#PageClient").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageClient").css("color", "var(--white-color)");
+        //background - color: var(--custom - btn - bg - color);
+    }
+    else if ('Home_Index' == "Server"){
+        $("#PageServer").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageServer").css("color", "var(--white-color)");
+    }
+    else if ('Home_Index' == "QandA"){
+        $("#PageQandA").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageQandA").css("color", "var(--white-color)");
+    }
+    else if ('Home_Index' == "User"){
+        $("#PageUser").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageUser").css("color", "var(--white-color)");
+}
+    var currentPath = window.location.pathname;
+
+    var navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(function (link) {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active'); // 如果匹配，则添加 'active' 类
+        }
+    });
+
+
+    // 看看有沒有登入: UserLoginOrNot
+
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+    var btn_UserLoginOrNot = document.getElementById('UserLoginOrNot');
+    if (getCookie("Account") != null) {
+
+        btn_UserLoginOrNot.innerText = "登出";
+        //alert(getCookie("Account"));
+    }
+    else {
+        btn_UserLoginOrNot.innerText = "登入";
+    }
+
+</script>
+
+<script type="text/javascript">
+    //window.onload = function () {
+    //    document.getElementById('iframe_PDF').contentDocument.oncontextmenu = function () {
+    //        alert('111');
+    //        return false;
+    //    }
+    //}
+
+    //window.onload = function () {
+    //    alert('111');
+
+    //    document.getElementById('iframe_PDF_windows').contentDocument.oncontextmenu = function () {
+    //        alert('111');
+    //        return false;
+    //    }
+    //}
+
+    //document.addEventListener("DOMContentLoaded", function () {
+    //    // Your code here
+    //    console.log('555');
+    //    document.getElementById('iframe_PDF_windows').contentDocument.oncontextmenu = function () {
+    //        console.log('123');
+    //        return false;
+    //    };
+    //});
+
+
+</script>

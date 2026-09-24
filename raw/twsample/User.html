@@ -1,0 +1,410 @@
+
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="Tooplate">
+
+    <title>FHIR Sample Code</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link href="/Content/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/Content/css/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="/Content/css/apexcharts.css" rel="stylesheet">
+
+    <link href="/Content/css/tooplate-mini-finance.css" rel="stylesheet">
+    <!--
+
+    Tooplate 2135 Mini Finance
+
+    https://www.tooplate.com/view/2135-mini-finance
+
+    Bootstrap 5 Dashboard Admin Template
+
+    -->
+    
+    <style>
+        @media (max-width: 576px) {
+            #sidebarMenu {
+                margin-top: 30px !important; /* 请尝试添加 !important 规则 */
+            }
+        }
+
+        /* @media (max-width: 576px) {
+            #collapseB_KeycloakHAPI_TeachingManual {
+                width: 100%;
+                height: 300px;
+                -webkit-overflow-scrolling: touch;
+                overflow: scroll;
+
+            }
+        }*/
+        .code_print {
+            padding: 10px 15px 10px;
+            width: auto;
+            overflow: auto;
+            background-color: rgb(239, 240, 241);
+        }
+
+            .code_print .keyword {
+                color: #0074D9; /* Python 关键字的颜色 */
+            }
+
+            .code_print .string {
+                color: #FF4136; /* 字符串的颜色 */
+            }
+
+            .code_print .comment {
+                color: #888888; /* 注释的颜色 */
+            }
+
+        .h6Code {
+            text-align: center;
+        }
+
+        #myTab_Bundle h6 {
+            color: #e63946;
+        }
+
+        .collapseB {
+            color: #000000;
+        }
+
+        .nothing {
+            height: 50px;
+        }
+        /*.iframe_PDF {
+            user-select: none;
+        }*/
+        iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border: 2px solid #000;
+        }
+
+        .white_title {
+            text-align: center;
+        }
+
+        .index_button ul li a {
+            font-size: 18px;
+        }
+
+        .table-responsive td{
+            padding: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="navbar sticky-top flex-md-nowrap">
+        <div class="col-md-4 col-lg-4 me-0 px-4 fs-6">
+            
+            <a class="navbar-brand" href="/twsample/">
+                <i class="bi-box"></i>
+                FHIR Sample Code
+            </a>
+        </div>
+        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="col-md-4 col-lg-4 me-0 px-4 fs-6 justify-content-end mb-6">
+            <ul class="nav flex-column flex-sm-row h-100 container-fluid justify-content-end" style="list-style-type: none;">
+                <li class="nav-item">
+                    <a class="page-link" id="PageClient" aria-current="page" href="/Home/ClientIndex">
+                        FHIR Client
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="page-link" id="PageServer" aria-current="page" href="/Server">
+                        FHIR Server
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="page-link" id="PageQandA" aria-current="page" href="/QandA">
+                        問答專區
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="page-link" id="PageUser" aria-current="page" href="/User">
+                        <i class="bi bi-person"></i>
+                        <span class="" id="UserLoginOrNot"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+
+    </header>
+
+        <div class="container-fluid">
+            <div class="row">
+                <main class="main-wrapper py-5 px-md-5 border-start">
+                    
+
+<div class="title-group mb-3">
+    <h1 class="h2 mb-0">管理者登入</h1>
+</div>
+<div class="custom-block bg-white">
+    目前僅提供智慧健康雲專案辦公室FHIR技術團隊登入
+<form action="/twsample/User" class="mb-5 login-input" method="post">        <div class="col-md-12 mt-3">
+            <label for="Email" class="form-label">帳號(E-mail)</label>
+            
+            <input class="form-control" data-val="true" data-val-email="不是有效的電子郵件地址。" data-val-required="請輸入Email" id="Email" maxlength="100" name="Email" required="required" type="text" value="" />
+            <span class="field-validation-valid text-danger col-md-12" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+
+        </div>
+        <div class="col-md-12 mt-3">
+            <label for="Password" class="form-label">密碼</label>
+            
+            <input name="__RequestVerificationToken" type="hidden" value="8wQwUjaSmpL7j_Nk8n7uQz44XwNVX-X8XHjG4B_GsmrSK_lz2bokihMpywwZwGOGMGXdk7hbWJTShAbpL2yosVg-zrOTOCzClOaH9xZwh4A1" />
+
+            <div class="input-group">
+                <input class="form-control" data-val="true" data-val-required="請輸入密碼" id="GetCaptchaText" name="Password" required="required" type="password" value="" />
+                <button class="btn btn-outline-secondary" type="button" id="togglePasswordBtn">
+                    <i class="bi bi-eye-slash" id="eyeIcon"></i>
+                </button>
+            </div>
+            <span class="text-danger"></span>
+            <span class="field-validation-valid text-danger col-md-12" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+
+        </div>
+        <div class="col-3 mt-3">
+
+            
+            <input type="submit" class="form-control submit w-100" id="Login_submit" value="送出" />
+        </div>
+</form>
+</div>
+
+
+                    <footer class="site-footer">
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="col-lg-12 col-12">
+                                    <p class="copyright-text">
+                                        本網站所有教學資訊均來自
+                                        <a rel="sponsored" href="https://hl7.org/fhir/R4/" target="_blank">
+                                            FHIR官網
+                                        </a>
+                                        
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </footer>
+                </main>
+
+            </div>
+        </div>
+    <!-- JAVASCRIPT FILES -->
+    
+    <script src="/Scripts/jquery-3.6.4.min.js"></script>
+
+    <script src="/Scripts/js/jquery.min.js"></script>
+    <script src="/Scripts/js/bootstrap.bundle.min.js"></script>
+    <script src="/Scripts/js/apexcharts.min.js"></script>
+    <script src="/Scripts/js/custom.js"></script>
+
+
+    
+    <script>
+        /*顯示/隱藏密碼*/
+        $("#togglePasswordBtn").click(function () {
+
+            console.log('開關驗證碼可視');
+            var passwordInput = document.getElementById("GetCaptchaText");
+            var eyeIcon = document.getElementById("eyeIcon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.classList.remove("bi-eye-slash");
+                eyeIcon.classList.add("bi-eye");
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.classList.remove("bi-eye");
+                eyeIcon.classList.add("bi-eye-slash");
+            }
+        });
+    </script>
+
+    <script type="text/javascript">
+        var options = {
+            series: [13, 43, 22],
+            chart: {
+                width: 380,
+                type: 'pie',
+            },
+            labels: ['Balance', 'Expense', 'Credit Loan',],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#pie-chart"), options);
+        chart.render();
+    </script>
+
+    <script type="text/javascript">
+        var options = {
+            series: [{
+                name: 'Income',
+                data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+            }, {
+                name: 'Expense',
+                data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+            }, {
+                name: 'Transfer',
+                data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+            }],
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: false,
+                    columnWidth: '55%',
+                    endingShape: 'rounded'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+            },
+            xaxis: {
+                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+            },
+            yaxis: {
+                title: {
+                    text: '$ (thousands)'
+                }
+            },
+            fill: {
+                opacity: 1
+            },
+            tooltip: {
+                y: {
+                    formatter: function (val) {
+                        return "$ " + val + " thousands"
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+
+</body>
+</html>
+
+<script>
+    if ('User' == "Home") {
+        $("#PageClient").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageClient").css("color", "var(--white-color)");
+        //background - color: var(--custom - btn - bg - color);
+    }
+    else if ('User' == "Server"){
+        $("#PageServer").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageServer").css("color", "var(--white-color)");
+    }
+    else if ('User' == "QandA"){
+        $("#PageQandA").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageQandA").css("color", "var(--white-color)");
+    }
+    else if ('User' == "User"){
+        $("#PageUser").css("background-color", "var(--custom-btn-bg-color)");
+        $("#PageUser").css("color", "var(--white-color)");
+}
+    var currentPath = window.location.pathname;
+
+    var navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(function (link) {
+        if (link.getAttribute('href') === currentPath) {
+            link.classList.add('active'); // 如果匹配，则添加 'active' 类
+        }
+    });
+
+
+    // 看看有沒有登入: UserLoginOrNot
+
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+    var btn_UserLoginOrNot = document.getElementById('UserLoginOrNot');
+    if (getCookie("Account") != null) {
+
+        btn_UserLoginOrNot.innerText = "登出";
+        //alert(getCookie("Account"));
+    }
+    else {
+        btn_UserLoginOrNot.innerText = "登入";
+    }
+
+</script>
+
+<script type="text/javascript">
+    //window.onload = function () {
+    //    document.getElementById('iframe_PDF').contentDocument.oncontextmenu = function () {
+    //        alert('111');
+    //        return false;
+    //    }
+    //}
+
+    //window.onload = function () {
+    //    alert('111');
+
+    //    document.getElementById('iframe_PDF_windows').contentDocument.oncontextmenu = function () {
+    //        alert('111');
+    //        return false;
+    //    }
+    //}
+
+    //document.addEventListener("DOMContentLoaded", function () {
+    //    // Your code here
+    //    console.log('555');
+    //    document.getElementById('iframe_PDF_windows').contentDocument.oncontextmenu = function () {
+    //        console.log('123');
+    //        return false;
+    //    };
+    //});
+
+
+</script>
