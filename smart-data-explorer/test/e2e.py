@@ -8,6 +8,7 @@ Usage (server must be running: python3 -m http.server 8091):
   python3 test/e2e.py ehr        Portillo out.png   # EHR launch via the sandbox page
   add --no-everything to make $everything return 500 and exercise the per-type fallback
   add --browser=firefox|webkit to use another engine (python3 -m playwright install firefox webkit)
+  add --app=https://.../smart-data-explorer to test a deployed copy instead of localhost
 Needs: pip install playwright && python3 -m playwright install chromium
 """
 NO_EVERYTHING = "--no-everything" in sys.argv
@@ -15,7 +16,7 @@ BROWSER = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--browser=
 args = [a for a in sys.argv[1:] if not a.startswith("--")]
 mode, name = args[0], args[1]
 shot = args[2] if len(args) > 2 else "e2e.png"
-APP = "http://localhost:8091"
+APP = next((a.split("=", 1)[1] for a in sys.argv if a.startswith("--app=")), "http://localhost:8091").rstrip("/")
 def pick(pg):
     pg.wait_for_selector("select"); pg.select_option("select", index=1); pg.click("button:has-text('Login')")
     pg.wait_for_selector("input[type=search]", timeout=30000); pg.fill("input[type=search]", name); pg.click("button:has-text('Search')"); pg.wait_for_timeout(2500)

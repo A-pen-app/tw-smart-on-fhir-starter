@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SMART on FHIR 範例</title>
+<style>
+:root { --bg:#fff; --fg:#1b2430; --mut:#5b6675; --line:#d9dee5; --card:#f6f8fa; --acc:#1b6ec2; --code:#eef1f4; }
+@media (prefers-color-scheme: dark) { :root { --bg:#12161c; --fg:#e6eaf0; --mut:#9aa6b5; --line:#2b3440; --card:#1a2028; --acc:#5aa2f0; --code:#0d1116; } }
+* { box-sizing:border-box; } body { margin:0; padding:16px; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui,"Noto Sans TC",sans-serif; }
+main { max-width:760px; margin:0 auto; } h1 { font-size:1.5rem; margin:8px 0 4px; } h2 { font-size:1.1rem; margin:0 0 4px; }
+p { margin:4px 0; } .mut { color:var(--mut); font-size:.9rem; } a { color:var(--acc); }
+.card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px; margin:16px 0; }
+.links { display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:8px; }
+code { background:var(--code); padding:1px 6px; border-radius:4px; font:13px ui-monospace,Menlo,monospace; overflow-wrap:anywhere; }
+</style></head>
+<body><main>
+<h1>臺灣 SMART on FHIR 範例（THAS 沙盒）</h1>
+<p class="mut">三個純前端 App，連到衛福部 THAS 沙盒。沙盒裡都是合成資料，不需要註冊帳號。登入時選任一位醫師並按 Login（密碼已預填），再搜尋病人。</p>
+
+<section class="card">
+  <h2>smart-data-explorer：看一位病人有哪些資料</h2>
+  <p>依類型列出所有資料，附上取得資料的程式碼、代碼系統、欄位覆蓋率與原始 JSON。建議搜尋 <code>Portillo</code>。</p>
+  <div class="links"><a href="smart-data-explorer/launch.html">開啟（Standalone）</a></div>
+  <p class="mut">EHR Launch URL：<code data-ehr="smart-data-explorer/ehr-launch.html"></code></p>
+</section>
+
+<section class="card">
+  <h2>smart-vitals-demo：生命徵象趨勢圖（範例產品）</h2>
+  <p>血壓、體重、BMI、心跳的趨勢圖，示範分層架構與錯誤處理。建議搜尋 <code>Portillo</code>；搜尋 <code>TWIDIR</code> 可看到「沒有資料」的畫面。</p>
+  <div class="links"><a href="smart-vitals-demo/launch.html">開啟（Standalone）</a></div>
+  <p class="mut">EHR Launch URL：<code data-ehr="smart-vitals-demo/ehr-launch.html"></code></p>
+</section>
+
+<section class="card">
+  <h2>smart-poc：最小範例</h2>
+  <p>只驗證登入並顯示取得的 token 資訊。</p>
+  <div class="links"><a href="smart-poc/launch.html">開啟（Standalone）</a></div>
+  <p class="mut">EHR Launch URL：<code data-ehr="smart-poc/ehr-launch.html"></code></p>
+</section>
+
+<p class="mut">EHR Launch 的測試方式：打開 <a href="https://thas.mohw.gov.tw/smart/sandbox">THAS 沙盒測試頁</a>，選「EHR Launch」，貼上上面的 Launch URL，再按「立即測試」。</p>
+<p class="mut">原始碼與教學文件：<a href="https://github.com/A-pen-app/tw-smart-on-fhir-starter">github.com/A-pen-app/tw-smart-on-fhir-starter</a></p>
+</main>
+<script>
+  // Show absolute Launch URLs so they can be pasted into the sandbox page as-is.
+  for (const el of document.querySelectorAll("[data-ehr]")) el.textContent = new URL(el.dataset.ehr, location.href).href;
+</script>
+</body></html>

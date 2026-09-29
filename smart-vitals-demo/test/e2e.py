@@ -10,6 +10,7 @@ Options:
   --browser=firefox|webkit   default chromium (install with: python3 -m playwright install firefox webkit)
   --expiry                   afterwards, simulate an expired / rejected / expiring token
   --fail-weight              make the weight query return 500: only that card should show an error
+  --app=URL                  test a deployed copy, e.g. --app=https://.../smart-vitals-demo (default http://localhost:8090)
 Needs: pip install playwright && python3 -m playwright install chromium
 """
 opts = [a for a in sys.argv[1:] if a.startswith("--")]
@@ -17,6 +18,7 @@ args = [a for a in sys.argv[1:] if not a.startswith("--")]
 BROWSER = next((o.split("=", 1)[1] for o in opts if o.startswith("--browser=")), "chromium")
 mode, name = args[0], args[1]
 shot = args[2] if len(args) > 2 else "e2e.png"
+APP = next((o.split("=", 1)[1] for o in opts if o.startswith("--app=")), "http://localhost:8090").rstrip("/")
 # Edit fhirclient's saved state in sessionStorage (the same place a real session lives).
 PATCH = """patch => { const id = JSON.parse(sessionStorage.getItem('SMART_KEY')); const s = JSON.parse(sessionStorage.getItem(id));
   if (patch.expiresIn !== undefined) s.expiresAt = Math.floor(Date.now() / 1000) + patch.expiresIn;
@@ -39,11 +41,11 @@ with sync_playwright() as p:
     pg.on("request",lambda r: reqs.append(r.url) if "/fhir/Observation" in r.url or "/fhir/Patient/" in r.url else None)
     if "--fail-weight" in opts: pg.context.route("**/fhir/Observation?*29463-7*", lambda route: route.fulfill(status=500, body="simulated"))
     if mode=="standalone":
-        pg.goto("http://localhost:8090/launch.html"); pick(pg)
+        pg.goto(f"{APP}/launch.html"); pick(pg)
     else:
         pg.goto("https://thas.mohw.gov.tw/smart/sandbox"); pg.wait_for_load_state("networkidle"); pg.wait_for_timeout(1500)
         pg.click("button:has-text('請選擇')"); pg.wait_for_timeout(800); pg.locator("[role=option]:has-text('EHR Launch'), li:has-text('EHR Launch')").first.click()
-        pg.fill("input[placeholder='Launch URL']","http://localhost:8090/ehr-launch.html")
+        pg.fill("input[placeholder='Launch URL']",f"{APP}/ehr-launch.html")
         with pg.expect_popup() as pi: pg.click("button:has-text('立即測試')")
         pg=pi.value
         pg.on("console",lambda m: errs.append(m.text) if m.type=="error" else None); pg.on("pageerror",lambda e: errs.append("PAGEERROR "+str(e)))
