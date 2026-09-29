@@ -3,6 +3,8 @@ export const FHIR_BASE = "https://thas.mohw.gov.tw/v/r4/fhir";
 export const CLIENT_ID = "vitals-demo";          // free-form in the THAS sandbox; real EHRs usually require registration
 
 // Least privilege: only what this app reads. (The sandbox does NOT enforce scopes, so keep this list honest yourself.)
+// Token lasts 3600 s. Add "offline_access" to get a refresh token and fhirclient will renew it automatically;
+// without it the app shows a "login expired" notice (see watchExpiry in main.js).
 export const READ_SCOPES = "patient/Patient.read patient/Observation.read openid fhirUser";
 export const STANDALONE_SCOPE = `launch/patient ${READ_SCOPES}`;
 export const EHR_SCOPE = `launch ${READ_SCOPES}`;

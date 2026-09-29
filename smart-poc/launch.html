@@ -1,6 +1,6 @@
 <!doctype html>
 <meta charset="utf-8"><title>launch</title>
-<script src="https://cdn.jsdelivr.net/npm/fhirclient@2/build/fhir-client.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fhirclient@3.0.0/bundle/fhir-client.js"></script>
 <script>
   // Standalone launch against THAS sandbox. `launch: "e30"` (= base64 "{}") is required by the
   // sandbox's launcher: without a launch param /auth/authorize returns 400 "Invalid launch options".
@@ -8,7 +8,7 @@
   const q = new URLSearchParams(location.search);
   FHIR.oauth2.authorize({
     clientId: "twfhir-poc",                 // free-form; the sandbox does not require registration
-    scope: q.get("scope") || "launch/patient patient/*.read openid fhirUser",
+    scope: q.get("scope") || "launch/patient patient/Patient.read patient/Observation.read openid fhirUser",
     redirectUri: "index.html",
     iss: "https://thas.mohw.gov.tw/v/r4/fhir",
     launch: "e30"

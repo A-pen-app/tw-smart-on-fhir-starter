@@ -1,5 +1,8 @@
 # smart-poc：最小 SMART on FHIR App 範例
 
+> **定位：** 用來理解登入流程與做權限實驗（`launch.html?scope=...`），**不是產品的起點**。
+> 要做產品請複製 `../smart-vitals-demo/`；要看有哪些資料請用 `../smart-data-explorer/`。
+
 對 THAS 沙盒（`https://thas.mohw.gov.tw/v/r4/fhir`）驗證用，無需安裝套件，只用瀏覽器與 `fhirclient.js`（CDN）。
 
 | 檔案 | 用途 |
@@ -23,4 +26,4 @@ python3 -m http.server 8080
 - `clientId` 可自取，沙盒不需註冊。
 - Standalone 必須帶 `launch: "e30"`，否則授權端點回 400。EHR Launch 不需要。
 - 沙盒不檢查 scope，測試通過不代表權限設定正確，見 `../docs/沙盒驗證結果.md`。
-- `index.html` 只做展示，未處理錯誤畫面與 token 過期。
+- `index.html` 只做展示，刻意不處理錯誤畫面與 token 過期，讓流程保持最短。這些處理的寫法見 `../smart-vitals-demo/src/main.js`。

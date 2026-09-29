@@ -1,6 +1,7 @@
 // The ONLY file that talks to the FHIR server. Everything it returns is already plain data,
 // so switching EHR / data shape later means changing this file and logic.js, not the UI.
 import { LOINC, CODES } from "./config.js";
+import { isAuthError } from "./logic.js";
 
 const query = codes =>
   `Observation?code=${codes.map(c => `${LOINC}|${c}`).join(",")}&_sort=-date&_count=100`;
@@ -16,7 +17,7 @@ export async function loadVitals(client) {
   return Object.fromEntries(names.map((n, i) => [n,
     results[i].status === "fulfilled"
       ? { ok: true, observations: results[i].value }
-      : { ok: false, error: String(results[i].reason?.message ?? results[i].reason) }]));
+      : { ok: false, auth: isAuthError(results[i].reason), error: String(results[i].reason?.message ?? results[i].reason) }]));
 }
 
 export const loadPatient = client => client.patient.read();

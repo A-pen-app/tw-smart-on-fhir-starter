@@ -4,7 +4,7 @@
 <h1>THAS SMART PoC</h1>
 <div id="status">authorizing…</div>
 <pre id="out"></pre>
-<script src="https://cdn.jsdelivr.net/npm/fhirclient@2/build/fhir-client.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fhirclient@3.0.0/bundle/fhir-client.js"></script>
 <script>
   FHIR.oauth2.ready().then(async client => {
     document.getElementById("status").textContent = "ready";

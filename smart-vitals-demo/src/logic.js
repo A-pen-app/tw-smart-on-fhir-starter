@@ -63,3 +63,16 @@ export function tickDecimals(min, max, ticks = 4) {
   }
   return 3;
 }
+
+/** fhirclient's client.state -> login status. expiresAt is stored in SECONDS since epoch. */
+export function sessionInfo(state, now = Date.now()) {
+  const expiresAt = isNum(state?.expiresAt) ? state.expiresAt * 1000 : null;
+  return {
+    expiresAt,
+    expired: expiresAt !== null && expiresAt <= now,
+    canRefresh: Boolean(state?.tokenResponse?.refresh_token),   // only with the offline_access / online_access scope
+  };
+}
+
+/** Did this fail because the token is missing, expired or rejected? (fhirclient's HttpError carries .status) */
+export const isAuthError = e => e?.status === 401 || /\b401\b|unauthori[sz]ed|expired/i.test(String(e?.message ?? e ?? ""));

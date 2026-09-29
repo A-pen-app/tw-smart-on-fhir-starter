@@ -70,3 +70,20 @@ test("tickDecimals: adjacent tick labels are never identical", () => {
     assert.equal(new Set(labels).size, 5, `${a}-${b}: ${labels}`);
   }
 });
+
+import { sessionInfo, isAuthError } from "../src/logic.js";
+test("sessionInfo: expiresAt is in seconds; refresh token detected; missing state is safe", () => {
+  const now = 1_700_000_000_000;
+  assert.deepEqual(sessionInfo({ expiresAt: now / 1000 + 60 }, now), { expiresAt: now + 60_000, expired: false, canRefresh: false });
+  assert.equal(sessionInfo({ expiresAt: now / 1000 - 1 }, now).expired, true);
+  assert.equal(sessionInfo({ expiresAt: 1, tokenResponse: { refresh_token: "r" } }, now).canRefresh, true);
+  assert.deepEqual(sessionInfo(undefined, now), { expiresAt: null, expired: false, canRefresh: false });
+});
+test("isAuthError: 401 status or message, but not other failures", () => {
+  assert.ok(isAuthError({ status: 401 }));
+  assert.ok(isAuthError(new Error("401 Unauthorized\nURL: https://x")));
+  assert.ok(isAuthError("Session expired"));
+  assert.ok(!isAuthError({ status: 500, message: "500 Internal Server Error" }));
+  assert.ok(!isAuthError(new Error("Failed to fetch")));
+  assert.ok(!isAuthError(undefined));
+});

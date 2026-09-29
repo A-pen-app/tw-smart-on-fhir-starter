@@ -1,11 +1,28 @@
 import { loadPatient, loadVitals } from "./fhir.js";
 import { CODES } from "./config.js";
-import { formatName, ageOf, toBpPoints, toQuantityPoints, bpBand, latest } from "./logic.js";
+import { formatName, ageOf, toBpPoints, toQuantityPoints, bpBand, latest, sessionInfo, isAuthError } from "./logic.js";
 import { h, lineChart, section, empty, failed, legend, badge, table } from "./ui.js";
 
 const root = document.getElementById("app");
 const status = msg => root.replaceChildren(h("p", { class: "state" }, msg));
 const BAND = { high: "偏高", low: "偏低", normal: "正常範圍" };
+const relogin = () => h("p", {}, h("a", { href: "launch.html" }, "重新登入"), "（若是從病歷系統開啟的，請回病歷系統重新開啟）");
+
+/** Token expired / rejected: nothing on screen can be trusted to update, so replace everything. */
+function showExpired() {
+  root.replaceChildren(h("p", { class: "state error", role: "alert" }, "登入已過期或無效，請重新登入。"), relogin());
+  document.body.dataset.ready = "expired";
+}
+
+/** Without a refresh token the session simply ends; tell the user instead of silently showing stale data. */
+function watchExpiry({ expiresAt, canRefresh }) {
+  if (canRefresh || expiresAt === null) return;   // fhirclient refreshes automatically when it can
+  setTimeout(() => {
+    const t = new Date(expiresAt).toLocaleTimeString("zh-TW", { hour: "2-digit", minute: "2-digit", hour12: false });
+    root.prepend(h("div", { class: "notice", role: "status" }, h("p", {}, `登入已於 ${t} 過期，畫面上的資料不會再更新。`), relogin()));
+    document.body.dataset.expired = "1";
+  }, Math.max(0, expiresAt - Date.now()));
+}
 
 function renderBanner(p) {
   const age = ageOf(p.birthDate);
@@ -42,15 +59,20 @@ function bpSection(res) {
 async function start() {
   status("載入中…");
   const client = await FHIR.oauth2.ready();
+  const session = sessionInfo(client.state);
+  if (session.expired && !session.canRefresh) return showExpired();   // e.g. page reloaded an hour later
   const [patient, vitals] = await Promise.all([loadPatient(client), loadVitals(client)]);
+  if (Object.values(vitals).some(v => v.auth)) return showExpired();
   root.replaceChildren(renderBanner(patient), bpSection(vitals.bp),
     quantitySection("體重", vitals.weight, CODES.weight, "s1"),
     quantitySection("BMI", vitals.bmi, CODES.bmi, "s1"),
     quantitySection("心跳", vitals.heartRate, CODES.heartRate, "s1"));
   document.body.dataset.ready = "1";
+  watchExpiry(session);
 }
 
 start().catch(e => {
+  if (isAuthError(e)) return showExpired();
   root.replaceChildren(h("p", { class: "state error", role: "alert" }, `無法啟動：${e.message ?? e}`),
     h("p", {}, h("a", { href: "launch.html" }, "重新登入")));
   document.body.dataset.ready = "error";

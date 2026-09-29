@@ -1,0 +1,15 @@
+{
+  "name": "tw-smart-on-fhir-starter",
+  "private": true,
+  "description": "THAS 沙盒的 SMART on FHIR 範例與文件。No dependencies: tests use node:test, apps load fhirclient from a CDN.",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "test": "node --test smart-vitals-demo/test/logic.test.mjs smart-data-explorer/test/logic.test.mjs",
+    "serve:poc": "cd smart-poc && python3 -m http.server 8080",
+    "serve:vitals": "cd smart-vitals-demo && python3 -m http.server 8090",
+    "serve:explorer": "cd smart-data-explorer && python3 -m http.server 8091",
+    "e2e:vitals": "cd smart-vitals-demo && python3 test/e2e.py standalone Portillo e2e.png --expiry",
+    "e2e:explorer": "cd smart-data-explorer && python3 test/e2e.py standalone Portillo e2e.png"
+  }
+}

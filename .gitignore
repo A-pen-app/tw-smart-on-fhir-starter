@@ -6,3 +6,7 @@ downloads/
 node_modules/
 __pycache__/
 *.pyc
+
+# e2e screenshots
+*.png
+!docs/assets/*.png

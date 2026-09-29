@@ -1,0 +1,53 @@
+name: test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      e2e:
+        description: "Also run end-to-end tests against the live THAS sandbox"
+        type: boolean
+        default: false
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm test
+
+  # Hits the public, shared THAS sandbox, so it only runs when started by hand.
+  e2e:
+    if: github.event_name == 'workflow_dispatch' && inputs.e2e
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install playwright && python -m playwright install --with-deps ${{ matrix.browser }}
+      - name: vitals-demo
+        working-directory: smart-vitals-demo
+        run: |
+          python -m http.server 8090 &
+          sleep 1
+          python test/e2e.py standalone Portillo vitals-${{ matrix.browser }}.png --browser=${{ matrix.browser }} --expiry | tee vitals.log
+          grep -q "ready: 1" vitals.log && grep -q "console errors: \[\]" vitals.log
+      - name: data-explorer
+        working-directory: smart-data-explorer
+        run: |
+          python -m http.server 8091 &
+          sleep 1
+          python test/e2e.py standalone Portillo explorer-${{ matrix.browser }}.png --browser=${{ matrix.browser }} | tee explorer.log
+          grep -q "ready: 1" explorer.log && grep -q "console errors: \[\]" explorer.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: screenshots-${{ matrix.browser }}
+          path: "**/*-${{ matrix.browser }}.png"
