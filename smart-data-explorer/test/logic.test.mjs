@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { conceptText, dateOf, labelOf, valueOf, summarize, ownerOf, patientRefs, dedupe, groupByType, codeSystems, fieldCoverage, snippet } from "../src/logic.js";
+import { conceptText, dateOf, labelOf, valueOf, summarize, ownerOf, patientRefs, dedupe, groupByType, codeSystems, fieldCoverage, snippet, filterRows } from "../src/logic.js";
 
 const L = "http://loinc.org", S = "http://snomed.info/sct";
 const pt = { resourceType: "Patient", id: "p1", name: [{ given: ["Adán"], family: "Portillo" }] };
@@ -96,4 +96,15 @@ test("isAuthError: 401 status or message, but not other failures", () => {
   assert.ok(isAuthError(new Error("401 Unauthorized")));
   assert.ok(!isAuthError({ status: 500, message: "500 Internal Server Error" }));
   assert.ok(!isAuthError(undefined));
+});
+
+test("filterRows: every term must match, case-insensitive; empty query keeps all", () => {
+  const rows = [{ date: "2020-01-01", label: "Body Weight", value: "70 kg", status: "final" },
+                { date: "2021-05-02", label: "Body Height", value: "170 cm", status: "final" }];
+  assert.equal(filterRows(rows, "").length, 2);
+  assert.equal(filterRows(rows, "   ").length, 2);
+  assert.deepEqual(filterRows(rows, "weight").map(r => r.value), ["70 kg"]);
+  assert.deepEqual(filterRows(rows, "body 2021").map(r => r.value), ["170 cm"]);
+  assert.equal(filterRows(rows, "body nope").length, 0);
+  assert.equal(filterRows([{ date: null, label: "X", value: "", status: "" }], "x").length, 1);
 });

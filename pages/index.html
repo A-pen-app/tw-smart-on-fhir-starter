@@ -2,45 +2,90 @@
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SMART on FHIR 範例</title>
 <style>
-:root { --bg:#fff; --fg:#1b2430; --mut:#5b6675; --line:#d9dee5; --card:#f6f8fa; --acc:#1b6ec2; --code:#eef1f4; }
-@media (prefers-color-scheme: dark) { :root { --bg:#12161c; --fg:#e6eaf0; --mut:#9aa6b5; --line:#2b3440; --card:#1a2028; --acc:#5aa2f0; --code:#0d1116; } }
+:root { --bg:#fff; --fg:#1b2430; --mut:#5b6675; --line:#d9dee5; --card:#f6f8fa; --acc:#1b6ec2; --on-acc:#fff; --code:#eef1f4; --ok:#1d7a46; }
+@media (prefers-color-scheme: dark) { :root { --bg:#12161c; --fg:#e6eaf0; --mut:#9aa6b5; --line:#2b3440; --card:#1a2028; --acc:#5aa2f0; --on-acc:#0b1320; --code:#0d1116; --ok:#5fcf8e; } }
 * { box-sizing:border-box; } body { margin:0; padding:16px; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui,"Noto Sans TC",sans-serif; }
-main { max-width:760px; margin:0 auto; } h1 { font-size:1.5rem; margin:8px 0 4px; } h2 { font-size:1.1rem; margin:0 0 4px; }
+main { max-width:760px; margin:0 auto; } h1 { font-size:1.6rem; margin:8px 0 4px; } h2 { font-size:1.1rem; margin:0 0 4px; }
 p { margin:4px 0; } .mut { color:var(--mut); font-size:.9rem; } a { color:var(--acc); }
-.card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px; margin:16px 0; }
-.links { display:flex; flex-wrap:wrap; gap:8px 16px; margin-top:8px; }
+:focus-visible { outline:2px solid var(--acc); outline-offset:2px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; margin:16px 0; }
 code { background:var(--code); padding:1px 6px; border-radius:4px; font:13px ui-monospace,Menlo,monospace; overflow-wrap:anywhere; }
+
+.steps { list-style:none; counter-reset:s; padding:0; margin:12px 0 0; display:grid; gap:8px; }
+.steps li { counter-increment:s; display:flex; gap:12px; align-items:center; }
+.steps li::before { content:counter(s); flex:none; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:var(--acc); color:var(--on-acc); font-weight:700; font-size:.9rem; }
+
+.app-head { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:4px 12px; }
+.app-head h2 code { font-size:.95rem; }
+.tags { list-style:none; display:flex; flex-wrap:wrap; gap:6px; padding:0; margin:8px 0; font-size:.8rem; }
+.tags li { padding:1px 8px; border:1px solid var(--line); border-radius:999px; color:var(--mut); }
+.actions { display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px; margin-top:12px; }
+.btn { display:inline-flex; align-items:center; min-height:44px; padding:0 18px; border-radius:8px; background:var(--acc); color:var(--on-acc); font-weight:600; text-decoration:none; }
+.btn:hover { filter:brightness(1.08); }
+.ehr { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:4px 8px; margin-top:12px; font-size:.85rem; color:var(--mut); }
+.ehr span { grid-column:1 / -1; }
+button.copy { flex:none; font:inherit; font-size:.8rem; min-height:32px; padding:0 10px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--fg); cursor:pointer; }
+button.copy:hover { border-color:var(--acc); } button.copy.done { color:var(--ok); border-color:currentColor; }
+details { margin:16px 0; } summary { cursor:pointer; font-weight:600; } details > :not(summary) { margin-left:4px; }
+details ol { padding-left:20px; margin:8px 0; }
 </style></head>
 <body><main>
-<h1>臺灣 SMART on FHIR 範例（THAS 沙盒）</h1>
-<p class="mut">三個純前端 App，連到衛福部 THAS 沙盒。沙盒裡都是合成資料，不需要註冊帳號。登入時選任一位醫師並按 Login（密碼已預填），再搜尋病人。</p>
+<h1>臺灣 SMART on FHIR 範例</h1>
+<p class="mut">三個純前端 App，連到衛福部 THAS 沙盒。沙盒裡都是合成資料，不需要註冊帳號。</p>
 
 <section class="card">
-  <h2>smart-data-explorer：看一位病人有哪些資料</h2>
-  <p>依類型列出所有資料，附上取得資料的程式碼、代碼系統、欄位覆蓋率與原始 JSON。建議搜尋 <code>Portillo</code>。</p>
-  <div class="links"><a href="smart-data-explorer/launch.html">開啟（Standalone）</a></div>
-  <p class="mut">EHR Launch URL：<code data-ehr="smart-data-explorer/ehr-launch.html"></code></p>
+  <h2>3 步驟開始</h2>
+  <ol class="steps">
+    <li><span>在下方挑一個 App，按「開啟」。</span></li>
+    <li><span>沙盒登入頁：選任一位醫師，按 <b>Login</b>（密碼已預填）。</span></li>
+    <li><span>搜尋病人 <code>Portillo</code> <button type="button" class="copy" data-copy="Portillo">複製</button>，點選結果就會回到 App。</span></li>
+  </ol>
 </section>
 
 <section class="card">
-  <h2>smart-vitals-demo：生命徵象趨勢圖（範例產品）</h2>
-  <p>血壓、體重、BMI、心跳的趨勢圖，示範分層架構與錯誤處理。建議搜尋 <code>Portillo</code>；搜尋 <code>TWIDIR</code> 可看到「沒有資料」的畫面。</p>
-  <div class="links"><a href="smart-vitals-demo/launch.html">開啟（Standalone）</a></div>
-  <p class="mut">EHR Launch URL：<code data-ehr="smart-vitals-demo/ehr-launch.html"></code></p>
+  <div class="app-head"><h2>資料瀏覽器 <code>smart-data-explorer</code></h2></div>
+  <p>看一位病人有哪些資料：依類型列出，附上取得資料的程式碼、代碼系統、欄位覆蓋率與原始 JSON。</p>
+  <ul class="tags"><li>patient/*.read</li><li>Patient/$everything</li><li>下載 JSON</li></ul>
+  <div class="actions"><a class="btn" href="smart-data-explorer/launch.html">開啟</a></div>
+  <div class="ehr"><span>EHR Launch URL</span><code data-ehr="smart-data-explorer/ehr-launch.html"></code><button type="button" class="copy">複製</button></div>
 </section>
 
 <section class="card">
-  <h2>smart-poc：最小範例</h2>
-  <p>只驗證登入並顯示取得的 token 資訊。</p>
-  <div class="links"><a href="smart-poc/launch.html">開啟（Standalone）</a></div>
-  <p class="mut">EHR Launch URL：<code data-ehr="smart-poc/ehr-launch.html"></code></p>
+  <div class="app-head"><h2>生命徵象趨勢圖 <code>smart-vitals-demo</code></h2></div>
+  <p>血壓、體重、BMI、心跳的趨勢圖（範例產品），示範分層架構、最小權限與錯誤處理。搜尋 <code>TWIDIR</code> 可看到「沒有資料」的畫面。</p>
+  <ul class="tags"><li>最小權限 scope</li><li>趨勢圖</li><li>登入過期處理</li></ul>
+  <div class="actions"><a class="btn" href="smart-vitals-demo/launch.html">開啟</a></div>
+  <div class="ehr"><span>EHR Launch URL</span><code data-ehr="smart-vitals-demo/ehr-launch.html"></code><button type="button" class="copy">複製</button></div>
 </section>
 
-<p class="mut">EHR Launch 的測試方式：打開 <a href="https://thas.mohw.gov.tw/smart/sandbox">THAS 沙盒測試頁</a>，選「EHR Launch」，貼上上面的 Launch URL，再按「立即測試」。</p>
+<section class="card">
+  <div class="app-head"><h2>最小範例 <code>smart-poc</code></h2></div>
+  <p>只驗證登入流程，顯示拿到的 token、scope、病人與最近幾筆 Observation。</p>
+  <ul class="tags"><li>token 資訊</li><li>單一 HTML 檔</li></ul>
+  <div class="actions"><a class="btn" href="smart-poc/launch.html">開啟</a></div>
+  <div class="ehr"><span>EHR Launch URL</span><code data-ehr="smart-poc/ehr-launch.html"></code><button type="button" class="copy">複製</button></div>
+</section>
+
+<details>
+  <summary>Standalone 和 EHR Launch 差在哪？怎麼測 EHR Launch？</summary>
+  <p><b>Standalone</b>：使用者直接打開 App，自己登入並選病人（上面的「開啟」）。<b>EHR Launch</b>：從病歷系統裡開啟 App，病人由病歷系統帶入。</p>
+  <ol>
+    <li>打開 <a href="https://thas.mohw.gov.tw/smart/sandbox">THAS 沙盒測試頁</a>，選「EHR Launch」。</li>
+    <li>貼上該 App 的 EHR Launch URL（按上面的「複製」）。</li>
+    <li>按「立即測試」，在新視窗登入並選病人。</li>
+  </ol>
+</details>
 <p class="mut">原始碼與教學文件：<a href="https://github.com/A-pen-app/tw-smart-on-fhir-starter">github.com/A-pen-app/tw-smart-on-fhir-starter</a></p>
 </main>
 <script>
   // Show absolute Launch URLs so they can be pasted into the sandbox page as-is.
   for (const el of document.querySelectorAll("[data-ehr]")) el.textContent = new URL(el.dataset.ehr, location.href).href;
+  // Copy buttons: data-copy, or else the <code> right before the button.
+  for (const btn of document.querySelectorAll("button.copy")) btn.addEventListener("click", async () => {
+    const text = btn.dataset.copy ?? btn.previousElementSibling.textContent;
+    try { await navigator.clipboard.writeText(text); btn.textContent = "已複製"; btn.classList.add("done"); }
+    catch { btn.textContent = "請手動複製"; }
+    setTimeout(() => { btn.textContent = "複製"; btn.classList.remove("done"); }, 2000);
+  });
 </script>
 </body></html>

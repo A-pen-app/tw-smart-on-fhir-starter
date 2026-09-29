@@ -87,3 +87,26 @@ test("isAuthError: 401 status or message, but not other failures", () => {
   assert.ok(!isAuthError(new Error("Failed to fetch")));
   assert.ok(!isAuthError(undefined));
 });
+
+import { minutesLeft, nearestIndex } from "../src/logic.js";
+
+test("minutesLeft: rounds up, floors at 0, null without expiry", () => {
+  const now = 1_000_000;
+  assert.equal(minutesLeft({ expiresAt: now + 52 * 60000 - 1 }, now), 52);
+  assert.equal(minutesLeft({ expiresAt: now + 1 }, now), 1);
+  assert.equal(minutesLeft({ expiresAt: now - 5000 }, now), 0);
+  assert.equal(minutesLeft({ expiresAt: null }, now), null);
+  assert.equal(minutesLeft(undefined, now), null);
+});
+
+test("nearestIndex: closest value in a sorted array, ties to the earlier one", () => {
+  const ts = [10, 20, 40];
+  assert.equal(nearestIndex(ts, -5), 0);
+  assert.equal(nearestIndex(ts, 14), 0);
+  assert.equal(nearestIndex(ts, 15), 0);
+  assert.equal(nearestIndex(ts, 16), 1);
+  assert.equal(nearestIndex(ts, 31), 2);
+  assert.equal(nearestIndex(ts, 99), 2);
+  assert.equal(nearestIndex([7], 0), 0);
+  assert.equal(nearestIndex([], 0), -1);
+});

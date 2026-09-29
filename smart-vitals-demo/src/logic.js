@@ -74,5 +74,19 @@ export function sessionInfo(state, now = Date.now()) {
   };
 }
 
+/** Whole minutes until the token expires (rounded up, never negative); null when the server gave no expiry. */
+export function minutesLeft({ expiresAt } = {}, now = Date.now()) {
+  if (!isNum(expiresAt)) return null;
+  return Math.max(0, Math.ceil((expiresAt - now) / 60000));
+}
+
+/** Index of the value in a sorted number array closest to t (ties go to the earlier one); -1 if empty. For the chart tooltip. */
+export function nearestIndex(ts, t) {
+  if (!ts?.length) return -1;
+  let lo = 0, hi = ts.length - 1;
+  while (hi - lo > 1) { const mid = (lo + hi) >> 1; ts[mid] <= t ? (lo = mid) : (hi = mid); }
+  return Math.abs(ts[hi] - t) < Math.abs(t - ts[lo]) ? hi : lo;
+}
+
 /** Did this fail because the token is missing, expired or rejected? (fhirclient's HttpError carries .status) */
 export const isAuthError = e => e?.status === 401 || /\b401\b|unauthori[sz]ed|expired/i.test(String(e?.message ?? e ?? ""));

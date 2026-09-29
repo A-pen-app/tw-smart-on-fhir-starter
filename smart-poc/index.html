@@ -1,22 +1,91 @@
 <!doctype html>
-<meta charset="utf-8"><title>THAS SMART PoC</title>
-<style>body{font:16px system-ui;margin:2rem}pre{background:#f4f4f4;padding:1rem;overflow:auto}</style>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>THAS SMART PoC</title>
+<style>
+:root { --bg:#fff; --fg:#1b2430; --mut:#5b6675; --line:#d9dee5; --card:#f6f8fa; --acc:#1b6ec2; --ok:#1d7a46; --hi:#b3261e; --code:#eef1f4; }
+@media (prefers-color-scheme: dark) { :root { --bg:#12161c; --fg:#e6eaf0; --mut:#9aa6b5; --line:#2b3440; --card:#1a2028; --acc:#5aa2f0; --ok:#5fcf8e; --hi:#ff8a80; --code:#0d1116; } }
+* { box-sizing:border-box; } body { margin:0; padding:0 16px 32px; background:var(--bg); color:var(--fg); font:16px/1.5 system-ui,"Noto Sans TC",sans-serif; }
+:focus-visible { outline:2px solid var(--acc); outline-offset:2px; } a { color:var(--acc); }
+.topbar, main { max-width:720px; margin:0 auto; } h1 { font-size:1.4rem; margin:8px 0 12px; } h2 { font-size:1rem; margin:0 0 8px; }
+.topbar { display:flex; align-items:center; gap:16px; padding:10px 0; border-bottom:1px solid var(--line); margin-bottom:12px; font-size:.9rem; }
+.topbar a { text-decoration:none; } .topbar strong { flex:1; }
+.steps { list-style:none; display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:0 0 16px; font-size:.9rem; }
+.steps li { padding:4px 12px; border:1px solid var(--line); border-radius:999px; color:var(--mut); }
+.steps li.ok { color:var(--ok); border-color:currentColor; } .steps li.ok::before { content:"✓ "; }
+.steps li.fail { color:var(--hi); border-color:currentColor; } .steps li.fail::before { content:"✗ "; }
+.steps li.run::before { content:"… "; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px; margin-bottom:16px; }
+.card.error { border-color:var(--hi); color:var(--hi); } .card.error pre { color:var(--fg); }
+dl { display:grid; grid-template-columns:max-content 1fr; gap:4px 16px; margin:0; font-size:.95rem; } dt { color:var(--mut); } dd { margin:0; overflow-wrap:anywhere; }
+.chips { list-style:none; display:flex; flex-wrap:wrap; gap:6px; padding:0; margin:0; }
+.chips li { padding:1px 8px; border:1px solid var(--line); border-radius:999px; font:13px ui-monospace,Menlo,monospace; }
+ol.obs { margin:0; padding-left:20px; }
+details > summary { cursor:pointer; font-weight:600; }
+.codebox { position:relative; margin-top:8px; }
+pre { background:var(--code); padding:10px 64px 10px 12px; border-radius:6px; overflow:auto; font:13px/1.45 ui-monospace,Menlo,monospace; margin:0; }
+button.copy { position:absolute; top:6px; right:6px; font:inherit; font-size:.8rem; padding:2px 10px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--fg); cursor:pointer; }
+button.copy:hover { border-color:var(--acc); }
+.mut { color:var(--mut); font-size:.9rem; }
+</style></head>
+<body>
+<header class="topbar"><a href="../">← 所有範例</a><strong>最小範例</strong><a href="launch.html">重新登入</a></header>
+<main>
 <h1>THAS SMART PoC</h1>
-<div id="status">authorizing…</div>
-<pre id="out"></pre>
+<ol class="steps" aria-label="進度">
+  <li id="s-auth" class="run">授權</li><li id="s-token">取得 token</li><li id="s-patient">讀取病人</li><li id="s-obs">讀取 Observation</li>
+</ol>
+<div id="status" class="mut" role="status">授權中…</div>
+<div id="view"></div>
+<details class="card"><summary>原始 JSON</summary><div class="codebox"><pre id="out"></pre><button type="button" class="copy" id="copy">複製</button></div></details>
+</main>
 <script src="https://cdn.jsdelivr.net/npm/fhirclient@3.0.0/bundle/fhir-client.js"></script>
 <script>
+  // DOM helper: text only (textContent), never innerHTML, so server data can't inject markup.
+  const h = (tag, attrs = {}, ...kids) => { const e = Object.assign(document.createElement(tag), attrs); e.append(...kids.flat().map(k => k?.nodeType ? k : String(k ?? ""))); return e; };
+  const $ = id => document.getElementById(id);
+  const step = (id, cls) => { $(id).className = cls; const next = $(id).nextElementSibling; if (cls === "ok" && next) next.className = "run"; };
+  const card = (title, ...body) => h("section", { className: "card" }, h("h2", {}, title), ...body);
+  const dl = pairs => h("dl", {}, pairs.flatMap(([k, v]) => [h("dt", {}, k), h("dd", {}, v)]));
+  const yes = b => (b ? "有" : "無");
+  const nameOf = p => { const n = (p.name || [])[0] || {}; return n.text || [...(n.given || []), n.family].filter(Boolean).join(" ") || "(no name)"; };
+  $("copy").onclick = async () => { try { await navigator.clipboard.writeText($("out").textContent); $("copy").textContent = "已複製"; } catch { $("copy").textContent = "無法複製"; } setTimeout(() => ($("copy").textContent = "複製"), 2000); };
+
   FHIR.oauth2.ready().then(async client => {
-    document.getElementById("status").textContent = "ready";
-    const patient = await client.patient.read();
-    const obs = await client.patient.request("Observation?_count=5&_sort=-date");
+    $("status").hidden = true;   // the step chips show progress from here on
+    step("s-auth", "ok");
     const tr = client.state.tokenResponse || {};
+    step("s-token", "ok");
+    const patient = await client.patient.read();
+    step("s-patient", "ok");
+    const obs = await client.patient.request("Observation?_count=5&_sort=-date");
+    step("s-obs", "ok");
+    const observations = (obs.entry || []).map(e => e.resource);
+
+    $("view").replaceChildren(
+      card("Token", dl([["patient id", client.patient.id], ["expires_in", tr.expires_in ? `${tr.expires_in} 秒` : "—"],
+        ["id_token", yes(tr.id_token)], ["refresh_token", yes(tr.refresh_token)],
+        ["scope", h("ul", { className: "chips" }, String(tr.scope || "").split(/\s+/).filter(Boolean).map(s => h("li", {}, s)))]])),
+      card("病人", dl([["姓名", nameOf(patient)], ["生日", patient.birthDate || "—"], ["性別", patient.gender || "—"]])),
+      card(`最近 ${observations.length} 筆 Observation`, observations.length
+        ? h("ol", { className: "obs" }, observations.map(o => h("li", {}, (o.code && o.code.text) || "(no text)",
+            h("span", { className: "mut" }, `  ${(o.effectiveDateTime || o.issued || "").slice(0, 10)}`))))
+        : h("p", { className: "mut" }, "沒有資料。")));
+
     document.getElementById("out").textContent = JSON.stringify({
       scope: tr.scope, patientId: client.patient.id, expires_in: tr.expires_in,
       has_id_token: !!tr.id_token, has_refresh_token: !!tr.refresh_token,
       patientName: patient.name, birthDate: patient.birthDate,
-      observations: (obs.entry || []).map(e => e.resource.code && e.resource.code.text)
+      observations: observations.map(r => r.code && r.code.text)
     }, null, 2);
     window.__done = true;
-  }).catch(e => { document.getElementById("status").textContent = "ERROR"; document.getElementById("out").textContent = String(e); window.__done = true; });
+  }).catch(e => {
+    const running = document.querySelector(".steps li.run");
+    if (running) running.className = "fail";
+    $("status").hidden = true;
+    document.getElementById("out").textContent = String(e);
+    $("view").replaceChildren(h("section", { className: "card error", role: "alert" }, h("h2", {}, "發生錯誤"), h("pre", {}, String(e)),
+      h("p", {}, h("a", { href: "launch.html" }, "重新登入"))));
+    window.__done = true;
+  });
 </script>
+</body></html>

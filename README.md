@@ -118,6 +118,8 @@ cd my-app
 | `npm run serve:vitals` / `serve:explorer` / `serve:poc` | 啟動本機伺服器（port 8090 / 8091 / 8080） |
 | `npm run e2e:vitals` / `e2e:explorer` | 端對端測試（先啟動對應的 server；需要 Playwright） |
 
+各 App 頂部的「← 所有範例」連到 `../`（入口頁）。這個連結只有部署到 GitHub Pages 後才有效；`serve:*` 從 App 資料夾啟動，本機點它會 404。
+
 端對端測試可以加 `--browser=firefox` 或 `--browser=webkit`。加 `--app=https://a-pen-app.github.io/tw-smart-on-fhir-starter/smart-vitals-demo` 則是測線上版。詳見各範例的 README。
 Playwright 安裝：`pip install playwright && python3 -m playwright install chromium firefox webkit`
 

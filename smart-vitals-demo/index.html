@@ -1,7 +1,10 @@
 <!doctype html>
 <html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Vitals Demo</title><link rel="stylesheet" href="style.css"></head>
-<body><main id="app"><p class="state">載入中…</p></main>
+<body>
+<!-- Outside #app on purpose: error / expiry screens replace #app's contents, the way out must survive that. -->
+<header class="topbar"><a href="../">← 所有範例</a><strong>生命徵象趨勢圖</strong><span id="session" class="session"></span><a href="launch.html">重新登入</a></header>
+<main id="app"><p class="state loading">載入中…</p></main>
 <noscript>需要啟用 JavaScript。</noscript>
 <script src="https://cdn.jsdelivr.net/npm/fhirclient@3.0.0/bundle/fhir-client.js"></script>
 <script type="module" src="src/main.js"></script></body></html>

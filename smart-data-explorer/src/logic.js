@@ -72,6 +72,16 @@ export const statusOf = r => r.status ?? conceptText(r.clinicalStatus) ?? "";
 /** One row for the table. */
 export const summarize = r => ({ type: r.resourceType, id: r.id, date: dateOf(r), label: labelOf(r), value: valueOf(r), status: statusOf(r) });
 
+/** Table filter: rows where every whitespace-separated term appears in date/label/value/status (case-insensitive). */
+export function filterRows(rows, q) {
+  const terms = String(q ?? "").toLowerCase().split(/\s+/).filter(Boolean);
+  if (!terms.length) return rows;
+  return rows.filter(r => {
+    const text = [r.date, r.label, r.value, r.status].join(" ").toLowerCase();
+    return terms.every(t => text.includes(t));
+  });
+}
+
 /** Ids of every Patient this resource points to (relative or absolute references, with or without _history). */
 export function patientRefs(r) {
   const ids = new Set();
