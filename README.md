@@ -7,7 +7,19 @@
 
 ---
 
-## 5 分鐘先看到東西
+## 線上版（不用安裝）
+
+**<https://a-pen-app.github.io/tw-smart-on-fhir-starter/>**：三個 App 都已部署，打開就能用。每次 push 到 `main`，`.github/workflows/pages.yml` 會自動重新部署。
+
+| App | Standalone | EHR Launch URL（貼到 [沙盒測試頁](https://thas.mohw.gov.tw/smart/sandbox)） |
+|---|---|---|
+| 資料瀏覽器 | [開啟](https://a-pen-app.github.io/tw-smart-on-fhir-starter/smart-data-explorer/launch.html) | `https://a-pen-app.github.io/tw-smart-on-fhir-starter/smart-data-explorer/ehr-launch.html` |
+| 生命徵象趨勢圖 | [開啟](https://a-pen-app.github.io/tw-smart-on-fhir-starter/smart-vitals-demo/launch.html) | `https://a-pen-app.github.io/tw-smart-on-fhir-starter/smart-vitals-demo/ehr-launch.html` |
+| 最小範例 | [開啟](https://a-pen-app.github.io/tw-smart-on-fhir-starter/smart-poc/launch.html) | `https://a-pen-app.github.io/tw-smart-on-fhir-starter/smart-poc/ehr-launch.html` |
+
+✅ 已實測：THAS 沙盒接受公開的 HTTPS redirect_uri，不需要事先登記，所以部署到任何 HTTPS 靜態網站都能直接使用。
+
+## 5 分鐘先看到東西（本機）
 
 ```bash
 cd smart-data-explorer
@@ -106,7 +118,7 @@ cd my-app
 | `npm run serve:vitals` / `serve:explorer` / `serve:poc` | 啟動本機伺服器（port 8090 / 8091 / 8080） |
 | `npm run e2e:vitals` / `e2e:explorer` | 端對端測試（先啟動對應的 server；需要 Playwright） |
 
-端對端測試可以加 `--browser=firefox` 或 `--browser=webkit`，詳見各範例的 README。
+端對端測試可以加 `--browser=firefox` 或 `--browser=webkit`。加 `--app=https://a-pen-app.github.io/tw-smart-on-fhir-starter/smart-vitals-demo` 則是測線上版。詳見各範例的 README。
 Playwright 安裝：`pip install playwright && python3 -m playwright install chromium firefox webkit`
 
 **CI：** `.github/workflows/test.yml` 在每次 push 時跑單元測試。端對端測試會連到公開的共用沙盒，所以只在 GitHub Actions 頁面手動執行時才跑（勾選 `e2e`），會用三種瀏覽器各跑一次。
